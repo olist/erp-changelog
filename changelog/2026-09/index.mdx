@@ -3,13 +3,11 @@ title: "Setembro 2026"
 description: "Atualizações de setembro de 2026."
 ---
 
-<Update label="17 de Setembro de 2026" description="API — Anúncios e Produtos" tags={["API", "Integraçoes", "Produtos"]}>
-  Agora é possível atualizar e enviar o preço de um anúncio diretamente pela API, sem precisar passar pelo cadastro completo do produto.
+<Update label="17 de Setembro de 2026" description="Lorem" tags={["Lorem", "Ipsum"]}>
+# Lorem Ipsum
 
-- `PUT /anuncios/{idMapeamento}/preco` — atualiza o preço do anúncio no ERP.
-- `POST /anuncios/{idMapeamento}/preco/enviar` — envia o preço atualizado para a plataforma de e-commerce conectada.
+### What is Lorem Ipsum?
 
-O campo **estoque** foi removido da resposta do endpoint de consulta de produto (`GET /produtos/{id}`). Se a sua integração utilizava esse campo, ela precisará ser ajustada.
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.
 
-**Ponto de atenção:** Integrações que dependiam do campo `estoque` na resposta de produto deixarão de recebê-lo a partir desta versão.
 </Update>
