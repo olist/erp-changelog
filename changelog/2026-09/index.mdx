@@ -1,0 +1,15 @@
+---
+title: "Setembro 2026"
+description: "Atualizações de setembro de 2026."
+---
+
+<Update label="17 de Setembro de 2026" description="API — Anúncios e Produtos" tags={["API", "Integraçoes", "Produtos"]}>
+  Agora é possível atualizar e enviar o preço de um anúncio diretamente pela API, sem precisar passar pelo cadastro completo do produto.
+
+- `PUT /anuncios/{idMapeamento}/preco` — atualiza o preço do anúncio no ERP.
+- `POST /anuncios/{idMapeamento}/preco/enviar` — envia o preço atualizado para a plataforma de e-commerce conectada.
+
+O campo **estoque** foi removido da resposta do endpoint de consulta de produto (`GET /produtos/{id}`). Se a sua integração utilizava esse campo, ela precisará ser ajustada.
+
+**Ponto de atenção:** Integrações que dependiam do campo `estoque` na resposta de produto deixarão de recebê-lo a partir desta versão.
+</Update>
