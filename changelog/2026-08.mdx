@@ -1,0 +1,52 @@
+---
+title: "Agosto 2026"
+description: "Atualizações de agosto de 2026."
+---
+
+<Update label="28 de Agosto de 2026" description="Notas Fiscais e Financeiro" tags={["Notas Fiscais", "Financeiro"]}>
+  Adicionado suporte à emissão de **NFS-e** para os municípios de Manaus e Belém.
+
+  Corrigida falha na geração do DANFE quando a nota possuía mais de 90 itens.
+
+  Novo campo **centro de custo** disponível no lançamento manual de contas a pagar.
+</Update>
+
+<Update label="26 de Agosto de 2026" description="PDV e Estoque" tags={["PDV", "Estoque"]}>
+  PDV agora suporta **modo offline**: pedidos realizados sem conexão são sincronizados automaticamente ao retomar a rede.
+
+  Adicionado alerta visual quando o estoque de um produto atingir o ponto de ressuprimento configurado.
+</Update>
+
+<Update label="21 de Agosto de 2026" description="Integrações" tags={["Hub", "API"]}>
+  Integração com **Mercado Livre** atualizada para a versão mais recente da API de anúncios, com suporte a catálogo obrigatório.
+
+  Corrigido timeout na sincronização de pedidos com mais de 500 itens vindos de integrações externas.
+
+  Novo webhook `pedido.cancelado` disponível na API pública.
+</Update>
+
+<Update label="19 de Agosto de 2026" description="Relatórios" tags={["Relatórios", "Financeiro"]}>
+  Novo relatório de **DRE simplificado** com filtros por centro de custo e período.
+
+  Exportação de relatórios agora suporta o formato **XLSX** com formatação de células e totalizadores automáticos.
+</Update>
+
+<Update label="14 de Agosto de 2026" description="Pedidos e Expedição" tags={["Pedidos", "Expedição"]}>
+  Adicionado campo **previsão de entrega** na tela de pedidos, calculado automaticamente com base na forma de envio selecionada.
+
+  Novo filtro de pedidos por **status de expedição**: aguardando, em separação, despachado e entregue.
+
+  Corrigido bug que duplicava volumes na etiqueta de envio quando o pedido tinha mais de um produto com embalagem própria.
+</Update>
+
+<Update label="07 de Agosto de 2026" description="Contatos e Cadastros" tags={["Contatos", "Cadastros"]}>
+  Importação de contatos via CSV agora aceita o campo **limite de crédito** e **condição de pagamento padrão**.
+
+  Adicionada validação de **CNPJ junto à Receita Federal** no momento do cadastro, com exibição da situação cadastral.
+</Update>
+
+<Update label="01 de Agosto de 2026" description="Geral" tags={["Performance", "Segurança"]}>
+  Melhorias gerais de performance no carregamento das telas de listagem: redução média de 40% no tempo de resposta.
+
+  Sessões inativas agora expiram após 8 horas, com exibição de aviso 5 minutos antes do encerramento.
+</Update>

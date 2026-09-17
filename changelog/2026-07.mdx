@@ -1,0 +1,40 @@
+---
+title: "Julho 2026"
+description: "Atualizações de julho de 2026."
+---
+
+<Update label="24 de Julho de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+  Suporte à **NT 2026.001**: adequações no leiaute da NF-e para as novas regras de ICMS interestadual.
+
+  Corrigida a ordem dos itens no XML da NF-e quando o pedido era gerado a partir de múltiplos orçamentos.
+</Update>
+
+<Update label="22 de Julho de 2026" description="Financeiro" tags={["Financeiro"]}>
+  Novo módulo de **fluxo de caixa projetado**: visualize entradas e saídas previstas para os próximos 30, 60 ou 90 dias.
+
+  Adicionada opção de **boleto híbrido** (PIX + código de barras) nas formas de cobrança do contas a receber.
+
+  Corrigido rounding em cálculo de desconto percentual que gerava diferença de centavos em notas com muitos itens.
+</Update>
+
+<Update label="17 de Julho de 2026" description="PDV e Integrações" tags={["PDV", "Hub"]}>
+  PDV agora integra com **maquininhas Stone** via TEF, sem necessidade de software externo.
+
+  Integração com **VTEX** atualizada: sincronização de preços de lista agora respeita a tabela de preços por canal.
+</Update>
+
+<Update label="10 de Julho de 2026" description="Estoque e Expedição" tags={["Estoque", "Expedição"]}>
+  Novo recurso de **rastreamento de lotes e validades** no módulo de estoque, com alertas configuráveis para produtos próximos ao vencimento.
+
+  Adicionado suporte a **endereçamento de armazém** (rua, prateleira, posição) para controle de localização física dos produtos.
+
+  Corrigida falha na geração de romaneio quando a expedição continha produtos com código de barras acima de 13 dígitos.
+</Update>
+
+<Update label="03 de Julho de 2026" description="API e Segurança" tags={["API", "Segurança"]}>
+  API pública agora suporta **OAuth 2.0 com PKCE** como método de autenticação adicional ao token Bearer.
+
+  Adicionado log de auditoria para alterações em cadastros sensíveis: usuários, permissões e configurações fiscais.
+
+  Rate limit da API ajustado: endpoints de consulta passam de 60 para 120 requisições por minuto.
+</Update>
