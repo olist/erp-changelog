@@ -1,47 +1,49 @@
 {
-	"$schema": "https://mintlify.com/docs.json",
-	"theme": "mint",
-	"name": "ERP Olist Changelog",
-	"description": "Histórico de atualizações do ERP da Olist.",
-	"colors": {
-		"primary": "#0050dc",
-		"light": "#d4e9ff",
-		"dark": "#0050dc"
-	},
-	"favicon": "/images/favicon.png",
-	"logo": "/images/logo-olist.png",
-	"navigation": {
-		"pages": [
-			"index",
-			{
-				"group": "2026",
-				"pages": []
-			}
-		]
-	},
-	"navbar": {
-		"links": [],
-		"primary": {
-			"type": "button",
-			"label": "ERP da Olist",
-			"href": "https://erp.olist.com"
-		}
-	},
-	"contextual": {
-		"options": [
-			"copy",
-			"view",
-			"chatgpt",
-			"claude",
-			"perplexity",
-			"mcp",
-			"cursor",
-			"vscode"
-		]
-	},
-	"footer": {
-		"socials": {
-			"website": "https://olist.com/sistema-erp"
-		}
-	}
+    "$schema": "https://mintlify.com/docs.json",
+    "theme": "mint",
+    "name": "ERP Olist Changelog",
+    "description": "Histórico de atualizações do ERP da Olist.",
+    "colors": {
+        "primary": "#0050dc",
+        "light": "#d4e9ff",
+        "dark": "#0050dc"
+    },
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo-olist.png",
+    "navigation": {
+        "pages": [
+            "index",
+            {
+                "group": "2026",
+                "pages": [
+                    "changelog/2026-09/index"
+                ]
+            }
+        ]
+    },
+    "navbar": {
+        "links": [],
+        "primary": {
+            "type": "button",
+            "label": "ERP da Olist",
+            "href": "https://erp.olist.com"
+        }
+    },
+    "contextual": {
+        "options": [
+            "copy",
+            "view",
+            "chatgpt",
+            "claude",
+            "perplexity",
+            "mcp",
+            "cursor",
+            "vscode"
+        ]
+    },
+    "footer": {
+        "socials": {
+            "website": "https://olist.com/sistema-erp"
+        }
+    }
 }

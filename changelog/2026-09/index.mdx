@@ -1,0 +1,22 @@
+---
+title: "Setembro"
+description: "Atualizações de setembro de 2026."
+---
+
+<Update label="API V3 - Produtos e Anúncios" tags={["API", "Anúncios", "Produtos"]}>
+
+## Novos endpoints para gestão de preço de anúncios
+
+Agora é possível atualizar e sincronizar o preço de um anúncio diretamente pela API pública.
+
+**`PUT /anuncios/{idMapeamento}/preco`** — Atualiza o preço de um anúncio identificado pelo `idMapeamento`.
+
+**`POST /anuncios/{idMapeamento}/preco/enviar`** — Envia o preço atualizado do anúncio para a plataforma de ecommerce vinculada.
+
+## Remoção do campo `estoque` na resposta de produtos
+
+O campo `estoque` foi removido da resposta do endpoint `GET /produtos/{id}`.
+
+Se você dependia desse campo para consultar estoque, utilize os endpoints específicos de estoque disponíveis na API.
+
+</Update>
