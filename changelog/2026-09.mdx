@@ -1,0 +1,27 @@
+---
+title: "Setembro 2026"
+description: "Atualizações de setembro de 2026."
+---
+
+<Update label="17 de Setembro de 2026" description="API — Produtos e Anúncios" tags={["API", "Produtos"]}>
+
+## Campo de estoque removido do endpoint de produto
+
+O campo **estoque** não faz mais parte da resposta ao consultar um produto pela API. Se a sua integração dependia desse campo, você precisará obter a informação de estoque por outro meio (consulte a documentação de estoque disponível na API).
+
+### Pontos de atenção
+
+- Integrações que liam o campo `estoque` na resposta do endpoint de produto passarão a receber esse campo ausente. Atualize seu código para não depender dele antes de atualizar a versão da integração.
+
+---
+
+## Novos endpoints para gerenciar preço de anúncios
+
+Agora é possível atualizar e enviar o preço de um anúncio diretamente pela API, sem precisar abrir o painel.
+
+### Como funciona
+
+- Para **atualizar o preço** de um anúncio, envie o novo valor para o endpoint de atualização de preço, informando o identificador do anúncio.
+- Após atualizar, você pode **enviar o preço para a plataforma de e-commerce** usando o endpoint de envio — isso garante que a alteração seja refletida no marketplace ou loja virtual conectada.
+
+</Update>
