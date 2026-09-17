@@ -1,0 +1,35 @@
+---
+title: "Setembro 2026"
+description: "Atualizações de setembro de 2026."
+---
+
+<Update label="17 de Setembro de 2026" description="API – Anúncios e Catálogo" tags={["API", "Hub", "Catálogo"]}>
+
+## Novos recursos para gerenciar preço de anúncios via API
+
+**O que mudou**
+
+A API pública agora oferece dois novos recursos para quem gerencia anúncios em plataformas de e-commerce e marketplaces de forma programática.
+
+### Como funciona
+
+- Agora é possível **atualizar o preço de um anúncio** diretamente pela API, informando o identificador do mapeamento do anúncio.
+- Após atualizar, você pode **enviar o novo preço para a plataforma de e-commerce** com uma chamada separada, garantindo que a alteração seja sincronizada com o canal de venda.
+
+---
+
+## Remoção do campo de estoque na consulta de produto
+
+**O que mudou**
+
+O campo **estoque** foi removido da resposta ao consultar um produto pela API pública.
+
+### Impacto
+
+Se sua integração utiliza esse campo para obter a quantidade em estoque de um produto, ele não será mais retornado. Para consultar o estoque, utilize os recursos específicos de estoque disponíveis na API.
+
+### Pontos de atenção
+
+Integrações que leem o campo `estoque` na resposta de produto precisam ser ajustadas para evitar erros de processamento.
+
+</Update>
