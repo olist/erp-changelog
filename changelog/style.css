@@ -1,0 +1,5 @@
+/* Remove a coluna (data + tags) nos componentes de Update em páginas de changelog */
+.update-container > div:first-child {
+    display: none !important;
+}
+
