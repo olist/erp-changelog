@@ -1,55 +1,51 @@
-# Mintlify Starter Kit
+# ERP Changelog
 
-Use the starter kit to get your docs deployed and ready to customize.
+Repositório de changelog público do ERP Olist, construído com [Mintlify](https://mintlify.com). Cada entrada documenta mudanças visíveis ao usuário final — novas funcionalidades, correções e remoções — organizadas por mês.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Como contribuir
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+Há duas formas de adicionar entradas ao changelog.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+### Usando as skills do ERP (recomendado)
 
-## AI-assisted writing
+No repositório do ERP, há três skills que automatizam o fluxo:
 
-Set up your AI coding tool to work with Mintlify:
+- **`/changelog`** — ponto de entrada único: gera o bloco a partir do diff da sua branch, conduz a revisão com você e abre o PR no repositório de changelog ao final.
+- **`/generate-changelog`** — só a etapa de geração: analisa o diff contra `master` e produz um bloco `<Update>` em linguagem voltada ao usuário final, pronto para revisão.
+- **`/publish-changelog-pr`** — só a etapa de publicação: insere o bloco aprovado na página mensal deste repositório e abre o PR no GitHub.
+
+O fluxo típico é invocar `/changelog` na sua sessão do Claude Code enquanto está na branch do ERP. A skill lê o diff, escreve o changelog em linguagem simples, pede sua aprovação e publica o PR aqui.
+
+### Manualmente
+
+Você também pode abrir um PR diretamente neste repositório editando o arquivo mensal em `changelog/YYYY-MM/index.mdx`. Insira o bloco `<Update>` antes dos blocos existentes (o mais recente fica no topo):
+
+```mdx
+<Update label="DD/MM/YYYY HH:MM" description="Área alterada" tags={["Tag"]}>
+## Título da mudança
+
+Descrição voltada ao usuário final.
+</Update>
+```
+
+Se o mês ainda não existir, crie o arquivo e registre a entrada em `docs.json` no grupo do ano correspondente.
+
+## Desenvolvimento local
+
+Instale o [Mintlify CLI](https://www.npmjs.com/package/mint):
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
 npm i -g mint
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Rode o servidor de preview na raiz do repositório (onde está o `docs.json`):
 
-```
+```bash
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Acesse `http://localhost:3000` para visualizar as mudanças localmente.
 
-## Publishing changes
+## Deploy
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+As alterações são publicadas automaticamente após o merge na branch `main`, via integração com o GitHub configurada no [dashboard do Mintlify](https://dashboard.mintlify.com).
