@@ -4,6 +4,14 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
+<Update label="18 de Setembro de 2026" description="Financeiro" tags={["Financeiro"]}>
+## Coluna de data de competência nas listagens de Contas a Pagar, Contas a Receber e Caixa
+
+Agora as listagens de Contas a Pagar, Contas a Receber e Caixa exibem a coluna de data de competência de cada registro. Antes, era possível filtrar por competência, mas a data não aparecia na tabela.
+
+**Ponto de atenção:** A coluna de competência é exibida apenas para quem possui o módulo de DRE habilitado.
+</Update>
+
 <Update label="18 de Setembro de 2026" description="Integrações" tags={["Integrações"]}>
 ## Integração com a Amazon é pausada automaticamente quando a autenticação falha
 
@@ -82,4 +90,29 @@ A emissão de NFS-e pelo Ambiente Nacional passou a seguir o novo formato defini
 Quando a retenção de IR estava desativada nas configurações da NFS-e, o valor do IR ainda aparecia como retido na nota emitida. Isso foi corrigido: agora o IR só é informado como retido quando a opção de retenção estiver ativa.
 
 O parâmetro foi renomeado para **Reter IR na NFS-e**, com a descrição: "Define se a retenção de IR deve ser considerada na emissão da NFS-e."
+</Update>
+
+<Update label="9 de Setembro de 2026" description="Financeiro" tags={["Financeiro"]}>
+## Stone agora aparece na página central de Maquininhas de Cartão
+
+A maquininha Stone passou a ser configurada diretamente pela página de Maquininhas de Cartão, junto com as demais opções. Antes, a configuração ficava em uma área separada de gateways.
+
+- Se você ainda não tem a integração com a Stone ativa, o sistema abre um chamado de solicitação automaticamente ao acessar a página.
+- Se a integração já está instalada, você é levado direto para a configuração do terminal.
+
+![Configuração do gateway Stone](https://t30949570.p.clickup-attachments.com/t30949570/ef5ebe19-9b47-4c46-8ca1-5aa6473588da/image.png)
+</Update>
+
+<Update label="9 de Setembro de 2026" description="Financeiro" tags={["Financeiro"]}>
+## Configurações do financeiro reorganizadas e marcadores unificados em uma só tela
+
+As configurações do módulo financeiro foram reorganizadas para ficarem mais fáceis de encontrar, com a remoção de opções que não estavam mais em uso. Além disso, agora é possível criar um marcador em uma área e replicá-lo para outras — por exemplo, um marcador criado no Caixa pode ser aplicado também em Contas a Receber e Contas a Pagar.
+
+![Reorganização das configurações do financeiro](https://t30949570.p.clickup-attachments.com/t30949570/4fd736bb-333d-40bd-bb9e-5bc789a4bd49/image.png)
+</Update>
+
+<Update label="8 de Setembro de 2026" description="Conta Digital" tags={["Conta Digital"]}>
+## Pagamentos em lote de GNRE pela Conta Digital processados com mais estabilidade
+
+Pagamentos em lote de boletos GNRE realizados pela Conta Digital podiam falhar ou ser interrompidos por excesso de requisições. Isso foi corrigido e o processamento voltou a funcionar normalmente.
 </Update>
