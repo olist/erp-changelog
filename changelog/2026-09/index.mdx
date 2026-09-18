@@ -4,7 +4,7 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
-<Update label="18 de Setembro de 2026" tags='["Fiscal"]' description="GNRE">
+<Update label="18 de Setembro de 2026" tags={["Fiscal"]} description="GNRE">
 ## Novo parâmetro "Próximo dia útil" para o vencimento da guia
 
 #### **O que mudou**
@@ -25,10 +25,9 @@ mode: "default"
 - Feriados: o sistema considera fins de semana e feriados nacionais. Se o feriado for estadual ou municipal, o vencimento pode cair nele; nesses casos a guia continua válida para pagamento, pois o vencimento é a data limite.
 - Guia regerada com vencimento novo: ao regerar uma guia com a opção ativa, o sistema recalcula o vencimento pela regra do próximo dia útil e não reaproveita a data antiga vencida ou do próprio dia. Isso é intencional, para evitar que a guia regerida já nasça vencida.
 - A opção vale para guias geradas após a mudança do parâmetro (inclusive no fluxo automático e na integração com Pernambuco); guias já geradas e enviadas mantêm o vencimento original.
-
 </Update>
 
-<Update label="18 de Setembro de 2026" tags='["Fiscal"]' description="Melhorias">
+<Update label="18 de Setembro de 2026" tags={["Fiscal"]} description="Melhorias">
   ## Sugerir próximo número ao salvar nota fiscal
 
   ### **Inclusão**
@@ -56,7 +55,7 @@ mode: "default"
   - A mensagem de bloqueio por duplicidade deixou de existir.
 </Update>
 
-<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="Otimização / Performance">
+<Update label="17 de Setembro de 2026" tags={["Fiscal"]} description="Otimização / Performance">
   ## Correção de duplicação e perda de dados em regras fiscais
 
   Naturezas de operação com muitas regras ficavam com regras duplicadas, cerca de 5 casos por semana, e a correção era voltar um backup, perdendo as alterações feitas depois dele. Um salvamento grande passava do tempo limite, o navegador reenviava o pedido e as duas execuções gravavam o conjunto inteiro. Esse mesmo caminho também podia deixar a natureza pela metade quando a conexão caía, ou salvar sem parte das exceções fiscais sem avisar o usuário.
@@ -76,7 +75,7 @@ mode: "default"
   - Falha no meio do envio fecha o aguarde, libera o botão Salvar e mostra mensagem, em vez de travar a tela.
 </Update>
 
-<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="NF-e / Nota Fiscal">
+<Update label="17 de Setembro de 2026" tags={["Fiscal"]} description="NF-e / Nota Fiscal">
   ## Aumento limite exportação planilha de notas fiscais
 
   ### **Exportação**
@@ -105,8 +104,8 @@ mode: "default"
   - Log de desfecho por exportação no Elastic: tags `EXPORTACAO_DADOS_DESFECHO`, `EXPORTACAO_DADOS_SUCESSO` e `EXPORTACAO_DADOS_ERRO`, com o estado da execução no erro.
 </Update>
 
-<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="NFS-e / Nota Serviço">
-  # Ajuste layout Ginfes
+<Update label="17 de Setembro de 2026" tags={["Fiscal"]} description="NFS-e / Nota Serviço">
+  ## Ajuste layout Ginfes
 
   Com a publicação da Nota Técnica SE/CGNFS-e nº 007 do Ambiente Nacional da NFS-e, foram realizadas alterações na forma de informar os valores de PIS, COFINS e CSLL retidos, além da criação de novos campos para informar os valores de PIS e COFINS de apuração própria.
 
@@ -128,7 +127,7 @@ mode: "default"
   Quando houver retenção (conforme valor definido no parâmetro - acima 215,05 ou acima de 5000,00 - será exibida a retenção na DPS, conforme valor do serviço, e deduzido do valor líquido.
 </Update>
 
-<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="NFS-e / Nota Serviço">
+<Update label="17 de Setembro de 2026" tags={["Fiscal"]} description="NFS-e / Nota Serviço">
   ## IR sendo retido independente do parâmetro
 
   Atualmente, é possível definir nas configurações de NFS-e o percentual de IR e se o valor será deduzido (retido) por meio do parâmetro “Descontar IR automaticamente”.
