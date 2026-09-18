@@ -1,13 +1,143 @@
 ---
-title: "Setembro 2026"
+title: "Setembro 2026 (v3.92)"
 description: "Atualizações de setembro de 2026."
 ---
 
-<Update label="17 de Setembro de 2026" description="Lorem" tags={["Lorem", "Ipsum"]}>
-# Lorem Ipsum
+<Update label="18 de Setembro de 2026" tags='["Fiscal"]' description="GNRE">
+## Novo parâmetro "Próximo dia útil" para o vencimento da guia
 
-### What is Lorem Ipsum?
+#### **O que mudou**
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.
+- O parâmetro "Data de vencimento padrão da guia" (configurações do módulo GNRE) ganhou uma nova opção: "Próximo dia útil após a geração da guia".
+- Com essa opção ativa, o vencimento da guia passa a cair sempre no próximo dia útil após a geração, desconsiderando fins de semana e feriados nacionais. Exemplos: guia gerada na sexta-feira vence na segunda; gerada na terça às 10h da manhã vence na quarta.
+- Na regeração/reprocessamento de uma guia com essa opção ativa, um vencimento antigo já salvo que esteja no passado ou no mesmo dia é descartado e recalculado pelo novo critério (antes, guias regeradas podiam manter vencimento já vencido quando o parâmetro era "data de geração").
 
+#### **O que pode gerar contato**
+
+- Cliente ativa a nova opção e estranha que o vencimento não fica no mesmo dia da geração, mesmo quando a guia é gerada em horário comercial de dia útil.
+- Dúvida sobre feriados: o cálculo considera feriados nacionais; feriados estaduais/municipais não entram no cálculo.
+- Guia regerada aparece com vencimento diferente da original (mais para frente).
+
+#### **Como orientar o cliente**
+
+- Vencimento no dia seguinte mesmo gerando de manhã: o comportamento é esse mesmo. A opção "Próximo dia útil após a geração da guia" sempre empurra o vencimento para o próximo dia útil, independentemente do horário em que a guia foi gerada. Se o cliente quer vencimento no mesmo dia, deve manter as opções anteriores ("data de saída/emissão da nota" ou "data de geração da guia").
+- Feriados: o sistema considera fins de semana e feriados nacionais. Se o feriado for estadual ou municipal, o vencimento pode cair nele; nesses casos a guia continua válida para pagamento, pois o vencimento é a data limite.
+- Guia regerada com vencimento novo: ao regerar uma guia com a opção ativa, o sistema recalcula o vencimento pela regra do próximo dia útil e não reaproveita a data antiga vencida ou do próprio dia. Isso é intencional, para evitar que a guia regerida já nasça vencida.
+- A opção vale para guias geradas após a mudança do parâmetro (inclusive no fluxo automático e na integração com Pernambuco); guias já geradas e enviadas mantêm o vencimento original.
+
+</Update>
+
+<Update label="18 de Setembro de 2026" tags='["Fiscal"]' description="Melhorias">
+  ## Sugerir próximo número ao salvar nota fiscal
+
+  ### **Inclusão**
+
+  Se o número informado já está em uso na série, a nota recebe o próximo número disponível e o usuário é avisado:
+
+  ```text
+  O número da sua nota fiscal foi alterado para 000228, pois já existe uma nota com a mesma série e número.
+  ```
+
+  Antes a mensagem era:
+
+  ```text
+  O número da sua nota fiscal foi modificado para X.
+  ```
+
+  Notas de terceiros (T), XML de NFe (X) e CT-e (C) continuam sem renumeração.
+
+  ### **Edição**
+
+  - **Antes:** salvar uma nota com série+número já usados era bloqueado com `Já existe uma nota com a mesma série e número.`. O bloqueio só valia com o parâmetro `notafiscal:bloquear_edicao_numero` diferente de  `S`.
+  - **Agora:** notas de emissão própria e importação em situação editável são checadas contra outras notas da conta, sem lock. Havendo duplicidade, recebem o próximo número da sequência, com lock, e o mesmo aviso da inclusão.
+  - Salvar sem duplicidade mantém o número e não pega lock, o que também cobre o duplo clique.
+  - Situação e ambiente usados na decisão vêm do banco, não do request.
+  - A mensagem de bloqueio por duplicidade deixou de existir.
+</Update>
+
+<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="Otimização / Performance">
+  ## Correção de duplicação e perda de dados em regras fiscais
+
+  Naturezas de operação com muitas regras ficavam com regras duplicadas, cerca de 5 casos por semana, e a correção era voltar um backup, perdendo as alterações feitas depois dele. Um salvamento grande passava do tempo limite, o navegador reenviava o pedido e as duas execuções gravavam o conjunto inteiro. Esse mesmo caminho também podia deixar a natureza pela metade quando a conexão caía, ou salvar sem parte das exceções fiscais sem avisar o usuário.
+
+  O que mudou no salvamento:
+
+  - Salvamento e exclusão agora são "tudo ou nada": se algo falhar no meio, a natureza fica exatamente como estava antes, cabeçalho incluído.
+  - Dois salvamentos da mesma natureza não rodam ao mesmo tempo. O reenvio automático e a segunda aba recebem a mensagem "Já existe um salvamento em andamento".
+  - Antes de confirmar a gravação, o sistema confere se todas as regras e exceções chegaram ao banco. Se faltar algo, nada é salvo e o erro aparece na tela.
+  - Na criação de uma natureza, um reenvio do mesmo pedido não gera uma segunda natureza.
+  - A exclusão de várias naturezas continua mesmo se uma delas falhar, e as que falharam aparecem na mensagem.
+
+  O que mudou no envio da tela:
+
+  - Uma parte das exceções fiscais reenviada deixa de gerar o falso "Conflito de regra para o NCM".
+  - Se alguma parte das exceções fiscais se perder no envio, o salvamento é recusado com mensagem, em vez de salvar a natureza com menos exceções.
+  - Falha no meio do envio fecha o aguarde, libera o botão Salvar e mostra mensagem, em vez de travar a tela.
+</Update>
+
+<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="NF-e / Nota Fiscal">
+  ## Aumento limite exportação planilha de notas fiscais
+
+  ### **Exportação**
+
+  - Exportação de planilha passa a ser **sempre assíncrona**, com barra de progresso, histórico da última exportação e aviso opcional por e-mail.
+  - Arquivo final armazenado no **S3**, com retenção de 7 dias. 
+  - Disponível na tela avulsa (`exportacao_planilha_nf`) e no modal das listagens de saída, entrada e consumidor.
+
+  ### **Limites**
+
+  | Formato | Teto |
+  | :-- | :-- |
+  | Excel (.xlsx) | 200.000 linhas |
+  | CSV (.csv) | 200.000 linhas |
+  | Excel 97-2003 (.xls) | 5.000 linhas (mantido do legado) |
+
+  - O teto é **por linha do arquivo**: sem itens, uma linha é uma nota; com itens, uma linha é um item.
+  - Acima do limite, a exportação é bloqueada com mensagem específica, tanto no resumo quanto no envio.
+
+  ### **Interface**
+
+  - Formato indisponível aparece **desabilitado na lista**, com ícone (i) explicando o motivo.
+
+  ### **Observabilidade**
+
+  - Log de desfecho por exportação no Elastic: tags `EXPORTACAO_DADOS_DESFECHO`, `EXPORTACAO_DADOS_SUCESSO` e `EXPORTACAO_DADOS_ERRO`, com o estado da execução no erro.
+</Update>
+
+<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="NFS-e / Nota Serviço">
+  # Ajuste layout Ginfes
+
+  Com a publicação da Nota Técnica SE/CGNFS-e nº 007 do Ambiente Nacional da NFS-e, foram realizadas alterações na forma de informar os valores de PIS, COFINS e CSLL retidos, além da criação de novos campos para informar os valores de PIS e COFINS de apuração própria.
+
+  Atualmente, as emissões de NFS-e pelo Ambiente Nacional já seguem esse novo formato.
+
+  - os valores de PIS e COFINS de apuração própria são enviados em campos específicos, com caráter informativo
+  - os valores retidos de PIS, COFINS e CSLL são informados em um único grupo de Contribuições Sociais Retidas
+
+  O parâmetro 'PIS/COFINS - Débito Próprio (Sem retenção)' é referente aos valores informativos de PIS e COFINS
+
+  Hoje o sistema considera a alíquota de 0,65% do PIS e 3% do COFINS, entretanto, se o seller desabilitar o cálculo automático de impostos, pode ajustar os percentuais informativos, conforme regime tributário
+
+  Quando habilitado, serão exibidos os campos de valores informativos na edição da DPS (não é deduzido do valor líquido).
+
+  Já as retenções, serão calculadas quando o campo 'Calcular PIS, COFINS e CSLL' estiverem diferente de 'Não' e sempre será considerado 4,65%, sendo:
+
+  0,65% (PIS) + 3% (COFINS) + 1% (CSLL) - totalizando 4,65%
+
+  Quando houver retenção (conforme valor definido no parâmetro - acima 215,05 ou acima de 5000,00 - será exibida a retenção na DPS, conforme valor do serviço, e deduzido do valor líquido.
+</Update>
+
+<Update label="17 de Setembro de 2026" tags='["Fiscal"]' description="NFS-e / Nota Serviço">
+  ## IR sendo retido independente do parâmetro
+
+  Atualmente, é possível definir nas configurações de NFS-e o percentual de IR e se o valor será deduzido (retido) por meio do parâmetro “Descontar IR automaticamente”.
+
+  Mas na geração do XML, o valor do IR continua sendo informado como retido no campo vRetIRRF.
+
+  Pontos ajustados:
+
+  - Geração do XML para que o campo `vRetIRRF`  seja informado somente quando houver retenção de IR na NFS-e (parâmetro 'Descontar IR automaticamente' ativo)
+  - Quando o parâmetro “Descontar IR automaticamente” estiver desabilitado, não informar o valor de IR como retido no XML.
+  - Quando o parâmetro estiver habilitado e houver retenção aplicável à operação, manter o preenchimento do vRetIRRF.
+  - Alterar nome do parâmetro para 'Reter IR na NFS-e' e copy 'Define se a retenção de IR deve ser considerada na emissão da NFS-e.'
 </Update>
