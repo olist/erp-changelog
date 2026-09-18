@@ -4,6 +4,30 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
+<Update label="18 de Setembro de 2026" description="Integrações" tags={["Integrações"]}>
+## Integração com a Amazon é pausada automaticamente quando a autenticação falha
+
+Quando a conexão com a Amazon apresenta muitas falhas seguidas de autenticação, a integração é pausada automaticamente e você recebe uma notificação no sistema. Antes, a integração continuava "ativa" mesmo sem sincronizar o estoque de verdade.
+
+- Após corrigir a autenticação, basta reativar a integração nas configurações para retomar a sincronização normalmente.
+
+**Ponto de atenção:** Essa regra vale apenas para erros críticos de estoque por falha de autenticação. Erros pontuais de produto ou problemas em outras partes da integração com a Amazon não acionam a pausa automática.
+</Update>
+
+<Update label="18 de Setembro de 2026" description="Integrações" tags={["Integrações"]}>
+## Parcelas do Mercado Pago importadas corretamente em pedidos do WooCommerce
+
+Pedidos pagos com Mercado Pago no WooCommerce agora podem ser importados com as parcelas reais: quantidade e valor de cada uma. Antes, todos os pedidos entravam com uma parcela única, independentemente de como o pagamento foi feito.
+
+**Como habilitar:** Acesse as configurações da integração com o WooCommerce, vá até a aba Pedidos e ative a opção "Importar parcelas dos pedidos pagos com Mercado Pago".
+
+- Pedidos pagos à vista continuam entrando com uma parcela única.
+- Pedidos parcelados entram com o número correto de parcelas, com vencimentos espaçados de 30 em 30 dias a partir da data do pedido na loja.
+- Pedidos pagos por outros meios (boleto, PIX, outros gateways) não são afetados.
+
+**Ponto de atenção:** As informações de parcelamento vêm diretamente do WooCommerce. Se o número de parcelas ou os valores estiverem incorretos, verifique o que está registrado no pedido original no WooCommerce.
+</Update>
+
 <Update label="18 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
 ## Nova opção de vencimento da GNRE: próximo dia útil
 
