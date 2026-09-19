@@ -1,0 +1,226 @@
+---
+title: "Maio 2026 (v3.88)"
+description: "Atualizações de maio de 2026."
+mode: "default"
+---
+
+<Update label="Maio de 2026" description="Conta Digital · Taxas e Antecipação" tags={["Conta Digital"]}>
+## Taxas e antecipação automática da Conta Digital agora são exibidas diretamente pelo módulo
+
+A visualização das taxas da Conta Digital e o modal de antecipação automática passam a ser carregados diretamente pela Conta Digital, sem depender de atualizações manuais no sistema. Isso garante que as informações apresentadas estejam sempre atualizadas, sem risco de divergências.
+
+<Frame>
+  <img src="/images/changelog/2026-05/conta-digital-taxas-modal.png" alt="Modal de visualização de taxas da Conta Digital" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/conta-digital-antecipacao-automatica.png" alt="Modal de antecipação automática da Conta Digital" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Conta Digital · Transações de Vendas" tags={["Conta Digital", "Financeiro"]}>
+## Vendas por PIX e boleto da Conta Digital aparecem no relatório de transações
+
+Pedidos pagos via PIX ou boleto da Conta Digital Olist agora são listados no Relatório de Transações de Venda do sistema. Antes, essas vendas não apareciam no relatório e você precisava conferir os valores em dois lugares diferentes.
+
+<Frame>
+  <img src="/images/changelog/2026-05/conta-digital-transacoes-filtros.png" alt="Novos filtros de tipo de transação no relatório de vendas" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Envio de e-mail de NFS-e em lote e sem bloqueio por indisponibilidade do ambiente nacional
+
+Agora é possível enviar e-mails de NFS-e já emitidas em lote, sem precisar abrir nota por nota. Além disso, quando o Ambiente Nacional está com instabilidade e o download do anexo da nota não é possível, o envio de e-mail não é mais bloqueado — o destinatário recebe o link para consultar a nota diretamente no portal público.
+
+<Frame>
+  <img src="/images/changelog/2026-05/nfse-email-opcao-enviar.png" alt="Opção de envio de e-mail na listagem de NFS-e" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/nfse-email-confirmar-envio.png" alt="Tela de confirmação do envio de e-mail em lote" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/nfse-email-enviado.png" alt="Confirmação de e-mail enviado com sucesso" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Emissão de NFS-e em Fortaleza (CE) voltou a funcionar corretamente
+
+A emissão e consulta de NFS-e para o município de Fortaleza estava falhando por uma incompatibilidade de versão no processo de consulta. O problema foi corrigido e as notas voltam a ser emitidas e consultadas normalmente.
+</Update>
+
+<Update label="Maio de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Erro de RPS duplicado na emissão de NFS-e em São Paulo (SP) corrigido
+
+A emissão de NFS-e para o município de São Paulo retornava erro de RPS já informado. O problema foi corrigido ajustando o envio da lista de códigos de serviço e o tipo de retenção de PIS, COFINS e CSLL para o padrão do Ambiente Nacional.
+
+<Frame>
+  <img src="/images/changelog/2026-05/nfse-sp-codigo-servico.png" alt="Exemplo de código de serviço corrigido para São Paulo" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/nfse-sp-retencao.png" alt="Tipo de retenção ajustado para o padrão do Ambiente Nacional" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Notas Fiscais"]}>
+## Pedido de venda agora exibe a tributação completa por item e nos totais
+
+Ao criar ou editar um pedido de venda, você passa a ver os impostos de cada item de forma detalhada — incluindo CFOP, NCM, ICMS, FCP, ICMS ST, FCP ST, DIFAL, IPI e IBS/CBS — sem precisar emitir a nota fiscal para consultar esses valores. Os totalizadores do pedido também somam todos esses tributos, mantendo o valor alinhado ao que será gerado na nota.
+
+- Na edição de cada item, a aba **Impostos** exibe bases, alíquotas e valores conforme o tipo de operação.
+- Uma nova aba **Novos Tributos** apresenta os campos relativos à Reforma Tributária (IBS/CBS).
+- Em **Configurações → Vendas → Configurações dos pedidos de venda**, os parâmetros **Calcular impostos nas vendas** e **Imprimir impostos dos itens na impressão detalhada** foram movidos para a seção de configurações de impressão.
+- Uma nova janela permite selecionar quais impostos devem aparecer na impressão detalhada do pedido.
+
+<Frame>
+  <img src="/images/changelog/2026-05/pedido-venda-impostos-item.png" alt="Aba de impostos por item no pedido de venda" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/pedido-venda-ibs-cbs.png" alt="Campos de IBS/CBS por item no pedido de venda" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/pedido-venda-aba-novos-tributos.png" alt="Nova aba de Novos Tributos no pedido de venda" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/pedido-venda-modal-impostos-impressao.png" alt="Modal de seleção de impostos para impressão detalhada do pedido" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/pedido-venda-impressao-impostos.png" alt="Novos impostos exibidos na impressão detalhada do pedido de venda" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Logística · Frenet" tags={["Logística", "Expedição"]}>
+## Envios pela Frenet agora aceitam marcação de carga perigosa
+
+Ao enviar pedidos pela Frenet — incluindo formas híbridas como Correios via Frenet — você pode marcar o envio como carga perigosa diretamente na tela de expedição. Essa informação é enviada automaticamente à Frenet tanto na cotação quanto na geração da etiqueta, evitando falhas quando a transportadora precisa tratar esse tipo de carga.
+
+<Frame>
+  <img src="/images/changelog/2026-05/frenet-carga-perigosa.png" alt="Opção de marcação de carga perigosa na expedição via Frenet" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Logística · Total Express" tags={["Logística", "Expedição"]}>
+## Pedidos da Total Express agora enviam informações de DCe automaticamente
+
+Os pedidos enviados pela Total Express passam a incluir as informações de DCe (Documento de Coleta Eletrônico) automaticamente. Não é necessária nenhuma ação no sistema — basta verificar se o recurso de DCe está habilitado na sua conta no painel da Total Express; caso contrário, entre em contato com a transportadora para solicitar a liberação.
+
+**Ponto de atenção:** O download do PDF da DCe não está disponível no sistema — as informações são enviadas à Total Express, mas o documento deve ser consultado diretamente no painel da transportadora.
+</Update>
+
+<Update label="Maio de 2026" description="Notas Fiscais · Multiempresa" tags={["Notas Fiscais", "Vendas"]}>
+## Novo parâmetro para controlar o bloqueio de emissão de nota em multiempresa
+
+Em ambientes com multiempresa, quando uma venda é faturada em uma empresa e enviada para outra, o sistema bloqueava a geração de nota fiscal na segunda empresa. Agora é possível desativar esse bloqueio por meio de um novo parâmetro nas configurações de multiempresa, permitindo a emissão da nota nas duas empresas quando o seu fluxo exigir.
+
+**Como habilitar:** Acesse **Configurações → Multiempresa** e localize o novo parâmetro para desabilitar a validação de bloqueio de emissão. Por padrão, o bloqueio vem ativado para todos os clientes.
+
+<Frame>
+  <img src="/images/changelog/2026-05/multiempresa-parametro-nota.png" alt="Novo parâmetro de bloqueio de emissão de nota em multiempresa" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Logística · Smart Envios" tags={["Logística", "Expedição"]}>
+## Smart Envios agora suporta impressão de etiquetas no formato ZPL via PrintNode
+
+As etiquetas da Smart Envios podem agora ser impressas no formato ZPL, além do formato já existente. Você escolhe o formato preferido nas configurações do gateway e pode imprimir os dois formatos via PrintNode.
+
+**Como habilitar:** Acesse as configurações do gateway Smart Envios e selecione o modelo de impressão desejado.
+
+<Frame>
+  <img src="/images/changelog/2026-05/smart-envios-zpl-printnode.png" alt="Configuração do modelo de impressão de etiquetas na Smart Envios" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Expedição · Separação" tags={["Expedição"]}>
+## Novo filtro por produto na tela de separação
+
+A tela de separação agora conta com um filtro avançado por produto. Basta digitar o SKU ou parte da descrição do produto para localizar rapidamente os itens que precisa separar.
+
+<Frame>
+  <img src="/images/changelog/2026-05/separacao-filtro-produto.png" alt="Filtro por produto na tela de separação" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Contatos · Limite de Crédito" tags={["Contatos", "Financeiro"]}>
+## Campo de limite de crédito nos contatos voltou a aparecer para quem tem contas a receber
+
+O campo de limite de crédito no cadastro de contatos estava bloqueado para clientes que deveriam ter acesso a ele. O problema foi corrigido: agora, qualquer cliente com o módulo de Contas a Receber habilitado pode visualizar e preencher o limite de crédito diretamente no cadastro do contato.
+</Update>
+
+<Update label="Maio de 2026" description="Vendas · Proposta Comercial" tags={["Vendas", "Estoque"]}>
+## Erro de estoque insuficiente ao salvar venda de proposta comercial corrigido
+
+Ao salvar uma venda originada de uma proposta comercial que continha um kit com componentes sem reservas de estoque, o sistema exibia um erro de estoque insuficiente mesmo quando havia quantidade disponível. O problema ocorria porque componentes sem nenhuma reserva registrada não eram considerados no cálculo. Isso foi corrigido e a venda agora é salva normalmente nesses casos.
+</Update>
+
+<Update label="Maio de 2026" description="Expedição · OneStepShipping" tags={["Expedição"]}>
+## OneStepShipping disponível para todos os clientes
+
+O fluxo de **OneStepShipping** — que permite despachar um pedido em uma única etapa — está agora disponível para 100% dos clientes. Não é necessária nenhuma configuração adicional para começar a usar.
+</Update>
+
+<Update label="Maio de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Suporte ao Mercado Envios Agora no Mercado Livre
+
+O Mercado Livre lançou o **Mercado Envios Agora**, uma nova modalidade de entrega com SLA extremamente curto — em alguns casos, até 25 minutos a partir do momento do pedido. Os pedidos nessa modalidade chegam ao sistema com o prazo de despacho informado normalmente, assim como os pedidos Flex e Turbo.
+
+- Você pode configurar o recebimento de notificações para essa modalidade na **Central de Notificações**.
+
+<Frame>
+  <img src="/images/changelog/2026-05/mercado-envios-agora-1.png" alt="Mercado Envios Agora — exemplo de pedido com SLA curto" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/mercado-envios-agora-2.png" alt="Mercado Envios Agora — detalhes do pedido no sistema" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/mercado-envios-agora-3.png" alt="Mercado Envios Agora — central de notificações" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Integrações · KaBuM!" tags={["Integrações", "Logística"]}>
+## KaBuM! Entregas: nova forma de envio integrada automaticamente
+
+A KaBuM! lançou o serviço **KaBuM! Entregas** em parceria com o Magalu. Os pedidos com esse tipo de logística são identificados automaticamente no momento da importação e recebem a marcação **KaBuM! Entregas**. A forma de envio correspondente é criada automaticamente quando você salva as configurações da integração com a KaBuM!.
+
+<Frame>
+  <img src="/images/changelog/2026-05/kabum-entregas-1.png" alt="Marcação KaBuM! Entregas no pedido importado" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/kabum-entregas-2.png" alt="Configuração da integração KaBuM! com forma de envio criada automaticamente" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Integrações · Amazon" tags={["Integrações"]}>
+## Sugestão de título de anúncio com IA na Amazon
+
+Ao abrir o card de um anúncio na integração com a Amazon, um banner exibe uma sugestão de título gerada por inteligência artificial. Se você não gostar da sugestão, pode voltar ao título anterior com um clique.
+</Update>
+
+<Update label="Maio de 2026" description="Integrações · Nuvemshop" tags={["Integrações"]}>
+## Pedidos da Nuvemshop paravam de ser importados em casos de erro específicos — corrigido
+
+Pedidos de alguns vendedores na Nuvemshop estavam sendo processados repetidamente sem sucesso, o que causava lentidão e travamentos na importação. O problema foi corrigido e agora o sistema trata corretamente esses casos de erro, encerrando as tentativas desnecessárias.
+</Update>
+
+<Update label="Maio de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Pedidos do Mercado Livre Fulfillment voltaram a atualizar o status para entregue automaticamente
+
+Pedidos do Mercado Livre Fulfillment não estavam sendo atualizados para o status **Entregue** de forma automática. O problema foi identificado e corrigido, e os pedidos voltam a ter o status atualizado normalmente após a entrega.
+</Update>
+
+<Update label="Maio de 2026" description="Integrações · Hub" tags={["Integrações"]}>
+## Conexão com Mercado Livre e Temu agora é feita dentro da própria plataforma
+
+Ao conectar as integrações de Mercado Livre Hub e Temu Hub pelo sistema, você é redirecionado diretamente para a plataforma de integração para concluir o processo de conexão. Após finalizar, o sistema retorna automaticamente para onde você estava, centralizando toda a experiência de configuração em um único lugar.
+</Update>

@@ -15,7 +15,7 @@ Você é responsável por transformar documentação interna de produto em entra
 
 Leia o arquivo indicado pelo usuário. Identifique cada item separado por `---` ou por títulos `##` de nível raiz. Para cada item, extraia:
 
-- **Data de produção:** procure o campo "Em produção desde:" e use essa data. Se ausente, use "Previsão de lançamento:". Se nenhum campo estiver presente, use a data de hoje.
+- **Data de produção:** procure o campo "Em produção desde:" e use essa data. Se ausente, use "Previsão de lançamento:". Se nenhum campo estiver presente, omita o dia e apresente somente o mês e ano.
 - **Tipo de mudança:** nova funcionalidade, correção de bug ou remoção de funcionalidade.
 - **Links de imagem e vídeo:** colete todas as URLs de imagem (`.png`, `.jpg`, `.gif`, `.webp`) e vídeo (`.webm`, `.mp4`) encontradas no item. Elas serão baixadas e substituídas no Passo 2b.
 

@@ -1,0 +1,273 @@
+---
+title: "Março 2026 (v3.86)"
+description: "Atualizações de março de 2026."
+mode: "default"
+---
+
+<Update label="Março de 2026" description="Estoque · Multi-empresas" tags={["Estoque", "Vendas"]}>
+## Saldo de estoque de todas as empresas visível diretamente nas vendas e orçamentos
+
+Ao clicar no indicador de estoque de um item em uma venda, orçamento ou nota fiscal (NF-e / NFC-e), agora é aberto um painel centralizado com três abas: **Estoque**, **Histórico de Vendas** e **Compras Previstas**. Antes, o saldo aparecia em um popover e o histórico exigia um modal separado.
+
+- Na aba **Estoque**, você vê o saldo físico, reservado e disponível por depósito de cada empresa do grupo.
+- O cabeçalho do painel exibe a miniatura do produto, o código SKU e o NCM.
+- Os ícones de status de estoque foram atualizados: seta para baixo indica sem estoque ou saldo negativo; ícone de caixas empilhadas indica estoque OK ou abaixo do mínimo; ícone de chave inglesa indica serviço sem controle de inventário; ícone de corrente quebrada indica item não cadastrado.
+
+<Frame>
+  <img src="/images/changelog/2026-03/estoque-multiempresa-modal.png" alt="Modal centralizado de estoque com abas por empresa" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-03/estoque-multiempresa-abas.png" alt="Abas de estoque, histórico de vendas e compras previstas" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-03/estoque-indicadores-visuais.png" alt="Novos ícones de status de estoque" />
+</Frame>
+
+**Ponto de atenção:** Os módulos de notas de entrada e de serviço mantêm o comportamento anterior e não exibem o novo painel.
+</Update>
+
+<Update label="Março de 2026" description="Logística · Correios" tags={["Logística", "Expedição"]}>
+## Declaração de Conteúdo Eletrônica (DCe) dos Correios disponível no sistema
+
+A partir de 6 de abril de 2026, os Correios exigem a emissão da Declaração de Conteúdo Eletrônica (DCe) para envios sem nota fiscal. O sistema passa a suportar esse documento com as seguintes mudanças:
+
+- Nas configurações dos Correios, há um novo parâmetro **Utiliza declaração de conteúdo**. Com ele desabilitado, o sistema bloqueia o envio de pedidos sem nota e exibe uma mensagem de erro. Com ele habilitado, a DCe é gerada automaticamente.
+- Após o envio, o sistema aguarda a confirmação da DCe pelos Correios. Se a geração falhar, você recebe uma orientação para verificar o e-mail da conta cadastrada — os Correios enviam os detalhes do erro por e-mail.
+- Para imprimir o DACe (espelho da declaração), novas opções foram adicionadas nas telas de vendas e de expedição, com três formatos disponíveis: **Completa**, **Resumida** ou **Térmica**.
+
+<Frame>
+  <img src="/images/changelog/2026-03/correios-dce-parametro.png" alt="Novo parâmetro de declaração de conteúdo nas configurações dos Correios" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-03/correios-dce-impressao-formato.png" alt="Modal de impressão do DACe com opções de formato" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-03/correios-dace-opcoes-impressao.png" alt="Opções de impressão do DACe na tela de expedição" />
+</Frame>
+</Update>
+
+<Update label="Março de 2026" description="Expedição · Etiquetas" tags={["Expedição"]}>
+## Impressão de etiquetas de envio em massa com menos cliques
+
+Agora é possível selecionar várias vendas e imprimir todas as etiquetas de envio de uma vez, sem precisar acessar cada pedido individualmente. No menu de ações em lote das vendas, um novo botão abre um painel que agrupa as vendas por transportadora, com a lista de coleta (romaneio) já incluída para facilitar a separação.
+</Update>
+
+<Update label="Março de 2026" description="Integrações · Shopify" tags={["Integrações"]}>
+## Regras de sincronização multi-empresa por local logístico da Shopify
+
+Ao configurar regras de sincronização de pedidos de venda entre empresas, agora é possível usar o **local logístico (location)** da Shopify como critério. Isso permite, por exemplo, direcionar pedidos do Location X para a Empresa A e pedidos do Location Y para a Empresa B automaticamente.
+
+**Como habilitar:** Acesse as configurações de **Multi-empresas > Regras de Sincronização de Pedidos de Venda**, crie ou edite uma regra com integração Shopify e selecione o campo **Local Logístico Externo Shopify**.
+</Update>
+
+<Update label="Março de 2026" description="Integrações · E-commerce" tags={["Integrações", "Notas Fiscais"]}>
+## Reenvio de dados fiscais para o e-commerce disponível também na tela de vendas
+
+A opção de enviar dados fiscais para o e-commerce, que existia apenas na tela de Notas Fiscais, agora também está disponível diretamente na tela de **Vendas**. Tanto para a empresa atual quanto para o fluxo multi-empresa, a ação aparece no menu em lote sempre que a conta tiver um e-commerce com essa funcionalidade configurada ou o parâmetro de sincronização fiscal multi-empresa ativo.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · Emissão Automática" tags={["Notas Fiscais", "Vendas"]}>
+## Regras de emissão automática de nota fiscal por origem e canal de venda
+
+Agora é possível definir regras específicas para emitir notas fiscais automaticamente conforme a origem do pedido — API, integração com e-commerce ou PDV — e, quando a origem for integração, também por canal de venda (Mercado Livre, Shopee, etc.).
+
+- Sem nenhuma regra configurada para uma origem, a nota não é emitida automaticamente para ela.
+- É possível ter regras diferentes para cada origem e canal.
+- Pedidos do **Amazon Fulfillment (FBA)** continuam sempre emitindo nota automaticamente, independente de qualquer regra.
+
+**Como habilitar:** Acesse **Configurações > Notas Fiscais > Emissão Automática** e adicione as regras por origem desejada.
+
+**Ponto de atenção:** O parâmetro global de emissão automática continua funcionando para origens sem regra específica configurada.
+</Update>
+
+<Update label="Março de 2026" description="Produtos · Importação" tags={["Produtos"]}>
+## Tipo e classe de produto agora podem ser alterados via importação de planilha
+
+Ao importar uma planilha de produtos, agora é possível alterar o tipo de um produto já cadastrado — de Simples para Kit, por exemplo. Isso facilita a correção em massa de produtos importados com o tipo incorreto.
+
+- A alteração de tipo só é permitida para produtos das classes **Simples** ou **Kit**.
+- Produtos do tipo **Variação** ou **Fabricado** não podem ter o tipo alterado via importação.
+- Ao converter um Kit para Simples, os componentes vinculados são removidos automaticamente.
+- Se o produto já fizer parte da estrutura de outro kit, a alteração é bloqueada.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · Devolução" tags={["Notas Fiscais"]}>
+## Notas de devolução geradas pela origem copiam os tributos IBS e CBS automaticamente
+
+Ao gerar uma nota de devolução ou devolução de produtos pelo menu de contexto de uma nota fiscal, o sistema passa a copiar os valores de IBS e CBS diretamente da nota de origem, sem recalcular pelas configurações tributárias. Se a nota de origem for anterior à Reforma Tributária e não tiver IBS e CBS, o sistema preenche automaticamente com os valores padrão definidos pela legislação.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Envio de eventos fiscais da Reforma Tributária corrigido
+
+Eventos fiscais com as novas regras da Reforma Tributária passaram a ser enviados e autorizados corretamente pela SEFAZ. Antes, o sistema direcionava esses eventos para o webservice incorreto, impedindo a autorização.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · Espelho" tags={["Notas Fiscais", "Relatórios"]}>
+## Tributos da Reforma Tributária incluídos no espelho de notas fiscais
+
+O espelho de notas fiscais — disponível em HTML e em planilha — passa a exibir os novos tributos da Reforma Tributária (IBS e CBS) quando o parâmetro correspondente estiver habilitado na conta. As novas colunas são: CST, classificação tributária (cClassTrib), alíquotas, bases de cálculo e valores de IBS e CBS.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · Saída" tags={["Notas Fiscais"]}>
+## Geração de nota de débito disponível no menu de contexto das notas fiscais de saída
+
+Agora é possível criar uma nota de débito diretamente a partir de uma nota fiscal de saída, pelo menu de contexto. Antes, apenas a geração de nota de crédito estava disponível. A nota de débito é útil em situações como cobrança de multa ou juros por atraso, e é criada já referenciando a nota fiscal de origem.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Arredondamento de tributos em NFS-e no padrão nacional corrigido
+
+Ao emitir notas de serviço no padrão nacional com retenção de tributos (PIS, COFINS e CSLL), o valor final calculado pode apresentar diferença em relação ao esperado pelo Ambiente Nacional por conta do arredondamento. O sistema passa a aplicar as regras de arredondamento conforme a norma ABNT NBR 5891:2014, eliminando essa divergência.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Emissão de NFS-e em Fortaleza (CE) corrigida
+
+A emissão de notas de serviço no município de Fortaleza apresentava erro de validação e não era concluída. O problema era causado por uma diferença de layout específica do município em relação aos demais que utilizam o mesmo modelo de integração. O sistema agora suporta o layout correto para Fortaleza.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Municípios migrados para emissão de NFS-e via E-Notas
+
+Os municípios abaixo passaram a emitir notas de serviço pela integração E-Notas, mantendo emissão pelo emissor próprio e sem aderir ao Padrão Nacional:
+
+- Teresina - PI
+- Campo Grande - MS
+- Sorocaba - SP
+- São José dos Campos - SP
+
+**Ponto de atenção:** O modelo de integração anterior (Betha) foi removido do sistema. Se você emitia NFS-e por esse modelo, a emissão agora ocorre automaticamente pelo E-Notas.
+</Update>
+
+<Update label="Março de 2026" description="API · Pedidos" tags={["API"]}>
+## API V2 permite informar CPF do consumidor final ao criar pedidos
+
+Ao criar um pedido via API V2, agora é possível incluir o CPF do consumidor final diretamente na requisição, sem precisar cadastrá-lo como cliente. O comportamento é equivalente ao de uma venda no PDV com CPF na nota.
+
+**Ponto de atenção:** O CPF informado só é considerado quando o nome do cliente no pedido for exatamente igual ao nome do consumidor final configurado na conta.
+</Update>
+
+<Update label="Março de 2026" description="API · NFS-e" tags={["API", "Notas Fiscais"]}>
+## API V2 passa a suportar tributos da Reforma Tributária e emissão de NFS-e via E-Notas
+
+Duas melhorias para quem usa a API V2 de notas fiscais: os novos tributos da Reforma Tributária (IBS e CBS) agora são incluídos nas NFS-e criadas pela API, e passou a ser possível emitir e consultar NFS-e de municípios que utilizam integração com E-Notas.
+</Update>
+
+<Update label="Março de 2026" description="Integrações · Google Shopping" tags={["Integrações"]}>
+## Criação de campanha no Google Shopping corrigida
+
+Ao criar uma campanha no Google Shopping com o valor do campo **Custom Label** igual a zero, o sistema interpretava o valor como vazio e não enviava o dado. Isso fazia a criação falhar silenciosamente. O campo passa a ser enviado corretamente mesmo quando o valor é zero.
+</Update>
+
+<Update label="Março de 2026" description="Integrações · Wake" tags={["Integrações"]}>
+## Importação de imagens de produtos da Wake corrigida
+
+Imagens de produtos enviadas pela plataforma Wake não estavam sendo importadas para o sistema. O problema ocorria porque o campo de imagem poderia vir em formatos diferentes dependendo do produto. O sistema passa a interpretar corretamente os dois formatos e importar as imagens.
+</Update>
+
+<Update label="Março de 2026" description="API · Pedidos" tags={["API"]}>
+## API V3 passa a retornar o campo de responsável pelo frete ao listar pedidos
+
+Ao consultar pedidos pela API V3, o campo que indica quem paga o frete não estava sendo retornado. O dado existia internamente, mas não era incluído na resposta. Agora ele é retornado corretamente em todas as consultas de pedidos.
+</Update>
+
+<Update label="Março de 2026" description="API · Financeiro" tags={["API"]}>
+## Permissões de leitura e edição de Contas a Receber na API V3 corrigidas
+
+Ao acessar o endpoint de Contas a Receber pela API V3, usuários com permissão de leitura recebiam erro 401. As permissões de leitura e edição estavam configuradas de forma invertida no sistema. O mapeamento foi corrigido e agora cada nível de permissão funciona como esperado.
+</Update>
+
+<Update label="Março de 2026" description="API · Financeiro" tags={["API"]}>
+## Consulta de Contas a Receber atrasadas pela API V3 corrigida
+
+Ao filtrar Contas a Receber pelo status "atrasada" via API V3, nenhum resultado era retornado. O sistema agora interpreta corretamente esse filtro e retorna as contas em aberto com vencimento anterior à data atual.
+</Update>
+
+<Update label="Março de 2026" description="Estoque · Inventário" tags={["Estoque"]}>
+## Cálculo do saldo de estoque considerando todos os depósitos corrigido
+
+Ao calcular manualmente o saldo de estoque sem selecionar um depósito específico, o sistema não estava considerando todos os depósitos corretamente. Agora, quando nenhum depósito está selecionado no filtro, o cálculo leva em conta todos os depósitos disponíveis.
+</Update>
+
+<Update label="Março de 2026" description="Logística · Total Express" tags={["Logística", "Expedição"]}>
+## Impressão de etiqueta ZPL com múltiplos volumes corrigida para Total Express
+
+Ao imprimir etiquetas ZPL de expedições com mais de um volume via Total Express, apenas a etiqueta do primeiro volume era gerada. O sistema passa a percorrer todos os volumes e retornar as etiquetas ZPL corretamente para cada um.
+</Update>
+
+<Update label="Março de 2026" description="Logística · Total Express" tags={["Logística", "Expedição"]}>
+## Impressão de etiqueta ZPL da Total Express vinculada à expedição correta
+
+Ao imprimir uma etiqueta ZPL da Total Express, o sistema podia carregar dados de outra expedição caso não encontrasse as informações pela nota fiscal. A busca passou a considerar a origem correta da etiqueta, garantindo que os dados impressos correspondem sempre à expedição selecionada.
+</Update>
+
+<Update label="Março de 2026" description="Vendas · Status" tags={["Vendas"]}>
+## Status de recebimento das vendas atualizado corretamente ao emitir nota de serviço
+
+Ao emitir uma nota fiscal de serviço vinculada a uma venda, o status de recebimento da venda não era atualizado automaticamente. O comportamento foi corrigido e agora segue o mesmo fluxo das demais notas fiscais.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · Entrada" tags={["Notas Fiscais"]}>
+## Consulta de dados cadastrais pela SEFAZ em notas de entrada passou a funcionar
+
+O botão de consulta de dados cadastrais pela SEFAZ, disponível nas notas de entrada, não realizava nenhuma ação ao ser clicado. A funcionalidade foi implementada e agora abre o painel de busca e retorna os dados corretamente.
+</Update>
+
+<Update label="Março de 2026" description="Vendas · Cotação" tags={["Vendas", "Logística"]}>
+## Transportadora removida automaticamente ao alterar forma de frete sem transportadora
+
+Ao salvar uma cotação com uma forma de frete que não possui transportadora vinculada, o sistema agora remove a transportadora anterior automaticamente. Antes, a transportadora da cotação anterior permanecia mesmo quando a nova forma de frete não a utilizava, gerando inconsistência nos dados.
+</Update>
+
+<Update label="Março de 2026" description="Vendas · Pré-venda" tags={["Vendas", "Estoque"]}>
+## Informações de estoque exibidas corretamente ao continuar uma pré-venda
+
+Ao abrir um pedido salvo como pré-venda para continuar o atendimento, as informações de estoque dos itens não apareciam. O sistema passa a carregar esses dados corretamente ao retomar a pré-venda.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais", "API"]}>
+## Campos de tributação preenchidos corretamente ao criar NFS-e pela API V2
+
+Ao criar uma nota fiscal de serviço pela API V2, os campos **Código de Tributação Nacional** e **Código de Tributação do Município** não estavam sendo preenchidos. Os valores passam a ser registrados corretamente conforme enviados na requisição.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Número da nota atualizado automaticamente ao mudar para emissão própria
+
+Ao editar uma nota fiscal e alterar o tipo de emissão para emissão própria, o campo de número da nota não era atualizado automaticamente — mesmo com o parâmetro **Bloquear edição do número da nota fiscal** habilitado. O sistema agora busca e preenche o próximo número disponível automaticamente ao fazer essa alteração.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Aviso exibido na tela ao tentar emitir NFS-e sem IBS e CBS configurados
+
+Ao tentar emitir uma nota fiscal de serviço sem ter os tributos IBS e CBS configurados na conta, o sistema não exibia nenhuma mensagem de erro — a nota simplesmente não era gerada. Agora um aviso é exibido em tela indicando que é necessário preencher essas configurações antes de emitir.
+</Update>
+
+<Update label="Março de 2026" description="Integrações · Magalu" tags={["Integrações"]}>
+## Mensagem de retorno ao enviar preços para o Magalu corrigida
+
+Ao atualizar preços de produtos no Magalu, quando o canal informava que o preço não foi alterado porque já era o mesmo, o sistema exibia uma mensagem de erro indevida. O retorno passa a ser exibido corretamente como sucesso nesses casos.
+</Update>
+
+<Update label="Março de 2026" description="Logística · Netshoes" tags={["Logística", "Expedição"]}>
+## Todas as etiquetas da Netshoes retornadas corretamente na expedição
+
+Ao gerar etiquetas de expedição pela Netshoes, apenas a primeira etiqueta era retornada, independente do número de volumes. O sistema agora percorre todas as etiquetas disponíveis e as inclui no retorno.
+</Update>
+
+<Update label="Março de 2026" description="Notas Fiscais · DIFAL" tags={["Notas Fiscais"]}>
+## Configuração do DIFAL ST para contribuintes salva corretamente por estado
+
+Ao habilitar o cálculo diferenciado de ST para consumidores contribuintes e adicionar uma regra por estado, a configuração não era salva corretamente — o campo do estado ficava em branco e o sistema exibia o erro "Não é possível ter mais de uma regra para" ao tentar adicionar outro estado.
+
+<Frame>
+  <img src="/images/changelog/2026-03/nfe-difal-st-configuracao.png" alt="Tela de configuração do DIFAL ST para contribuintes" />
+</Frame>
+
+**Ponto de atenção:** Se você tinha esse parâmetro habilitado, revise as configurações de DIFAL ST em **Configurações > Notas Fiscais > Cálculo diferenciado de ST para consumidor contribuintes** e ajuste as regras por estado conforme necessário.
+</Update>

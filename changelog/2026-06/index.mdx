@@ -1,0 +1,169 @@
+---
+title: "Junho 2026 (v3.89)"
+description: "Atualizações de junho de 2026."
+mode: "default"
+---
+
+<Update label="Junho de 2026" description="Notas Fiscais · Devoluções" tags={["Notas Fiscais", "Vendas"]}>
+## Frete, seguro e despesas agora são rateados corretamente em devoluções parciais
+
+Ao registrar uma devolução parcial de venda a partir de uma nota fiscal, o sistema calculava os valores de frete, seguro, desconto e despesas de forma errada: em vez de dividir proporcionalmente por item e quantidade, os valores eram somados de forma incorreta ou colocados no campo errado — o seguro sumia e o frete aparecia no campo de despesas. Isso obrigava você a recalcular e corrigir tudo manualmente.
+
+Agora o rateio acontece automaticamente com base na nota fiscal de origem. Cada valor vai para o campo correto: frete vai para frete, seguro vai para seguro, e assim por diante — refletindo exatamente a estrutura da nota original, mesmo em devoluções parciais.
+
+<Frame>
+  <img src="/images/changelog/2026-06/devolucao-venda-rateio-frete-seguro.png" alt="Devolução de venda com os dados de frete, seguro, despesas e descontos rateados corretamente" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-06/nota-devolucao-dados-corretos.png" alt="Nota de devolução com os dados corretos" />
+</Frame>
+</Update>
+
+<Update label="Junho de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais", "Vendas"]}>
+## CFOP agora aparece na impressão de Pedidos de Venda
+
+O CFOP passou a estar disponível entre os impostos que podem ser exibidos na impressão dos Pedidos de Venda.
+</Update>
+
+<Update label="Junho de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Novo modelo do DANFSe do Ambiente Nacional gerado diretamente pelo sistema
+
+O documento DANFSe para notas de serviço do Ambiente Nacional agora é gerado internamente pelo sistema, seguindo as novas especificações técnicas vigentes. Antes, o PDF era produzido por um serviço externo que será descontinuado em breve.
+
+Para você, a funcionalidade de impressão e compartilhamento da NFS-e continua exatamente igual. A única diferença visível é o novo layout visual do documento, atualizado conforme as normas atuais.
+</Update>
+
+<Update label="Junho de 2026" description="Vendas · Propostas Comerciais" tags={["Vendas", "Notas Fiscais"]}>
+## Impostos completos visíveis nas Propostas Comerciais
+
+Na criação de propostas comerciais, a tributação aparecia de forma incompleta: apenas MVA, ICMS ST, FCP ST e IPI por item, e somente IPI e ICMS ST + FCP ST nos totais. Para ver o detalhamento completo, era necessário emitir a nota fiscal.
+
+Agora a proposta exibe a tributação completa — por item e nos totalizadores — usando a mesma lógica de cálculo da emissão de NF-e. Você consegue analisar custos e impostos antes de gerar o pedido ou a nota. Na edição do item, a aba Impostos inclui CFOP, NCM e todos os tributos previstos (ICMS, FCP, ICMS ST, FCP ST, DIFAL, IPI e IBS/CBS, com bases, alíquotas e valores).
+
+**Como habilitar:** Acesse **Configurações → Vendas → Configurações das propostas comerciais** e ative as opções **Calcular impostos nas propostas** e **Imprimir impostos dos itens na impressão da proposta**. Uma nova janela permite escolher quais impostos aparecem na impressão.
+</Update>
+
+<Update label="Junho de 2026" description="Vendas · Propostas Comerciais" tags={["Vendas"]}>
+## Prazo de disponibilidade do item agora aparece na proposta comercial
+
+Quando um produto não está disponível imediatamente, o vendedor precisava combinar o prazo com o cliente fora do sistema, sem um campo oficial para registrar isso na proposta.
+
+Agora a proposta comercial conta com um campo de prazo de disponibilidade por item, que já puxa automaticamente o tempo de preparação do cadastro do produto — e pode ser ajustado manualmente. Também foi adicionado um campo de data prevista de entrega, com explicações diretas na tela para que o vendedor e o cliente saibam exatamente quando o produto ficará pronto e quando chegará. Essas informações aparecem na impressão da proposta.
+
+<Frame>
+  <img src="/images/changelog/2026-06/proposta-prazo-disponibilidade-sem-prazo.png" alt="Campo de prazo de disponibilidade do item na proposta comercial — produto sem prazo configurado" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-06/proposta-prazo-disponibilidade-com-prazo.png" alt="Campo de prazo de disponibilidade do item na proposta comercial — produto com prazo configurado" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-06/proposta-data-prevista-entrega.png" alt="Campo de data prevista de entrega na proposta comercial" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-06/proposta-impressao-prazo-entrega.png" alt="Informações de prazo e entrega na impressão da proposta comercial" />
+</Frame>
+</Update>
+
+<Update label="Junho de 2026" description="Notas Fiscais · NF-e e NFC-e" tags={["Notas Fiscais"]}>
+## Agente de IA orienta a correção de rejeições de NF-e e NFC-e
+
+Quando a Sefaz recusa uma NF-e ou NFC-e, o sistema retornava uma mensagem genérica ou técnica demais, sem indicar claramente o que fazer. A mensagem original da Sefaz era resumida ou alterada internamente, o que reduzia a clareza e aumentava o risco de uma correção errada.
+
+Agora a rejeição é apresentada de forma completa e acionável, com o apoio de um Agente de IA que interpreta o erro e gera uma orientação estruturada: título da correção, plano de ação passo a passo, detalhamento técnico e recomendações para evitar o problema no futuro. A análise feita por IA fica indicada na tela. Orientações já geradas são reutilizadas em rejeições futuras do mesmo tipo, sem nova consulta.
+
+<Frame>
+  <img src="/images/changelog/2026-06/nfe-rejeicao-agente-ia-aviso.png" alt="Aviso exibido quando a Sefaz retorna uma rejeição — o Agente de IA está pronto para ajudar" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-06/nfe-rejeicao-agente-ia-tela-erro.png" alt="Tela da nota com os detalhes do erro após clicar em corrigir" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-06/nfe-rejeicao-agente-ia-detalhes.png" alt="Detalhes do erro expandidos com ações para corrigir e prevenir" />
+</Frame>
+</Update>
+
+<Update label="Junho de 2026" description="Notas Fiscais · DF-e" tags={["Notas Fiscais", "Compras"]}>
+## Novo módulo para consulta e importação automática de DF-e
+
+**Ponto de atenção:** Esta funcionalidade está em fase Beta e será disponibilizada gradualmente.
+
+O fluxo de consulta e importação de documentos fiscais eletrônicos (DF-e) direto da Sefaz ganhou um módulo próprio, mais completo, substituindo o painel antigo na listagem de notas de entrada. O que mudou:
+
+- A listagem foi reformulada com mais informações e navegação mais intuitiva.
+- É possível configurar critérios de importação automática — por fornecedor, NCM ou CFOP — para que o sistema traga os XMLs sem intervenção manual.
+- Antes de efetivar a importação, você pode visualizar as informações da nota: fornecedor, natureza de operação, produtos, tributos e totais.
+- A manifestação em lote permite selecionar várias notas e aplicar o manifesto de uma vez.
+- Agora é possível registrar a Ciência da Operação e, depois, a Confirmação da Operação em etapas separadas — o fluxo anterior limitava a uma única manifestação por nota.
+</Update>
+
+<Update label="Junho de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Integrações"]}>
+## Numeração de pedidos de venda protegida contra duplicidade em importações simultâneas
+
+Ao salvar um pedido de venda com um número que já está em uso, o sistema agora exibe a mensagem: "A numeração X já está em uso. Tente salvar novamente com um número ainda não utilizado." Antes, em alguns casos, o pedido podia ser salvo duplicado ou gerar um erro genérico.
+
+Em fluxos automáticos — como importação de e-commerce, planilha ou PDV — se o número gerado colidir com outro já existente, o sistema tenta novamente com um novo número e exibe o aviso "O número do seu pedido foi modificado para X". Se não for possível resolver após as tentativas automáticas, uma mensagem de erro pede que você tente novamente em instantes.
+
+**Ponto de atenção:** Essa melhoria afeta o cadastro manual de vendas, a importação via planilha, a integração com e-commerces, o PDV e o faturamento parcial.
+</Update>
+
+<Update label="Junho de 2026" description="Produtos · Listagem" tags={["Produtos"]}>
+## Seleção de produtos persiste entre páginas para ações em massa
+
+Agora você pode marcar produtos em várias páginas da listagem e a seleção se mantém enquanto navega. Antes, ao mudar de página, tudo que estava marcado era perdido.
+
+- Uma barra na parte inferior mostra quantos itens estão selecionados e o limite disponível, com um botão para limpar a seleção.
+- É possível exportar para planilha, exportar a composição de kits e estrutura de fabricados, e imprimir relatórios apenas dos produtos selecionados.
+- Algumas ações mais pesadas — como transformar em variações ou em kits — têm um limite de itens por vez. Ao ultrapassá-lo, a ação fica temporariamente indisponível e um aviso indica quantos itens são permitidos.
+</Update>
+
+<Update label="Junho de 2026" description="Expedição · Separação" tags={["Expedição", "Integrações"]}>
+## Aviso de pedidos cancelados durante a separação
+
+O sistema agora identifica pedidos cancelados — seja pelo ERP ou pelo marketplace — diretamente na listagem de separação, evitando que você separe, embale ou despache itens que não deveriam mais ser processados.
+
+- Pedidos cancelados exibem um selo vermelho de "Pedido cancelado" na coluna de Integrações, visível sem precisar abrir o pedido.
+- Ao mover pedidos entre as etapas (Em Separação, Separadas, Embaladas), se houver algum pedido cancelado na seleção, o sistema avisa e mostra quais são. Você pode retirá-los da seleção e continuar com os demais em um clique.
+
+**Ponto de atenção:** O aviso aparece somente quando há um pedido cancelado na seleção. Pedidos normais seguem o fluxo sem qualquer alteração.
+</Update>
+
+<Update label="Junho de 2026" description="Estoque · Movimentações" tags={["Estoque"]}>
+## Usuário e origem agora aparecem no extrato de movimentações de estoque
+
+O extrato de movimentações de cada produto passou a exibir duas novas colunas:
+
+- **Usuário:** identifica quem realizou a movimentação.
+- **Origem:** mostra por qual canal a movimentação entrou — ajuste manual, PDV, planilha, coletor, API, integração com marketplace ou e-commerce, rotina automática, webhook ou balanço.
+
+Com isso, fica muito mais fácil investigar divergências de estoque sem precisar abrir chamado ou cruzar informações manualmente.
+
+**Como acessar:** No menu lateral, vá em **Cadastros → Produtos**, selecione o produto e acesse a aba **Estoque**.
+</Update>
+
+<Update label="Junho de 2026" description="Integrações · Shopee" tags={["Integrações", "Expedição"]}>
+## Etiquetas da Shopee agora disponíveis no formato ZPL
+
+Nas configurações da integração com a Shopee, agora é possível escolher entre dois formatos de etiqueta: PDF ou ZPL. Ao selecionar ZPL, a geração retorna um arquivo `.zip` contendo a etiqueta no formato de texto ZPL, pronto para impressoras compatíveis.
+</Update>
+
+<Update label="Junho de 2026" description="Integrações · Amazon" tags={["Integrações"]}>
+## Importação de campanhas do Amazon ADS
+
+Agora é possível importar todas as suas campanhas do Amazon ADS diretamente pelo sistema, incluindo campanhas encerradas.
+
+**Como acessar:** No menu, vá em **Anúncios → Amazon → Mais ações (...) → Amazon ADS** e clique no botão de importar campanhas no canto superior direito.
+</Update>
+
+<Update label="Junho de 2026" description="Integrações · Loja Integrada" tags={["Integrações", "Logística", "Expedição"]}>
+## Suporte à forma de envio Enviali para Loja Integrada
+
+Para quem utiliza a Loja Integrada, a forma de envio Enviali agora está disponível automaticamente. O sistema a identifica quando o nome da forma de envio do pedido corresponde a "enviali".
+
+Para concluir a expedição, é necessário ter uma nota fiscal autorizada. Ao finalizar, o sistema cota o frete e, se houver uma cotação compatível com a forma de frete do pedido, gera a solicitação de etiqueta automaticamente. As etiquetas podem ser impressas nos formatos ZPL e PDF, com integração ao Printnode.
+</Update>

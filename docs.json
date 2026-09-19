@@ -16,7 +16,15 @@
             {
                 "group": "2026",
                 "pages": [
-                    "changelog/2026-09/index"
+                    "changelog/2026-09/index",
+                    "changelog/2026-08/index",
+                    "changelog/2026-07/index",
+                    "changelog/2026-06/index",
+                    "changelog/2026-05/index",
+                    "changelog/2026-04/index",
+                    "changelog/2026-03/index",
+                    "changelog/2026-02/index",
+                    "changelog/2026-01/index"
                 ]
             }
         ]
