@@ -4,7 +4,7 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
-<Update label="18 de Setembro de 2026" description="Financeiro" tags={["Financeiro"]}>
+<Update label="18 de Setembro de 2026" description="Financeiro · Contas a Pagar, Receber e Caixa" tags={["Financeiro"]}>
 ## Coluna de data de competência nas listagens de Contas a Pagar, Contas a Receber e Caixa
 
 Agora as listagens de Contas a Pagar, Contas a Receber e Caixa exibem a coluna de data de competência de cada registro. Antes, era possível filtrar por competência, mas a data não aparecia na tabela.
@@ -12,7 +12,7 @@ Agora as listagens de Contas a Pagar, Contas a Receber e Caixa exibem a coluna d
 **Ponto de atenção:** A coluna de competência é exibida apenas para quem possui o módulo de DRE habilitado.
 </Update>
 
-<Update label="18 de Setembro de 2026" description="Integrações" tags={["Integrações"]}>
+<Update label="18 de Setembro de 2026" description="Integrações · Amazon" tags={["Integrações"]}>
 ## Integração com a Amazon é pausada automaticamente quando a autenticação falha
 
 Quando a conexão com a Amazon apresenta muitas falhas seguidas de autenticação, a integração é pausada automaticamente e você recebe uma notificação no sistema. Antes, a integração continuava "ativa" mesmo sem sincronizar o estoque de verdade.
@@ -22,7 +22,7 @@ Quando a conexão com a Amazon apresenta muitas falhas seguidas de autenticaçã
 **Ponto de atenção:** Essa regra vale apenas para erros críticos de estoque por falha de autenticação. Erros pontuais de produto ou problemas em outras partes da integração com a Amazon não acionam a pausa automática.
 </Update>
 
-<Update label="18 de Setembro de 2026" description="Integrações" tags={["Integrações"]}>
+<Update label="18 de Setembro de 2026" description="Integrações · WooCommerce" tags={["Integrações"]}>
 ## Parcelas do Mercado Pago importadas corretamente em pedidos do WooCommerce
 
 Pedidos pagos com Mercado Pago no WooCommerce agora podem ser importados com as parcelas reais: quantidade e valor de cada uma. Antes, todos os pedidos entravam com uma parcela única, independentemente de como o pagamento foi feito.
@@ -36,7 +36,7 @@ Pedidos pagos com Mercado Pago no WooCommerce agora podem ser importados com as 
 **Ponto de atenção:** As informações de parcelamento vêm diretamente do WooCommerce. Se o número de parcelas ou os valores estiverem incorretos, verifique o que está registrado no pedido original no WooCommerce.
 </Update>
 
-<Update label="18 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+<Update label="18 de Setembro de 2026" description="Notas Fiscais · GNRE" tags={["Notas Fiscais"]}>
 ## Nova opção de vencimento da GNRE: próximo dia útil
 
 Agora é possível configurar o vencimento da GNRE para cair sempre no próximo dia útil após a geração, pulando fins de semana e feriados nacionais.
@@ -48,13 +48,13 @@ Agora é possível configurar o vencimento da GNRE para cair sempre no próximo 
 **Ponto de atenção:** O cálculo considera apenas feriados nacionais. Feriados estaduais ou municipais não são levados em conta.
 </Update>
 
-<Update label="18 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+<Update label="18 de Setembro de 2026" description="Notas Fiscais · Numeração" tags={["Notas Fiscais"]}>
 ## Número da nota fiscal ajustado automaticamente ao salvar
 
 Ao salvar uma nota fiscal com um número que já está em uso na mesma série, o sistema passa a atribuir automaticamente o próximo número disponível e avisa você sobre a alteração. Antes, a operação era bloqueada com mensagem de erro.
 </Update>
 
-<Update label="17 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+<Update label="17 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
 ## Regras fiscais não se duplicam mais ao salvar uma natureza de operação
 
 Naturezas de operação com muitas regras fiscais podiam ficar com regras duplicadas, o que exigia restaurar um backup para corrigir. Isso foi corrigido.
@@ -64,7 +64,7 @@ Naturezas de operação com muitas regras fiscais podiam ficar com regras duplic
 - Ao excluir várias naturezas de uma vez, o processo continua mesmo se uma falhar, e as que não foram excluídas aparecem na mensagem final.
 </Update>
 
-<Update label="17 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+<Update label="17 de Setembro de 2026" description="Notas Fiscais · Exportação de Planilha" tags={["Notas Fiscais"]}>
 ## Exportação de planilha de notas fiscais com mais linhas e acompanhamento de progresso
 
 A exportação de planilha de notas fiscais agora acontece em segundo plano, com barra de progresso e histórico da última exportação. Você pode escolher receber um aviso por e-mail quando o arquivo estiver pronto.
@@ -74,7 +74,7 @@ A exportação de planilha de notas fiscais agora acontece em segundo plano, com
 - Formatos que não estiverem disponíveis aparecem desabilitados na lista, com explicação do motivo.
 </Update>
 
-<Update label="17 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+<Update label="17 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
 ## NFS-e emitida pelo Ambiente Nacional segue novo formato de PIS e COFINS
 
 A emissão de NFS-e pelo Ambiente Nacional passou a seguir o novo formato definido pela Nota Técnica SE/CGNFS-e nº 007. Os valores informativos de PIS e COFINS e os valores retidos de PIS, COFINS e CSLL agora são enviados em campos separados.
@@ -84,7 +84,7 @@ A emissão de NFS-e pelo Ambiente Nacional passou a seguir o novo formato defini
 - A retenção de PIS, COFINS e CSLL (total de 4,65%) continua sendo calculada automaticamente quando a opção "Calcular PIS, COFINS e CSLL" está ativa, e é descontada do valor líquido quando o valor do serviço atingir o limite configurado.
 </Update>
 
-<Update label="17 de Setembro de 2026" description="Notas Fiscais" tags={["Notas Fiscais"]}>
+<Update label="17 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
 ## IR não é mais informado como retido quando a retenção está desativada na NFS-e
 
 Quando a retenção de IR estava desativada nas configurações da NFS-e, o valor do IR ainda aparecia como retido na nota emitida. Isso foi corrigido: agora o IR só é informado como retido quando a opção de retenção estiver ativa.
@@ -92,7 +92,7 @@ Quando a retenção de IR estava desativada nas configurações da NFS-e, o valo
 O parâmetro foi renomeado para **Reter IR na NFS-e**, com a descrição: "Define se a retenção de IR deve ser considerada na emissão da NFS-e."
 </Update>
 
-<Update label="9 de Setembro de 2026" description="Financeiro" tags={["Financeiro"]}>
+<Update label="9 de Setembro de 2026" description="Financeiro · Maquininhas de Cartão" tags={["Financeiro"]}>
 ## Stone agora aparece na página central de Maquininhas de Cartão
 
 A maquininha Stone passou a ser configurada diretamente pela página de Maquininhas de Cartão, junto com as demais opções. Antes, a configuração ficava em uma área separada de gateways.
@@ -100,27 +100,39 @@ A maquininha Stone passou a ser configurada diretamente pela página de Maquinin
 - Se você ainda não tem a integração com a Stone ativa, o sistema abre um chamado de solicitação automaticamente ao acessar a página.
 - Se a integração já está instalada, você é levado direto para a configuração do terminal.
 
-<video src="/videos/Gravação-de-tela-de-2026-09-08-12-25-31.webm" controls />
+<Frame caption="Abertura de chamado">
+  <video controls src="/assets/changelog/2026-09/stone-abertura-chamado.webm" />
+</Frame>
 
-<video src="/videos/Gravação-de-tela-de-2026-09-08-12-32-18.webm" controls />
+<Frame caption="Integração configurada">
+  <video controls src="/assets/changelog/2026-09/stone-integracao-configurada.webm" />
+</Frame>
 
-![Image (3)](/images/image-\(3\).png "Image (3)")
+<Frame caption="Configuração do gateway Stone">
+  ![Configuração do gateway Stone](/images/changelog/2026-09/stone-maquininha.png)
+</Frame>
 </Update>
 
-<Update label="9 de Setembro de 2026" description="Financeiro" tags={["Financeiro"]}>
+<Update label="9 de Setembro de 2026" description="Financeiro · Configurações" tags={["Financeiro"]}>
 ## Configurações do financeiro reorganizadas e marcadores unificados em uma só tela
 
 As configurações do módulo financeiro foram reorganizadas para ficarem mais fáceis de encontrar, com a remoção de opções que não estavam mais em uso. Além disso, agora é possível criar um marcador em uma área e replicá-lo para outras — por exemplo, um marcador criado no Caixa pode ser aplicado também em Contas a Receber e Contas a Pagar.
 
-![Configs Financeiro](/images/configs_financeiro.png "Configs Financeiro")
+<Frame caption="Reorganização das configurações do financeiro">
+  ![Reorganização das configurações do financeiro](/images/changelog/2026-09/financeiro-configuracoes.png)
+</Frame>
 
-<video src="/videos/Unificação-marcadores-1.webm" controls />
+<Frame caption="Unificação de marcadores">
+  <video controls src="/assets/changelog/2026-09/financeiro-unificacao-marcadores.webm" />
+</Frame>
 </Update>
 
-<Update label="8 de Setembro de 2026" description="Conta Digital" tags={["Conta Digital"]}>
+<Update label="8 de Setembro de 2026" description="Conta Digital · GNRE" tags={["Conta Digital"]}>
 ## Pagamentos em lote de GNRE pela Conta Digital processados com mais estabilidade
 
 Pagamentos em lote de boletos GNRE realizados pela Conta Digital podiam falhar ou ser interrompidos por excesso de requisições. Isso foi corrigido e o processamento voltou a funcionar normalmente.
 
-<video src="/videos/Gravação-de-tela-de-2026-09-08-13-28-58.webm" controls />
+<Frame caption="Pagamento em lote">
+  <video controls src="/assets/changelog/2026-09/conta-digital-pagamento-lote.webm" />
+</Frame>
 </Update>

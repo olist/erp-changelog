@@ -1,5 +1,44 @@
-/* Remove a coluna (data + tags) nos componentes de Update em páginas de changelog */
-.update-container > div:first-child {
-    display: none !important;
+/* Force update entries to stack vertically — metadata above content */
+.update-container {
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
+/* Metadata sidebar: full width, wrap layout */
+.update-container > div:first-child {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.375rem;
+  position: static;
+}
+
+/* Tags row: horizontal, inline badges */
+.update-container [data-component-part="update-tag-list"] {
+  margin-top: 0;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+/* Spacing between consecutive Frame blocks */
+.update-container figure {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Badge style */
+.update-container [data-component-part="update-tag"],
+.update-container [data-component-part="update-description"] {
+  margin-top: 0;
+  padding: 0.125rem 0.625rem;
+  max-width: none;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  word-break: normal;
+}
