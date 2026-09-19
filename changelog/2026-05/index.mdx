@@ -34,6 +34,92 @@ Pedidos pagos via PIX ou boleto da Conta Digital Olist agora são listados no Re
 O campo de limite de crédito no cadastro de contatos estava bloqueado para clientes que deveriam ter acesso a ele. O problema foi corrigido: agora, qualquer cliente com o módulo de Contas a Receber habilitado pode visualizar e preencher o limite de crédito diretamente no cadastro do contato.
 </Update>
 
+<Update label="Maio de 2026" description="Crédito · Antecipação Imediata" tags={["Crédito"]}>
+## Autorização de crédito com aceite de termos antes do onboarding
+
+Antes de iniciar o onboarding no módulo de Crédito, empresas ainda não cadastradas passam por uma etapa de opt-in onde é exibido um modal com os termos de autorização para consulta de crédito. O botão **Continuar** fica desabilitado até que você marque o aceite. Apenas usuários com perfil Admin ou Gerente podem realizar o aceite — usuários com outras permissões visualizam um aviso informativo.
+
+No fluxo de Antecipação Imediata, se a indicação estiver com status Desqualificado, a antecipação não segue para precificação e aparece uma comunicação adequada com alternativas disponíveis.
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-termos-escondido.png" alt="Termos de autorização de crédito recolhidos" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-antecipacao-imediata-desqualificado.png" alt="Banner quando a indicação está desqualificada" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Crédito · Antecipação Imediata" tags={["Crédito"]}>
+## Modal de Antecipação Imediata com prazo atualizado e vídeo explicativo
+
+O modal "Como funciona a antecipação imediata" passou por dois ajustes: o prazo mencionado foi atualizado de 9 para 6 dias, e foi adicionado um vídeo explicativo que demonstra o funcionamento da funcionalidade de forma mais clara.
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-antecipacao-imediata-modal.png" alt="Modal de como funciona a antecipação imediata atualizado" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Crédito · Cupom" tags={["Crédito"]}>
+## Cupom de desconto disponível nas simulações de antecipação
+
+Agora é possível aplicar um cupom diretamente na tela de simulação de crédito. Quando preenchido com um código válido, o desconto é aplicado automaticamente nos valores da simulação em tempo real.
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-cupom-tela-inicial.png" alt="Campo de cupom na tela de simulação" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-cupom-resumo-simulacao.png" alt="Desconto do cupom refletido no resumo da simulação" />
+</Frame>
+
+<Frame>
+  <video controls src="/assets/changelog/2026-05/credito-cupom-duplicatas.webm" title="Cupom aplicado em simulação de duplicatas" />
+</Frame>
+
+<Frame>
+  <video controls src="/assets/changelog/2026-05/credito-cupom-cartao-credito.webm" title="Cupom aplicado em simulação de cartão de crédito" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Crédito · Financeiro" tags={["Crédito", "Financeiro"]}>
+## Contas a receber antecipadas marcadas com "Recebimento antecipado"
+
+Ao realizar a baixa de uma conta a receber vinculada a uma antecipação de cartão de crédito, o sistema passa a incluir automaticamente o marcador **Recebimento antecipado** nessa conta, facilitando a identificação de quais recebíveis foram de fato antecipados.
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-marcacao-recebimento-antecipado.png" alt="Marcador de recebimento antecipado na conta a receber" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
+## Simulação inteligente pré-seleciona recebíveis mesmo quando o valor solicitado é menor
+
+A simulação inteligente passa a sugerir automaticamente pelo menos um recebível pré-selecionado mesmo quando o valor informado é menor do que o total disponível para antecipação. Antes, a tela era exibida sem sugestões nesses casos, exigindo seleção manual.
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-simulacao-nota-preselecionada.png" alt="Simulação com nota pré-selecionada automaticamente" />
+</Frame>
+</Update>
+
+<Update label="Maio de 2026" description="Crédito · Unificação do Fluxo" tags={["Crédito"]}>
+## Boletos e cartões de crédito podem ser antecipados em uma única simulação
+
+Agora é possível antecipar boletos e cartões de crédito ao mesmo tempo, em um único fluxo. Na tela inicial, você escolhe "Boletos", "Cartão de Crédito" ou ambos. Os dois tipos de recebíveis aparecem juntos na tabela de simulação e podem ser filtrados e ordenados por tipo. O resumo lateral exibe a quantidade por tipo, a tabela de custos e o campo de cupom de forma unificada. Ao finalizar, o sistema gera automaticamente uma operação separada para cada tipo contratado.
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-unificado-tela-inicial.png" alt="Tela inicial com opção de simular boletos e cartões juntos" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-unificado-processamento.png" alt="Processamento unificado com opção de simulação parcial" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-05/credito-unificado-simulacao.png" alt="Tabela de simulação com boletos e cartões juntos" />
+</Frame>
+</Update>
+
 <Update label="Maio de 2026" description="Expedição · OneStepShipping" tags={["Expedição"]}>
 ## OneStepShipping disponível para todos os clientes
 

@@ -28,6 +28,99 @@ Agora é possível aplicar taxas de cartão personalizadas para pagamentos reali
 **Ponto de atenção:** A personalização de taxas é configurada de forma pontual para cada conta. Caso você não tenha uma configuração específica, as taxas padrão continuam sendo aplicadas.
 </Update>
 
+<Update label="Abril de 2026" description="Crédito · Antecipação Imediata" tags={["Crédito"]}>
+## Antecipação Imediata exibe variações de acordo com permissões e status do cedente
+
+A exibição dos componentes de Antecipação Imediata na tela de Transações de Vendas passou a respeitar o perfil de cada usuário:
+
+- Com cedente ativo e produto habilitado: banner no topo e switch para antecipar uma venda.
+- Com cedente ativo mas sem produto ou indicação inválida: componentes de antecipação imediata não são exibidos.
+- Sem cedente e com permissão: banner e convite para realizar a primeira antecipação no módulo.
+- Sem permissão (com ou sem cedente): apenas um aviso de falta de permissão.
+
+Um link para a landing page do módulo de Crédito também foi adicionado ao modal "Como funciona".
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Antecipação Pontual" tags={["Crédito"]}>
+## Antecipação pontual pela Zoop direciona para o módulo de Crédito da Olist
+
+No módulo de Transações de Vendas, quando você for elegível ao Olist Crédito, o sistema passa a exibir um novo modal que identifica sua elegibilidade e redireciona para o módulo de Crédito — onde as condições de antecipação são melhores (recebimento no mesmo dia e taxas mais vantajosas). Se você não for elegível ao Olist Crédito mas puder usar a Conta Digital, a oferta da Conta Digital é apresentada.
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-zoop-modal-antecipacao.png" alt="Novo modal de antecipação de crédito nas Transações de Vendas" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Histórico de Operações" tags={["Crédito"]}>
+## Operações canceladas visíveis no histórico de antecipações
+
+Operações de antecipação canceladas agora aparecem na listagem do histórico com um badge de destaque. Os indicadores de resumo (total de operações e valor total antecipado) não consideram as canceladas. Um banner informativo no detalhe da operação reforça que o valor daquela operação não será depositado.
+
+A tela inicial de Crédito também passou a listar operações canceladas, que antes só apareciam no histórico.
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-operacao-cancelada-listagem.png" alt="Operação cancelada exibida na listagem com badge de destaque" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-operacao-cancelada-banner.png" alt="Banner informativo na operação cancelada" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Minhas Antecipações" tags={["Crédito"]}>
+## Novo filtro para duplicatas em atraso nas antecipações
+
+A listagem de antecipações ganhou um novo status: **Atrasadas**. Duplicatas em aberto com data de vencimento anterior a hoje passam a ser classificadas como atrasadas, enquanto as **Em aberto** ficam restritas às que vencem a partir de hoje.
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-filtro-atrasado.png" alt="Filtro de atrasado na listagem de antecipações" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Minhas Antecipações" tags={["Crédito"]}>
+## Filtro de período por vencimento ou data da operação na listagem de antecipações
+
+A listagem de antecipações passou a ter duas opções de filtro de período: por **vencimento** (prioriza recebíveis com vencimento mais próximo ou em atraso) ou por **data da operação** (mantém a visão cronológica das contratações). A coluna de data na tabela atualiza conforme o filtro ativo.
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-filtros-operacoes-navtab.png" alt="Filtro de período por vencimento ou data da operação" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Pendências" tags={["Crédito"]}>
+## Avisos de pendência de documentação e assinatura em todo o ERP
+
+Quando há documentos pendentes ou assinatura do termo do fundo em aberto, banners de aviso passam a aparecer nas listagens de Pedidos de Venda, Notas Fiscais e Contas a Pagar/Receber. O topo das páginas de Crédito também exibe um carrossel de avisos para organizar as notificações.
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-pendencia-documentos-banner.png" alt="Banner de aviso para envio de documentos" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-pendencia-assinatura-banner.png" alt="Banner de aviso para assinatura da documentação do fundo" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
+## Mensagens de erro mais claras para notas não elegíveis para antecipação
+
+Os motivos pelos quais uma nota fiscal não está disponível para antecipação agora aparecem em um badge **Nota inválida** diretamente na listagem, com o detalhe exibido em tooltip ao passar o mouse. Antes, era necessário clicar em um ícone separado para ver a explicação.
+
+- "NF-e já foi antecipada ou enviada para processamento anteriormente" (substituindo texto genérico)
+- "Parcelas inválidas: vencimento da parcela deve ser entre 6 e 190 dias"
+- "Parcelas inválidas: valor mínimo da parcela deve ser R$ 100,00"
+
+<Frame>
+  <img src="/images/changelog/2026-04/credito-mensagens-notas-nao-elegiveis.png" alt="Badge de nota inválida com mensagem detalhada" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
+## Antecipação disponível para notas com vencimento a partir de 6 dias
+
+O prazo mínimo de vencimento das parcelas para elegibilidade de antecipação foi reduzido de 9 para 6 dias. Isso amplia o número de notas disponíveis para incluir na simulação.
+</Update>
+
 <Update label="Abril de 2026" description="Estoque · Lançamento" tags={["Estoque"]}>
 ## Validação de saldo de estoque corrigida para itens duplicados em um mesmo pedido ou nota
 

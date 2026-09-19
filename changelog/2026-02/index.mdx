@@ -13,6 +13,101 @@ Na tela de Necessidade de Compra, ao selecionar mais de uma empresa pelo filtro 
 - Quando nenhuma empresa é selecionada nos filtros de exceção, o comportamento segue o padrão: todas as entradas e saídas previstas das empresas selecionadas são consideradas.
 </Update>
 
+<Update label="Fevereiro de 2026" description="Crédito · Disponibilidade" tags={["Crédito"]}>
+## Módulo de Crédito disponível para toda a base de sellers do ERP
+
+O módulo de Crédito da Olist passa a estar disponível para todos os sellers do ERP. Todo seller pode consultar se possui crédito disponível via antecipação de recebíveis (boletos) ou antecipação de agenda de cartão. Sellers sem oferta de crédito passam a ver uma oferta de Card Wallet como alternativa.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-cardwallet-oferta.png" alt="Oferta de Card Wallet para quem não tem crédito disponível" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Instrucoes de Recebíveis" tags={["Crédito"]}>
+## Prorrogação, recompra e abatimento de recebíveis diretamente no ERP
+
+Agora você pode solicitar instruções de prorrogação de vencimento, recompra e abatimento para recebíveis antecipados diretamente pelo ERP, sem precisar acionar o time de atendimento. Para cada tipo de instrução:
+
+- **Prorrogação:** informe a nova data de vencimento (máximo 15 dias). O sistema simula os juros e permite confirmar ou cancelar a solicitação.
+- **Abatimento:** informe o valor do abatimento ou o novo valor do recebível. Os dois campos se influenciam.
+- **Recompra:** aprovada instantaneamente, sem necessidade de preencher formulário.
+- O histórico de todas as solicitações fica disponível no detalhe de cada recebimento.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-prorrogacao-modal.png" alt="Modal de solicitação de prorrogação" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-instrucoes-historico.png" alt="Histórico de instruções do recebimento" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Menu" tags={["Crédito"]}>
+## Novo menu de mais ações no módulo de Crédito
+
+Um menu de mais ações passou a agrupar funcionalidades secundárias do módulo de Crédito, incluindo acesso ao saldo e às conciliações pendentes. Isso organiza melhor a interface e facilita o acesso a ações menos frequentes.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-menu-mais-acoes.png" alt="Menu de mais ações no módulo de Crédito" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Notas Fiscais" tags={["Crédito", "Notas Fiscais"]}>
+## Notas fiscais sem parcelas podem ser adicionadas manualmente à simulação
+
+Agora é possível incluir notas fiscais que não possuem parcelas cadastradas na simulação de antecipação. Ao adicionar a nota, você informa manualmente a quantidade de parcelas, o vencimento e o valor de cada uma. O valor total das parcelas deve ser igual ao valor total da nota. Após a confirmação, cada parcela é validada individualmente.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Recompra" tags={["Crédito"]}>
+## Alerta de recompra de títulos na tela inicial do módulo de Crédito
+
+Quando há títulos com recompra pendente, um banner de alerta aparece na tela inicial do módulo de Crédito, com acesso direto para contato com o especialista. Antes, o alerta só aparecia ao iniciar uma nova simulação.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-recompra-banner-home.png" alt="Banner de recompra pendente na tela inicial do módulo de Crédito" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Saldo" tags={["Crédito"]}>
+## Consulta de saldo disponível diretamente na home do módulo de Crédito
+
+Agora é possível visualizar os saldos de crédito, débito e recompras sem precisar iniciar uma simulação. Pelo menu de mais ações, acesse **Meu saldo** para ver um modal com a composição detalhada dos valores e ações rápidas como "Nova antecipação" ou "Falar com especialista".
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-saldo-modal.png" alt="Modal de saldo com composição dos valores e ações disponíveis" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
+## Botão de adicionar recebíveis com mais destaque na tela de simulação
+
+Quando a simulação inteligente não encontra notas disponíveis, o botão **Adicionar Recebíveis** agora tem maior destaque visual, acompanhado de um texto explicativo. Antes, o baixo destaque levava alguns sellers a recarregar a página, o que redirecionava para a home incorretamente.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-adicionar-recebiveis-destaque.png" alt="Botão de adicionar recebíveis em destaque na simulação" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
+## Motivos de não elegibilidade de notas fiscais mais claros na listagem
+
+Na tela de adição manual de recebíveis, as notas não elegíveis agora exibem um badge **Nota inválida** diretamente na listagem. Ao passar o mouse sobre o badge, o motivo específico aparece em tooltip — sem necessidade de clicar em ícones separados.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-nota-invalida-badge.png" alt="Badge de nota inválida com mensagem explicativa" />
+</Frame>
+</Update>
+
+<Update label="Fevereiro de 2026" description="Crédito · Conciliações" tags={["Crédito", "Financeiro"]}>
+## Central de notificações para conciliações financeiras pendentes
+
+As notificações de conciliação financeira agora ficam agrupadas em uma central. Um indicador numérico no topo da página mostra a quantidade de pendências em aberto. Ao clicar, um modal lista todas as conciliações em andamento de forma organizada.
+
+<Frame>
+  <img src="/images/changelog/2026-02/credito-conciliacoes-banner.png" alt="Banner de conciliações financeiras e contador no menu" />
+</Frame>
+</Update>
+
 <Update label="Fevereiro de 2026" description="Integrações · Ecommerce Olist" tags={["Integrações", "Performance"]}>
 ## Envio de produtos para o Ecommerce da Olist até 20 vezes mais rápido
 
