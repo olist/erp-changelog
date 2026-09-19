@@ -1,0 +1,257 @@
+---
+title: "Janeiro 2026 (v3.84)"
+description: "Atualizações de janeiro de 2026."
+mode: "default"
+---
+
+<Update label="Janeiro de 2026" description="PDV · Stone" tags={["PDV"]}>
+## Pagamento via maquininha Stone parava na tela de carregamento mesmo com a venda concluída
+
+Dependendo da configuração da conta, a maquininha Stone podia confirmar uma venda de duas formas diferentes. Como o sistema reconhecia apenas uma delas, certos pagamentos ficavam presos na tela de carregamento do PDV — mesmo com o dinheiro já debitado do cliente. Agora o sistema reconhece as duas formas de confirmação da Stone e encerra a tela de pagamento corretamente em qualquer situação.
+
+Também foi corrigida a validação do campo **ID da conta** nas configurações do gateway Stone: o campo agora exige o prefixo correto e exibe exemplos de preenchimento, evitando erros de configuração que tornavam a integração inválida.
+
+<Frame>
+  <img src="/images/changelog/2026-01/stone-pdv-tela-carregamento-infinito.png" alt="Tela do PDV presa em carregamento infinito após pagamento concluído" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/stone-pdv-campo-sem-validacao.png" alt="Campo ID da conta sem validação nas configurações do gateway Stone" />
+</Frame>
+
+<Frame>
+  <video controls src="/assets/changelog/2026-01/stone-pdv-polling-antes.mp4" title="Verificação de pagamento continuava rodando mesmo após conclusão" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/stone-pdv-account-id-exemplos.png" alt="Exemplos de preenchimento do campo ID da conta" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/stone-pdv-validacao-account-id.png" alt="Validação ao tentar salvar um valor incorreto no campo ID da conta" />
+</Frame>
+
+<Frame>
+  <video controls src="/assets/changelog/2026-01/stone-pdv-polling-depois.mp4" title="Verificação de pagamento encerra corretamente após identificar o pagamento" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="PDV · Cartão de crédito" tags={["PDV"]}>
+## No PDV, a parcela de 1x passa a ser selecionada automaticamente ao escolher crédito
+
+Ao adicionar cartão de crédito como forma de pagamento no PDV, o sistema agora seleciona automaticamente a opção à vista (1x), sem que você precise escolher manualmente. Antes, essa seleção automática acontecia apenas para quem usava a Conta Digital.
+
+Junto com isso, foi corrigido um erro em que desativar a opção **repassar taxas para o cliente** não surtia efeito na primeira vez — o sistema continuava calculando o valor com juros. Agora o recálculo é feito corretamente assim que você desativa a função.
+
+<Frame>
+  <img src="/images/changelog/2026-01/pdv-cartao-credito-parcela-branco.png" alt="Campo de parcela em branco antes da correção" />
+</Frame>
+
+<Frame>
+  <video controls src="/assets/changelog/2026-01/pdv-cartao-credito-bug-repasse-taxas.mp4" title="Comportamento antes da correção: desativar repasse de taxas não funcionava na primeira vez" />
+</Frame>
+
+<Frame>
+  <video controls src="/assets/changelog/2026-01/pdv-cartao-credito-parcela-automatica.mp4" title="Comportamento após a correção: parcela selecionada automaticamente e recálculo correto ao desativar repasse" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="PDV · Cadastro de cliente" tags={["PDV"]}>
+## Corrigido erro de CPF inválido persistente no cadastro rápido do PDV
+
+Ao cadastrar um novo cliente no PDV e informar um CPF incorreto, o sistema exibia a mensagem de erro normalmente. O problema era que, mesmo após corrigir o CPF, a mensagem de erro continuava aparecendo — forçando você a cancelar e começar o cadastro do zero. Agora, ao corrigir o CPF, o sistema aceita o novo valor sem precisar refazer o cadastro.
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · CT-e" tags={["Notas Fiscais"]}>
+## Agendamento de backup e exclusão agora inclui Conhecimentos de Transporte (CT-e)
+
+Agora é possível agendar tarefas de backup ou exclusão em lote também para Conhecimentos de Transporte Eletrônico (CT-e), diretamente pelo menu de agendamento de tarefas. Antes, esse recurso estava disponível apenas para outros tipos de documento fiscal.
+
+<Frame>
+  <img src="/images/changelog/2026-01/cte-backup-agendamento-1.png" alt="Opção de CT-e na tela de agendamento de backup" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/cte-backup-agendamento-2.png" alt="Opção de CT-e na tela de agendamento de exclusão" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · API" tags={["Notas Fiscais", "API"]}>
+## API de Notas Fiscais passa a retornar campos de tributos da Reforma Tributária
+
+A consulta de notas fiscais pela API v2 agora inclui dois novos campos na resposta: `valor_total_ibs_uf` e `valor_total_cbs`. Esses campos trazem os valores dos tributos da Reforma Tributária (IBS estadual e CBS) associados à nota.
+
+<Frame>
+  <img src="/images/changelog/2026-01/api-v2-notas-fiscais-tributos-reforma.png" alt="Exemplo de resposta da API com os novos campos de tributos" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · API" tags={["Notas Fiscais", "API"]}>
+## Notas fiscais emitidas via API agora salvam corretamente os tributos da Reforma Tributária
+
+Ao incluir ou emitir uma nota fiscal pela API com o parâmetro de Reforma Tributária habilitado, os valores dos novos tributos não estavam sendo salvos. Isso foi corrigido e agora as notas geradas pela API registram corretamente os dados de IBS e CBS quando o parâmetro está ativo.
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Configurações da Reforma Tributária reunidas em uma única tela
+
+As configurações relacionadas à Reforma Tributária foram reorganizadas para ficarem em um lugar só. Agora, CST, CClassTrib e as alíquotas de IBS UF e CBS estão disponíveis na mesma tela de configuração de tributos, sem precisar navegar entre menus diferentes.
+
+Os parâmetros que habilitam o envio dos dados da Reforma para Notas Fiscais (NF-e/NFC-e) e para Notas Fiscais de Serviço (NFS-e) foram separados em telas específicas para cada tipo de documento. Também ficou mais fácil saber se cada parâmetro está ativo antes de entrar na tela de configuração.
+
+<Frame>
+  <img src="/images/changelog/2026-01/reforma-tributaria-menu-tributacao.png" alt="Novo menu de tributação com indicação de status do parâmetro" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/reforma-tributaria-configuracao-1.png" alt="Nova tela de configuração dos tributos da Reforma Tributária" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/reforma-tributaria-configuracao-2.png" alt="Nova tela de configuração dos tributos — continuação" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/reforma-tributaria-configuracao-3.png" alt="Nova tela de configuração dos tributos — detalhes adicionais" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/reforma-tributaria-parametro-habilitacao.png" alt="Nova tela de habilitação do parâmetro de Reforma Tributária" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · NFS-e Nacional" tags={["Notas Fiscais"]}>
+## Compartilhamento da NFS-e Nacional agora inclui link de consulta pública quando o PDF não está disponível
+
+Após emitir uma NFS-e pelo padrão nacional, o e-mail automático e o compartilhamento manual podiam ser enviados sem o PDF da DANFSe em anexo — uma instabilidade causada pelo próprio sistema nacional. Para garantir que o destinatário consiga acessar a nota, o sistema agora inclui nesses fluxos um link para consulta direta no portal nacional quando o PDF não está disponível.
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-nacional-compartilhamento.png" alt="Compartilhamento manual com link para consulta pública da DANFSe" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-nacional-email-automatico.png" alt="E-mail automático pós emissão com link para consulta pública" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Campos da NFS-e não estavam sendo preenchidos corretamente ao gerar a nota a partir de outros módulos
+
+Ao gerar uma Nota Fiscal de Serviço a partir de um pedido de venda ou de um contrato de cobrança, alguns campos configurados no sistema não estavam sendo levados para a nota. Entre os campos corrigidos estão: código de tributação nacional, tributos aproximados (estadual, municipal e federal), percentual do Simples Nacional, parâmetro de alíquota de ISS e tributos da Reforma Tributária (CST, CClassTrib e alíquotas de IBS/CBS). Isso afetava tanto o emissor próprio quanto o padrão nacional.
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Cálculo de IBS e CBS em notas de importação agora usa a base correta
+
+Para notas fiscais de importação, o cálculo da base de IBS e CBS passa a considerar os componentes específicos exigidos para esse tipo de operação: Valor Aduaneiro, Imposto de Importação (II), AFRMM, IS e Despesas Aduaneiras. Para todos os demais tipos de nota, o cálculo permanece o mesmo.
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Novos eventos da Reforma Tributária disponíveis nas notas fiscais de entrada
+
+Agora é possível registrar eventos da Reforma Tributária diretamente nas notas fiscais de entrada. Os eventos ficam disponíveis no menu de contexto da nota, na opção **Registrar evento**. Nesta primeira versão, três eventos estão disponíveis:
+
+- **Destinação de item para consumo pessoal:** informa quando uma compra é destinada ao consumo de pessoa física e, portanto, não gera crédito de IBS/CBS.
+- **Imobilização de item (adquirente):** deve ser registrado quando o bem adquirido é incorporado ao ativo imobilizado, garantindo o prazo correto para pedidos de ressarcimento de crédito.
+- **Aceite de débito por nota de crédito:** permite confirmar ou recusar os valores de uma nota de crédito emitida pelo fornecedor que serão lançados a débito na apuração de IBS e CBS.
+
+**Ponto de atenção:** o registro em prazo dos eventos pode ser condição para a dispensa do recolhimento de IBS/CBS durante 2026. Verifique com seu contador quais eventos se aplicam à sua operação.
+</Update>
+
+<Update label="Janeiro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Gráfico de consumo de NFS-e disponível no Minha Conta para emissão externa
+
+Para quem emite NFS-e pela integração externa (Enotas), o **Minha Conta** agora exibe um gráfico com o consumo do limite mensal de notas. O gráfico mostra quanto do limite foi utilizado e, quando disponível, também exibe o limite adicional contratado. O indicador muda de cor conforme o consumo se aproxima ou atinge o limite.
+
+**Ponto de atenção:** o gráfico aparece apenas para quem utiliza emissão externa (Enotas). Planos do nível inicial precisam de upgrade para acessar limites adicionais.
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-enotas-sem-limite.png" alt="Gráfico de consumo sem limite adicional contratado" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-enotas-com-limite.png" alt="Gráfico de consumo com limite adicional contratado" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-enotas-consumo-normal.png" alt="Gráfico com consumo dentro do limite normal" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-enotas-consumo-80-porcento.png" alt="Gráfico com mais de 80% do limite consumido" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/nfse-enotas-consumo-limite.png" alt="Gráfico com limite totalmente consumido" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Expedição · Separação" tags={["Expedição"]}>
+## Novo parâmetro para impedir que dois usuários separem o mesmo pedido ao mesmo tempo
+
+Agora é possível ativar um controle que bloqueia a separação simultânea de um pedido por usuários diferentes. Quando habilitado, um pedido em separação ou embalagem fica reservado para o usuário que iniciou o processo — outros não conseguem trabalhar no mesmo pedido ao mesmo tempo.
+
+**Como habilitar:** acesse as configurações de separação e ative o parâmetro **Impedir que mais de um usuário separe ou embale o mesmo pedido**.
+
+**Ponto de atenção:** o parâmetro vem desabilitado por padrão. Se não for ativado, o comportamento atual (separação simultânea permitida) é mantido.
+</Update>
+
+<Update label="Janeiro de 2026" description="Relatórios · Margem de contribuição" tags={["Relatórios"]}>
+## Coluna Canal de Venda voltou a ser preenchida no relatório de margem de contribuição
+
+Ao exportar o relatório de margem de contribuição, a coluna **Canal de Venda** aparecia vazia na planilha gerada. Isso foi corrigido e a coluna agora exibe o canal correspondente a cada pedido normalmente.
+</Update>
+
+<Update label="Janeiro de 2026" description="Relatórios · Relatório personalizado" tags={["Relatórios"]}>
+## Relatório personalizado agora exibe produtos sem fornecedor cadastrado
+
+O relatório personalizado estava trazendo apenas produtos com fornecedor padrão definido, deixando de fora os produtos sem fornecedor. Agora, produtos sem fornecedor aparecem no relatório com a indicação **Sem fornecedor**. Se você incluir também a coluna de código do fornecedor, produtos sem código exibem **Sem Código de Fornecedor**.
+
+<Frame>
+  <img src="/images/changelog/2026-01/relatorio-personalizado-fornecedor-1.png" alt="Relatório personalizado com produtos exibindo Sem fornecedor" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/relatorio-personalizado-fornecedor-2.png" alt="Relatório personalizado com coluna de código de fornecedor" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/relatorio-personalizado-fornecedor-3.png" alt="Exemplo de produto com Sem Código de Fornecedor" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/relatorio-personalizado-fornecedor-4.png" alt="Resultado completo do relatório personalizado com fornecedores" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Financeiro · Contas a Receber" tags={["Financeiro"]}>
+## Totais do relatório de contas a receber voltaram a aparecer alinhados
+
+Ao gerar o relatório de contas a receber agrupado por cliente e data de vencimento, os totais das colunas **Valor**, **Saldo** e **Recebido** apareciam desalinhados. O ajuste visual foi feito e os valores agora estão corretamente alinhados.
+
+<Frame>
+  <img src="/images/changelog/2026-01/contas-receber-filtro.png" alt="Exemplo de filtros aplicados no relatório de contas a receber" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/contas-receber-problema.png" alt="Totais desalinhados antes da correção" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/contas-receber-resolucao.png" alt="Totais alinhados corretamente após a correção" />
+</Frame>
+</Update>
+
+<Update label="Janeiro de 2026" description="Vendas · Pedidos" tags={["Vendas"]}>
+## Ocorrências de pedidos agora identificam corretamente quando o usuário foi excluído do sistema
+
+Quando o usuário responsável por importar um pedido era excluído do sistema, as ocorrências desse pedido passavam a exibir "automático" no campo de usuário — o que causava confusão. Agora, nesses casos, o sistema exibe a indicação **usuário não encontrado**, tornando mais claro que o usuário original não existe mais.
+
+<Frame>
+  <img src="/images/changelog/2026-01/ocorrencias-usuario-excluido-antes.png" alt="Ocorrência exibindo usuário como automático antes da correção" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-01/ocorrencias-usuario-excluido-depois.png" alt="Ocorrência exibindo usuário não encontrado após a correção" />
+</Frame>
+</Update>
