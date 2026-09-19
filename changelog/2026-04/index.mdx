@@ -1,0 +1,317 @@
+---
+title: "Abril 2026 (v3.87)"
+description: "Atualizações de abril de 2026."
+mode: "default"
+---
+
+<Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Código Indicador de Operação (cIndOp) agora tem seletor com busca nos tributos IBS/CBS da NFS-e
+
+Ao configurar os tributos IBS/CBS para emissão de NFS-e no padrão nacional, você não precisa mais digitar manualmente o Código Indicador de Operação (cIndOp) consultando tabelas externas. Em Configurações > aba Tributação (RTC) > Configurações gerais para IBS/CBS da NFSe, o campo conta com um seletor com busca que lista os códigos oficiais. Para cada código você visualiza o número da operação (6 dígitos), o nome e o local do fornecimento do serviço. Os códigos são atualizados automaticamente pelo sistema com sincronização diária junto à fonte oficial do Ambiente Nacional.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Novo parâmetro nas configurações de NFS-e controla o envio da alíquota ISSQN (pAliq) na DPS
+
+Ao emitir NFS-e no padrão nacional (DPS), o campo de alíquota ISS (`pAliq`) só deve ser enviado em algumas situações. Antes, quando o envio não era permitido pelo Ambiente Nacional, era preciso desabilitar essa opção nota a nota, gerando retrabalho. Agora, o parâmetro **Enviar Alíquota ISSQN (pAliq) na DPS** está disponível em Configurações → Notas Fiscais → Configuração da Nota Fiscal Eletrônica de Serviços (NFS-e), permitindo definir o comportamento padrão para toda a empresa. O ajuste pontual por nota continua disponível quando necessário. O padrão inicial é habilitado quando há ISS com alíquota maior que zero e desabilitado para empresas MEI.
+
+<Frame>
+  <img src="/images/changelog/2026-04/nfse-parametro-paliq-configuracao.png" alt="Novo parâmetro de envio de alíquota ISSQN nas configurações de NFS-e" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Exportação de XML disponível para NFS-e autorizadas
+
+Agora é possível exportar o arquivo XML de NFS-e autorizadas individualmente ou em lote, da mesma forma que já funciona com as notas fiscais. Para exportar individualmente, acesse o menu de contexto da nota. Para exportar em lote, aplique os filtros desejados e use a opção de exportação em massa.
+
+- Quando a prefeitura não disponibilizar o XML diretamente, você será redirecionado para o site da prefeitura (exportação individual) ou verá um modal com os links de cada nota (exportação em lote).
+
+<Frame>
+  <img src="/images/changelog/2026-04/nfse-exportar-xml-menu-contexto.png" alt="Opção de exportar XML pelo menu de contexto da NFS-e" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/nfse-exportar-xml-em-lote.png" alt="Exportação de XML de NFS-e em lote" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Suporte ao grupo de Informações de Tributação Regular (gTribRegular)
+
+Com a Reforma Tributária, determinadas operações com suspensão ou redução do IBS e da CBS passaram a exigir o preenchimento do Grupo de Tributação Regular. Esse grupo informa quais seriam os valores de IBS e CBS caso a operação não estivesse amparada por suspensão ou redução, garantindo o correto tratamento da não cumulatividade. Agora, quando o CST/cClassTrib permitir, os campos desse grupo aparecem nas telas de configuração e edição de notas, e as informações são enviadas no XML ao enviar a nota.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Campos exibidos nas notas fiscais agora respeitam as regras do CST e cClassTrib selecionados
+
+Antes, ao selecionar um CST e um cClassTrib nas telas de configuração e edição de notas, era possível preencher campos de alíquota ou diferimento mesmo quando o código tributário não permitia. Agora, somente os campos autorizados pelo CST/cClassTrib aparecem em tela. Quando há redução de alíquota, o sistema sugere automaticamente o percentual de redução conforme a especificação do código. Essa regra vale para:
+
+- Configuração geral de tributos
+- Configuração de regras tributárias
+- Tela de NFS-e
+- Edição de itens em NF-e e NFC-e
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Nova seção de estorno de crédito em notas fiscais para operações com Reforma Tributária
+
+Devido às novas exigências da Reforma Tributária, notas fiscais que utilizem determinados códigos de classificação tributária (cClassTrib) ou sejam do tipo "Nota de Débito — Perda em Estoque" passam a exibir uma seção específica para informar dados de estorno de crédito. Os valores preenchidos são enviados no XML por item e nos totalizadores da nota. A lista de cClassTribs que exigem esse preenchimento é atualizada automaticamente pelo sistema a cada dia.
+
+<Frame>
+  <img src="/images/changelog/2026-04/rt-estorno-credito-campos-nota.png" alt="Seção de estorno de crédito na nota fiscal" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/rt-estorno-credito-item-nota.png" alt="Campos de estorno de crédito por item da nota" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/rt-estorno-credito-totalizadores.png" alt="Totalizadores de estorno de crédito na nota fiscal" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Novo campo de informações ao fisco (infAdFisco) disponível na edição de itens da NF-e
+
+A Nota Técnica 012/2026 exige o preenchimento de informações adicionais ao fisco no registro C110 do EFD Contribuições. Para atender a essa exigência, agora é possível preencher manualmente essas informações diretamente na edição de cada item da nota fiscal. Nas naturezas de operação, você também pode configurar um valor padrão por imposto, que será preenchido automaticamente nos itens. As informações de cada imposto são concatenadas e enviadas na respectiva campo do XML.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Envio de lote de NFS-e agora processa todas as notas mesmo quando uma é rejeitada
+
+Antes, ao enviar um lote de NFS-e, o processamento parava no primeiro erro e as demais notas ficavam pendentes. Agora, o lote é processado por completo, independentemente de erros individuais. Ao final, um resumo exibe quantas notas foram autorizadas, ficaram em processamento e foram rejeitadas.
+
+<Frame>
+  <img src="/images/changelog/2026-04/nfse-lote-resultado-envio-pendentes.png" alt="Resumo do resultado do envio em lote de NFS-e" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Código de Benefício Fiscal exibido para empresas do Simples Nacional e mais estados
+
+O campo **Código de Benefício Fiscal** agora aparece também para empresas do regime Simples Nacional (antes, era exibido somente para outros regimes). Além disso, a lista de estados que disponibilizam esse campo foi ampliada: DF, ES, GO, PR, RJ, RS, SC e SP. O campo também passa a ser controlado pelo CST/CSOSN:
+
+- Para **CST 00**: o campo é sempre ocultado.
+- Para os CSOSN **103, 203, 300, 400, 500 e 900**: o campo é exibido.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Campos de diferimento e FCP disponíveis também para o CST 90
+
+As informações de diferimento do ICMS e o novo campo de percentual do FCP diferido (exigido pela NT 2020.005) agora estão disponíveis também para o CST 90, tanto na natureza de operação quanto na edição de itens da nota fiscal. O nome do campo **"Base de Diferimento"** foi alterado para **"Percentual de Diferimento"**. O campo **"Cód. benef. Redução BC"** também passou a aparecer para o CST 90. Esses valores são enviados corretamente no XML e permitem o cálculo do FCP diferido e efetivo.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Campos do documento de importação ajustados para as novas normas técnicas
+
+Três campos nas notas de importação foram atualizados para conformidade com as normas técnicas vigentes:
+
+- O campo **Número da DI** foi renomeado para **Número documento de importação** e agora aceita letras além de números, com limite de 15 caracteres.
+- O campo **Número da Adição** deixou de ser obrigatório.
+- O campo **Número Sequencial** passou a aceitar até 5 caracteres (antes eram 3).
+
+Todos os campos contam com um texto explicativo logo abaixo para orientar o preenchimento.
+
+<Frame>
+  <img src="/images/changelog/2026-04/ndi-numero-documento-importacao.png" alt="Campo Número documento de importação renomeado e atualizado" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/ndi-numero-adicao-nao-obrigatorio.png" alt="Campo Número da Adição não obrigatório" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/ndi-numero-sequencial-5-caracteres.png" alt="Campo Número Sequencial com limite de 5 caracteres" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Suporte a CNPJ alfanumérico
+
+A Receita Federal anunciou a introdução de CNPJs com letras (A–Z) além dos números, mantendo as 14 posições no formato `AA.AAA.AAA/AAAA-DV`. O início da emissão de CNPJs nesse novo formato está previsto para julho de 2026. CNPJs existentes permanecem numéricos e o formato atual continua válido. A estrutura do sistema foi adaptada para suportar a validação e formatação do novo padrão.
+
+**Ponto de atenção:** Como a Receita ainda não emite CNPJs no novo formato, nenhuma mudança visível deve ser percebida agora. Fique atento a qualquer comportamento inesperado no tratamento de CPF e CNPJ no sistema e reporte caso identifique algo.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · GNRE" tags={["Notas Fiscais"]}>
+## CNPJ dos beneficiários da SEFAZ de SP e MG corrigido na geração de GNRE
+
+Ao gerar uma guia de pagamento no módulo GNRE, o sistema cria automaticamente um cadastro de contato para a SEFAZ de cada estado. Os CNPJs das SEFAZs de São Paulo e Minas Gerais foram atualizados recentemente e estavam divergentes no sistema, causando um aviso de inconsistência ao efetuar o pagamento pela Conta Digital. O sistema agora utiliza os CNPJs corretos: **46.377.222/0003-90** para SP e **18.715.615/0001-60** para MG.
+
+**Ponto de atenção:** A correção cria um novo contato com o CNPJ atualizado. Se o contato antigo já existir na sua conta, haverá duplicação. Caso prefira manter apenas um contato, unifique-os manualmente pelo cadastro de Clientes e Fornecedores, mantendo o de CNPJ mais atualizado.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Aviso de validação do campo Contribuinte atualizado para evitar rejeições na emissão de NF-e
+
+Algumas SEFAZs passaram a rejeitar NF-e quando o destinatário está marcado como "Contribuinte isento de Inscrição Estadual" em determinados estados (rejeição 805). A lista de estados que não aceitam essa opção foi atualizada para: AL, AM, BA, CE, DF, ES, GO, MG, MS, MT, PB, PE, RJ, RN, RS, SE, SP. O texto do aviso exibido em tela também foi ajustado para ficar mais claro e oferecer a correção automática do campo para "Não contribuinte" antes do envio.
+
+<Frame>
+  <img src="/images/changelog/2026-04/nfe-validacao-contribuinte-aviso.png" alt="Aviso atualizado sobre validação do campo Contribuinte" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · Setup Fiscal" tags={["Notas Fiscais"]}>
+## Mensagem de erro no onboarding fiscal agora exibe o motivo real retornado pela SEFAZ
+
+Durante o onboarding de configuração fiscal, ao consultar os dados do CNPJ na SEFAZ, o sistema exibia sempre a mensagem "Verificamos que você não tem a Inscrição Estadual ativa", mesmo quando o erro era outro (como problemas com o certificado digital). Agora, quando a SEFAZ retorna um motivo específico, a mensagem exibida em tela reflete exatamente esse motivo, facilitando identificar o que precisa ser corrigido.
+
+<Frame>
+  <img src="/images/changelog/2026-04/setup-fiscal-erro-ie-anterior.png" alt="Mensagem de erro genérica exibida anteriormente" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/setup-fiscal-retorno-sefaz-correto.png" alt="Mensagem de erro agora exibe o retorno real da SEFAZ" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Corrigido envio incorreto do item da lista de serviço no XML de NFS-e (Ginfes)
+
+Ao emitir NFS-e pelo emissor próprio com a prefeitura Ginfes, em alguns casos a informação do item da lista de serviço era enviada fora do formato esperado pelo XML. Isso está corrigido: o sistema agora formata esse dado corretamente, evitando erros no envio.
+</Update>
+
+<Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Fornecedor estrangeiro sem identificação agora é reconhecido corretamente ao importar XML
+
+Ao importar um XML de nota de entrada com fornecedor estrangeiro sem identificador nem CNPJ/CPF, o sistema criava um novo contato a cada importação, gerando duplicidades e perdendo o vínculo com o cadastro existente. Agora, quando o XML não possui identificação do fornecedor, o sistema verifica se já existe um contato ativo com o mesmo nome. Se existir, o cadastro existente é reutilizado, preservando o relacionamento com os produtos e o histórico de compras.
+
+<Frame>
+  <img src="/images/changelog/2026-04/fornecedor-estrangeiro-duplicado.png" alt="Fornecedor duplicado após importação de XML — comportamento anterior" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/fornecedor-estrangeiro-sem-vendas.png" alt="Últimas compras não apareciam por falta de vínculo — comportamento anterior" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/fornecedor-estrangeiro-correto.png" alt="Fornecedor não duplicado após a correção" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-04/fornecedor-estrangeiro-vendas-corretas.png" alt="Compras vinculadas corretamente ao fornecedor existente" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Financeiro · Contas a Receber" tags={["Financeiro"]}>
+## Nova opção para lançar contas a receber ao aprovar o pedido
+
+Para integrações de e-commerce e marketplace que importam pedidos com dados incompletos (sem informações de pagamento no momento da importação), o lançamento automático de contas a receber ao salvar o pedido podia falhar por ausência de dados do contato. Agora há uma nova opção: lançar as contas somente ao aprovar o pedido. Dessa forma, quando a integração reimporta o pedido com os dados de pagamento e atualiza o status para aprovado, as contas são lançadas corretamente.
+
+<Frame>
+  <img src="/images/changelog/2026-04/contas-receber-lancamento-aprovacao.png" alt="Nova opção de lançamento de contas a receber ao aprovar o pedido" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Conta Digital · Pagamentos" tags={["Conta Digital"]}>
+## Personalização de taxas de cartão disponível via Conta Digital
+
+Agora é possível aplicar taxas de cartão personalizadas para pagamentos realizados via Conta Digital. Ao simular um pagamento, o sistema identifica a conta associada e aplica automaticamente as taxas configuradas para ela, sem necessidade de ajuste manual a cada transação.
+
+<Frame>
+  <img src="/images/changelog/2026-04/conta-digital-simulacao-taxas.png" alt="Modal de pagamento com Conta Digital com taxas personalizadas" />
+</Frame>
+
+**Ponto de atenção:** A personalização de taxas é configurada de forma pontual para cada conta. Caso você não tenha uma configuração específica, as taxas padrão continuam sendo aplicadas.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Variações novas de produtos agrupadas corretamente ao enviar anúncios para o Mercado Livre
+
+Ao enviar anúncios para o Mercado Livre, variações de produtos que ainda não haviam sido exportadas podiam não aparecer agrupadas corretamente na tela de envio. Isso foi corrigido: agora o sistema verifica com precisão se uma variação já pertence a outra família antes de ignorá-la, garantindo que variações novas sejam sempre exibidas e enviadas no agrupamento correto.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Shein" tags={["Integrações"]}>
+## Atributos obrigatórios como Comprimento e Busto voltam a aparecer no envio de anúncios da Shein
+
+Ao preparar o envio de produtos para a Shein, atributos obrigatórios como **Comprimento (cm)** e **Busto (cm)** não apareciam na listagem, impedindo o preenchimento e o envio completo do anúncio. A regra de filtragem de atributos foi ajustada para manter atributos do tipo SIZE quando estiverem marcados como obrigatórios, sem alterar os demais casos.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Nuvemshop" tags={["Integrações"]}>
+## Informações de pagamento integrado da Nuvemshop preenchidas corretamente
+
+A Nuvemshop disponibiliza os dados de pagamento integrado somente após a aprovação do pedido. Como o sistema não atualizava essas informações após a importação inicial, elas ficavam em branco e podiam causar inconsistências na geração de notas fiscais. Agora, sempre que um pedido da Nuvemshop é processado, as informações de pagamento integrado são atualizadas automaticamente.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Shopee" tags={["Integrações"]}>
+## Suporte à logística turbo da Shopee (Shopee Turbo)
+
+A Shopee oferece a modalidade de entrega Turbo, com prazos reduzidos gerenciados pela própria plataforma (SPX). Agora o sistema identifica automaticamente pedidos com essa modalidade e bloqueia o envio de nota fiscal nesses casos, evitando erros de operação. Os pedidos recebem os marcadores **Shopee Turbo - Uber** ou **Shopee Turbo - Logística Vendedor**, dependendo do canal logístico.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Hub" tags={["Integrações"]}>
+## Nova coluna "Tipo" na tela de vínculo de anúncios
+
+Na tela de vínculo de anúncios, uma nova coluna **Tipo** exibe visualmente a categoria de cada produto com badges coloridos:
+
+- **User Product** (rosa claro): variações com produto físico associado
+- **Com Variação** (verde claro): produtos pai com variações
+- **Sem Variação** (bege): produtos simples
+
+Isso facilita identificar rapidamente o tipo de anúncio ao vincular produtos, especialmente no Mercado Livre onde o conceito de User Product é comum.
+
+<Frame>
+  <img src="/images/changelog/2026-04/hub-vinculo-anuncios-coluna-tipo.png" alt="Nova coluna Tipo na listagem de anúncios não vinculados" />
+</Frame>
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Yampi" tags={["Integrações"]}>
+## Data de entrega dos pedidos Yampi agora vem diretamente da plataforma
+
+Antes, o sistema calculava a previsão de entrega dos pedidos Yampi com base em dias corridos, o que gerava divergências em relação ao prazo informado pela plataforma. Agora o campo de data de entrega é preenchido diretamente com o valor retornado pela Yampi, eliminando inconsistências.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · Hub" tags={["Integrações"]}>
+## Exportação de anúncios no Gerenciador de Preços agora respeita o filtro por tag
+
+Ao aplicar um filtro por tag na listagem do Gerenciador de Preços e exportar os anúncios, a planilha gerada agora contém somente os itens filtrados. Antes, o filtro era ignorado na exportação e a planilha trazia todos os anúncios, independentemente da tag selecionada.
+</Update>
+
+<Update label="Abril de 2026" description="Integrações · VTEX" tags={["Integrações"]}>
+## Corrigido envio de código de rastreio para a VTEX
+
+O envio do código de rastreio para a VTEX retornava erro em alguns casos. O problema foi identificado no formato dos dados enviados: um campo não utilizado foi removido e um erro no processamento do número de rastreio (onde o último zero à direita podia ser removido indevidamente) foi corrigido. O código de rastreio agora é enviado corretamente.
+</Update>
+
+<Update label="Abril de 2026" description="API · Produtos" tags={["API", "Produtos"]}>
+## API v3: atualização do preço de custo de produto agora funciona corretamente
+
+Ao atualizar um produto existente via `PUT /produtos/{idProduto}` na API v3, o campo `precos.precoCusto` não era efetivamente salvo no sistema. Isso foi corrigido: o histórico de custo (preço de custo e custo médio) é registrado corretamente ao atualizar um produto pela API, usando a mesma lógica já aplicada na criação.
+</Update>
+
+<Update label="Abril de 2026" description="Estoque · Lançamento" tags={["Estoque"]}>
+## Validação de saldo de estoque corrigida para itens duplicados em um mesmo pedido ou nota
+
+Ao inserir o mesmo produto em duas linhas diferentes de um pedido ou nota fiscal, o sistema validava o saldo de estoque linha a linha, sem somar as quantidades. Isso permitia lançar estoque em negativo quando a configuração de bloqueio estava ativa. Agora, quando o mesmo produto aparece em mais de uma linha, as quantidades são somadas antes da validação, garantindo que o bloqueio funcione corretamente.
+</Update>
+
+<Update label="Abril de 2026" description="Vendas · Ordem de Serviço" tags={["Vendas", "Notas Fiscais"]}>
+## Comissão de vendedor em Ordem de Serviço transferida corretamente para a NF-e
+
+Ao gerar uma nota fiscal de venda a partir de uma Ordem de Serviço com vendedor vinculado, a comissão do vendedor não era replicada para os itens da nota. Isso foi corrigido: a alíquota de comissão do vendedor é agora transferida automaticamente para os itens da NF-e gerada a partir da OS.
+</Update>
+
+<Update label="Abril de 2026" description="Compras · Ordem de Compra" tags={["Compras"]}>
+## Quantidades decimais na Ordem de Compra exibidas e salvas corretamente
+
+Valores de quantidade com casas decimais na Ordem de Compra não eram formatados corretamente no formato brasileiro ao exibir e ao editar. Isso causava erros ao salvar, pois o sistema tentava converter um valor já no formato brasileiro como se fosse um número de banco de dados. O comportamento foi corrigido: o backend retorna o valor já no formato correto e o campo aplica a formatação adequada durante a edição.
+</Update>
+
+<Update label="Abril de 2026" description="Produtos · Cadastro" tags={["Produtos"]}>
+## Corrigido erro ao transformar produto KIT em produto com variação
+
+Ao tentar converter um produto do tipo KIT para variação, o sistema exibia um erro informando que o produto não era um KIT, mesmo quando era. Uma atualização anterior havia invertido inadvertidamente a comparação de validação. A verificação foi restaurada ao comportamento original e a conversão volta a funcionar corretamente.
+</Update>
+
+<Update label="Abril de 2026" description="PDV · Gateways de Pagamento" tags={["PDV"]}>
+## Campo "Conta financeira para crédito" ocultado no cadastro de gateways com SmartTEF
+
+No cadastro de gateways de pagamento com suporte a SmartTEF, o campo **Conta financeira para crédito** não é mais exibido. Esse campo não se aplica ao fluxo SmartTEF e gerava confusão desnecessária no cadastro.
+</Update>
+
+<Update label="Abril de 2026" description="Relatórios · Produtos" tags={["Relatórios"]}>
+## Relatório de Preços de Produtos exportado sem exibir opções de formato indevidas
+
+Ao exportar o relatório de **Preços de Produtos**, o modal de exportação exibia opções de formato (XLSX ou CSV) que não se aplicavam a esse relatório — essas opções existem apenas para o relatório de inventário. O relatório de Preços de Produtos sempre foi exportado como XLS. As opções de formato indevidas foram removidas do modal para esse contexto.
+</Update>
