@@ -4,6 +4,18 @@ description: "Atualizações de julho de 2026."
 mode: "default"
 ---
 
+<Update label="Julho de 2026" description="API · Produtos" tags={["API", "Produtos"]}>
+## API V3: gerenciamento de imagens e anexos de produtos disponível
+
+A API V3 passa a oferecer quatro novos recursos para gerenciar imagens e anexos de produtos: listar todos os anexos de um produto, adicionar uma nova imagem ou anexo, substituir a lista completa de imagens e anexos, e excluir um anexo específico pelo seu identificador.
+</Update>
+
+<Update label="Julho de 2026" description="API · Produtos" tags={["API", "Produtos"]}>
+## API V3: novo recurso para atualizar o preço de cada variação individualmente
+
+A API V3 passa a disponibilizar um recurso dedicado para atualizar o preço de uma variação de produto de forma individual, sem precisar alterar o produto inteiro.
+</Update>
+
 <Update label="Julho de 2026" description="Conta Digital · Contas a Receber" tags={["Conta Digital", "Financeiro"]}>
 ## Número do pedido de e-commerce aparece nas observações da conta a receber e do caixa
 
@@ -43,54 +55,10 @@ Agora é possível estornar transações de PIX diretamente na tela de Transaç�
 - O pagamento precisa ter sido realizado há no máximo 90 dias.
 </Update>
 
-<Update label="Julho de 2026" description="Notas Fiscais · GNRE" tags={["Notas Fiscais"]}>
-## Emissão de guias GNRE ficou mais confiável
+<Update label="Julho de 2026" description="Integrações · HUB" tags={["Integrações"]}>
+## Ficha técnica de publicações no HUB gerada automaticamente por agente
 
-A geração e o envio de guias GNRE foram aprimorados com retentativas mais precisas e um monitoramento mais detalhado de cada etapa. O resultado prático é uma redução expressiva de falhas na emissão.
-</Update>
-
-<Update label="Julho de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais", "Vendas"]}>
-## NF-e cancelada automaticamente quando a venda é cancelada
-
-Agora é possível habilitar o cancelamento automático da NF-e na SEFAZ sempre que a venda vinculada for cancelada. A opção fica disponível nas configurações de nota fiscal eletrônica, com o parâmetro **Autorizar automaticamente notas fiscais geradas a partir da venda**.
-
-- Ao ativar, você precisa preencher uma justificativa padrão para os cancelamentos automáticos (entre 15 e 255 caracteres). Essa justificativa é usada em todos os cancelamentos feitos por esse fluxo.
-- Quando uma nota é cancelada automaticamente, ela exibe um marcador indicando o resultado (sucesso ou falha).
-- Se o cancelamento falhar, você recebe uma notificação no sistema. Caso o problema esteja na justificativa padrão, o aviso indica isso para que você possa corrigi-la.
-
-<Frame>
-  <img src="/images/changelog/2026-07/nfe-cancelamento-automatico-parametro.png" alt="Configuração do parâmetro de cancelamento automático de NF-e" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-07/nfe-cancelamento-automatico-marcadores.png" alt="Marcadores de status exibidos na NF-e após cancelamento automático" />
-</Frame>
-</Update>
-
-<Update label="Julho de 2026" description="Notas Fiscais · DIFAL" tags={["Notas Fiscais"]}>
-## Cálculo de DIFAL ST para contribuinte agora considera as regras específicas de cada estado
-
-Em operações interestaduais para consumidor contribuinte, o cálculo de DIFAL ST passou a usar a fórmula definida pela UF de destino, quando aplicável. Estados como PB, PE, AL, GO, SC e SE têm fórmulas próprias que diferem do padrão nacional (CONFAZ). Antes, o sistema aplicava um único cálculo para todos os estados, o que podia gerar valores incorretos de ICMS ST no pedido, na proposta e na NF-e.
-
-<Frame>
-  <img src="/images/changelog/2026-07/difal-st-calculos-por-estado.png" alt="Explicação dos cálculos distintos de DIFAL ST por estado" />
-</Frame>
-</Update>
-
-<Update label="Julho de 2026" description="Notas Fiscais · NFC-e" tags={["Notas Fiscais"]}>
-## NFC-e no Mato Grosso não é mais reenviada desnecessariamente após instabilidade da SEFAZ
-
-Quando a SEFAZ-MT apresentava falha na resposta ao envio ou cancelamento de uma NFC-e, o sistema podia tratar a operação como se não tivesse ocorrido e tentar novamente — o que causava rejeição por nota já autorizada ou já cancelada. Agora, após um erro de comunicação, o sistema consulta o status real da NFC-e na SEFAZ antes de qualquer nova tentativa, evitando operações duplicadas.
-</Update>
-
-<Update label="Julho de 2026" description="Relatórios · Multiempresa" tags={["Relatórios"]}>
-## Lis passa a consultar relatórios de múltiplas empresas de forma unificada
-
-A Lis agora consegue consolidar informações de diferentes empresas vinculadas à sua conta sem que você precise trocar de contexto manualmente. A base para essa unificação foi implementada com sincronização automática dos vínculos entre empresas e uma tela de visualização desses vínculos.
-
-<Frame>
-  <img src="/images/changelog/2026-07/lis-multiempresa-relatorios.png" alt="Tela de visualização de vínculos entre empresas na Lis" />
-</Frame>
+Ao publicar produtos pelo HUB, a ficha técnica passa a ser preenchida automaticamente por um agente dedicado. Antes, esse preenchimento precisava ser feito manualmente campo a campo.
 </Update>
 
 <Update label="Julho de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
@@ -105,28 +73,10 @@ O Mercado Livre passou a permitir que um mesmo anúncio tenha mais de uma logís
 Ao criar, migrar automaticamente ou editar um canal de venda do Mercado Livre via integração HUB, o sistema agora utiliza as referências corretas da plataforma. Antes, uma referência incorreta podia ser enviada, causando inconsistências nos canais de venda e afetando outras integrações configuradas na mesma conta.
 </Update>
 
-<Update label="Julho de 2026" description="Integrações · HUB" tags={["Integrações"]}>
-## Ficha técnica de publicações no HUB gerada automaticamente por agente
-
-Ao publicar produtos pelo HUB, a ficha técnica passa a ser preenchida automaticamente por um agente dedicado. Antes, esse preenchimento precisava ser feito manualmente campo a campo.
-</Update>
-
 <Update label="Julho de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
 ## Ordem das imagens enviadas para o Mercado Livre corrigida
 
 As imagens dos anúncios enviados para o Mercado Livre agora são processadas na sequência correta — tanto na publicação de um novo anúncio quanto na edição de um existente. Antes, a ordenação podia ser alterada durante o envio.
-</Update>
-
-<Update label="Julho de 2026" description="Integrações · TikTok" tags={["Integrações"]}>
-## Atributos de texto livre no TikTok Shop agora são enviados corretamente
-
-Alguns atributos da ficha técnica do TikTok — como "Lista de ingredientes" — aceitam valores digitados livremente, sem opções predefinidas. Antes, o sistema não reconhecia esse tipo de atributo e o descartava antes do envio, causando erro. Agora você consegue preencher e enviar o produto sem interrupções.
-</Update>
-
-<Update label="Julho de 2026" description="Integrações · Shopify" tags={["Integrações"]}>
-## Desconto negativo em pedidos da Shopify corrigido
-
-Pedidos da Shopify que incluíam um valor adicional pago pelo comprador podiam gerar um desconto negativo na importação, distorcendo o valor da venda. O cálculo foi corrigido e agora considera corretamente esse valor adicional na composição do total do pedido.
 </Update>
 
 <Update label="Julho de 2026" description="Integrações · Mercado Livre" tags={["Integrações", "Estoque"]}>
@@ -135,20 +85,6 @@ Pedidos da Shopify que incluíam um valor adicional pago pelo comprador podiam g
 Quando uma devolução do Fulfillment era processada, a entrada de estoque podia ser lançada no depósito errado, causando desconto duplo do estoque para quem importava as notas de transferência. O comportamento foi corrigido: agora o sistema verifica a configuração de importação de notas de remessa da integração para decidir em qual depósito registrar a entrada.
 
 **Ponto de atenção:** Para que o lançamento funcione corretamente, habilite a opção de importação de notas do tipo "outros" (remessas) nas configurações da integração com o Mercado Livre.
-</Update>
-
-<Update label="Julho de 2026" description="Integrações · Shein" tags={["Integrações"]}>
-## Atributos com unidade de medida editável na Shein agora aparecem e são enviados corretamente
-
-Atributos da ficha técnica da Shein que combinam uma unidade fixa com um valor digitado livremente — como "15 gramas", onde "gramas" é a unidade definida pela plataforma e "15" é o valor que você informa — estavam sendo removidos da tela antes do envio, causando erro. Agora esses campos aparecem corretamente e o envio do produto acontece sem problemas.
-</Update>
-
-<Update label="Julho de 2026" description="Integrações · Shopee" tags={["Integrações"]}>
-## Nova opção "Padrão do canal" para etiquetas da Shopee
-
-A seleção de formato de etiqueta da Shopee passou a ter três opções: **Padrão do canal**, **PDF** e **ZPL**. Antes havia apenas duas opções, mas a opção "PDF" funcionava como um valor vazio — o que fazia a Shopee retornar sempre a etiqueta padrão do canal, mesmo quando o seller preferia ZPL.
-
-Agora, ao selecionar PDF, o formato é forçado corretamente ao solicitar a etiqueta.
 </Update>
 
 <Update label="Julho de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
@@ -176,14 +112,6 @@ Nas configurações da integração com o Mercado Livre, na aba **Pedidos**, há
 **Ponto de atenção:** Para novas integrações, a opção nasce desativada. Se você preferia que as parcelas fossem importadas automaticamente, habilite a opção nas configurações da integração.
 </Update>
 
-<Update label="Julho de 2026" description="Integrações · Wix" tags={["Integrações"]}>
-## Mídias das variações na Wix preservadas durante sincronização sem imagens
-
-Ao sincronizar um produto com variações para a Wix sem a opção de sincronizar imagens ativada, as mídias já associadas a cada variação dentro da plataforma são mantidas. Antes, a sincronização sobrescrevia essas mídias com referências que não existiam no acervo da Wix, gerando inconsistências.
-
-Quando a opção de sincronização de imagens está ativa, o comportamento continua inalterado e usa as imagens do ERP normalmente.
-</Update>
-
 <Update label="Julho de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
 ## Compatibilidades de catálogo de autopeças ocultadas no ERP após mudança do Mercado Livre
 
@@ -195,6 +123,40 @@ A partir de 15/07/2026, o Mercado Livre restringiu o gerenciamento de compatibil
 **Ponto de atenção:** Compatibilidades de catálogo (gerenciadas pelo Mercado Livre) precisam ser ajustadas diretamente na plataforma do Mercado Livre.
 </Update>
 
+<Update label="Julho de 2026" description="Integrações · Shein" tags={["Integrações"]}>
+## Atributos com unidade de medida editável na Shein agora aparecem e são enviados corretamente
+
+Atributos da ficha técnica da Shein que combinam uma unidade fixa com um valor digitado livremente — como "15 gramas", onde "gramas" é a unidade definida pela plataforma e "15" é o valor que você informa — estavam sendo removidos da tela antes do envio, causando erro. Agora esses campos aparecem corretamente e o envio do produto acontece sem problemas.
+</Update>
+
+<Update label="Julho de 2026" description="Integrações · Shopee" tags={["Integrações"]}>
+## Nova opção "Padrão do canal" para etiquetas da Shopee
+
+A seleção de formato de etiqueta da Shopee passou a ter três opções: **Padrão do canal**, **PDF** e **ZPL**. Antes havia apenas duas opções, mas a opção "PDF" funcionava como um valor vazio — o que fazia a Shopee retornar sempre a etiqueta padrão do canal, mesmo quando o seller preferia ZPL.
+
+Agora, ao selecionar PDF, o formato é forçado corretamente ao solicitar a etiqueta.
+</Update>
+
+<Update label="Julho de 2026" description="Integrações · Shopify" tags={["Integrações"]}>
+## Desconto negativo em pedidos da Shopify corrigido
+
+Pedidos da Shopify que incluíam um valor adicional pago pelo comprador podiam gerar um desconto negativo na importação, distorcendo o valor da venda. O cálculo foi corrigido e agora considera corretamente esse valor adicional na composição do total do pedido.
+</Update>
+
+<Update label="Julho de 2026" description="Integrações · TikTok" tags={["Integrações"]}>
+## Atributos de texto livre no TikTok Shop agora são enviados corretamente
+
+Alguns atributos da ficha técnica do TikTok — como "Lista de ingredientes" — aceitam valores digitados livremente, sem opções predefinidas. Antes, o sistema não reconhecia esse tipo de atributo e o descartava antes do envio, causando erro. Agora você consegue preencher e enviar o produto sem interrupções.
+</Update>
+
+<Update label="Julho de 2026" description="Integrações · Wix" tags={["Integrações"]}>
+## Mídias das variações na Wix preservadas durante sincronização sem imagens
+
+Ao sincronizar um produto com variações para a Wix sem a opção de sincronizar imagens ativada, as mídias já associadas a cada variação dentro da plataforma são mantidas. Antes, a sincronização sobrescrevia essas mídias com referências que não existiam no acervo da Wix, gerando inconsistências.
+
+Quando a opção de sincronização de imagens está ativa, o comportamento continua inalterado e usa as imagens do ERP normalmente.
+</Update>
+
 <Update label="Julho de 2026" description="Integrações · Wix" tags={["Integrações"]}>
 ## Taxas adicionais da Wix podem ser importadas como despesas do pedido
 
@@ -203,14 +165,52 @@ A Wix pode incluir taxas adicionais no total de um pedido. Antes, o ERP não con
 **Ponto de atenção:** Para integrações novas e existentes, a opção nasce desativada. Ative nas configurações da integração se quiser que as taxas adicionais sejam consideradas.
 </Update>
 
-<Update label="Julho de 2026" description="API · Produtos" tags={["API", "Produtos"]}>
-## API V3: gerenciamento de imagens e anexos de produtos disponível
+<Update label="Julho de 2026" description="Notas Fiscais · DIFAL" tags={["Notas Fiscais"]}>
+## Cálculo de DIFAL ST para contribuinte agora considera as regras específicas de cada estado
 
-A API V3 passa a oferecer quatro novos recursos para gerenciar imagens e anexos de produtos: listar todos os anexos de um produto, adicionar uma nova imagem ou anexo, substituir a lista completa de imagens e anexos, e excluir um anexo específico pelo seu identificador.
+Em operações interestaduais para consumidor contribuinte, o cálculo de DIFAL ST passou a usar a fórmula definida pela UF de destino, quando aplicável. Estados como PB, PE, AL, GO, SC e SE têm fórmulas próprias que diferem do padrão nacional (CONFAZ). Antes, o sistema aplicava um único cálculo para todos os estados, o que podia gerar valores incorretos de ICMS ST no pedido, na proposta e na NF-e.
+
+<Frame>
+  <img src="/images/changelog/2026-07/difal-st-calculos-por-estado.png" alt="Explicação dos cálculos distintos de DIFAL ST por estado" />
+</Frame>
 </Update>
 
-<Update label="Julho de 2026" description="API · Produtos" tags={["API", "Produtos"]}>
-## API V3: novo recurso para atualizar o preço de cada variação individualmente
+<Update label="Julho de 2026" description="Notas Fiscais · GNRE" tags={["Notas Fiscais"]}>
+## Emissão de guias GNRE ficou mais confiável
 
-A API V3 passa a disponibilizar um recurso dedicado para atualizar o preço de uma variação de produto de forma individual, sem precisar alterar o produto inteiro.
+A geração e o envio de guias GNRE foram aprimorados com retentativas mais precisas e um monitoramento mais detalhado de cada etapa. O resultado prático é uma redução expressiva de falhas na emissão.
+</Update>
+
+<Update label="Julho de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais", "Vendas"]}>
+## NF-e cancelada automaticamente quando a venda é cancelada
+
+Agora é possível habilitar o cancelamento automático da NF-e na SEFAZ sempre que a venda vinculada for cancelada. A opção fica disponível nas configurações de nota fiscal eletrônica, com o parâmetro **Autorizar automaticamente notas fiscais geradas a partir da venda**.
+
+- Ao ativar, você precisa preencher uma justificativa padrão para os cancelamentos automáticos (entre 15 e 255 caracteres). Essa justificativa é usada em todos os cancelamentos feitos por esse fluxo.
+- Quando uma nota é cancelada automaticamente, ela exibe um marcador indicando o resultado (sucesso ou falha).
+- Se o cancelamento falhar, você recebe uma notificação no sistema. Caso o problema esteja na justificativa padrão, o aviso indica isso para que você possa corrigi-la.
+
+<Frame>
+  <img src="/images/changelog/2026-07/nfe-cancelamento-automatico-parametro.png" alt="Configuração do parâmetro de cancelamento automático de NF-e" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-07/nfe-cancelamento-automatico-marcadores.png" alt="Marcadores de status exibidos na NF-e após cancelamento automático" />
+</Frame>
+</Update>
+
+<Update label="Julho de 2026" description="Notas Fiscais · NFC-e" tags={["Notas Fiscais"]}>
+## NFC-e no Mato Grosso não é mais reenviada desnecessariamente após instabilidade da SEFAZ
+
+Quando a SEFAZ-MT apresentava falha na resposta ao envio ou cancelamento de uma NFC-e, o sistema podia tratar a operação como se não tivesse ocorrido e tentar novamente — o que causava rejeição por nota já autorizada ou já cancelada. Agora, após um erro de comunicação, o sistema consulta o status real da NFC-e na SEFAZ antes de qualquer nova tentativa, evitando operações duplicadas.
+</Update>
+
+<Update label="Julho de 2026" description="Relatórios · Multiempresa" tags={["Relatórios"]}>
+## Lis passa a consultar relatórios de múltiplas empresas de forma unificada
+
+A Lis agora consegue consolidar informações de diferentes empresas vinculadas à sua conta sem que você precise trocar de contexto manualmente. A base para essa unificação foi implementada com sincronização automática dos vínculos entre empresas e uma tela de visualização desses vínculos.
+
+<Frame>
+  <img src="/images/changelog/2026-07/lis-multiempresa-relatorios.png" alt="Tela de visualização de vínculos entre empresas na Lis" />
+</Frame>
 </Update>

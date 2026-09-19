@@ -4,6 +4,115 @@ description: "Atualizações de fevereiro de 2026."
 mode: "default"
 ---
 
+<Update label="Fevereiro de 2026" description="Compras · Necessidade de Compra" tags={["Compras", "Estoque"]}>
+## Filtros para ignorar entradas e saídas previstas de empresas específicas na Necessidade de Compra multiempresa
+
+Na tela de Necessidade de Compra, ao selecionar mais de uma empresa pelo filtro **Multiempresas**, agora aparecem dois filtros opcionais: **Ignorar Entradas Previstas** e **Ignorar Saídas Previstas**. Com eles, você escolhe quais empresas não devem ter suas previsões consideradas no cálculo consolidado — útil para simulações ou para excluir previsões que não refletem a operação real.
+
+- Os dois filtros funcionam de forma independente: você pode ignorar entradas de uma empresa e saídas de outra.
+- Quando nenhuma empresa é selecionada nos filtros de exceção, o comportamento segue o padrão: todas as entradas e saídas previstas das empresas selecionadas são consideradas.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Integrações · Ecommerce Olist" tags={["Integrações", "Performance"]}>
+## Envio de produtos para o Ecommerce da Olist até 20 vezes mais rápido
+
+A sincronização de produtos entre o ERP e o Ecommerce da Olist foi otimizada. Antes, o envio exigia chamadas separadas para cada parte do produto — variações, imagens, SEO e outros dados. Agora tudo é enviado em uma única operação, o que reduz drasticamente o tempo de sincronização.
+
+- Envio de 1 produto: de aproximadamente 15 segundos para aproximadamente 1 segundo.
+- Envio em massa de 1.000 produtos: de cerca de 4 horas para cerca de 12 minutos.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Estoque sincronizado automaticamente ao reativar anúncios pausados no Mercado Livre
+
+Ao tentar reativar um anúncio pausado no Mercado Livre, era possível receber o erro "Não foi possível ativar seu anúncio pois ele está com o estoque zerado" mesmo quando o produto tinha estoque disponível no sistema. Isso acontecia porque o sistema enviava apenas a mudança de status, sem atualizar o estoque no Mercado Livre antes da reativação. Agora, ao reativar um anúncio, o estoque atual do produto é sincronizado com o Mercado Livre primeiro e só então o status é alterado para ativo.
+
+**Ponto de atenção:** na importação de anúncios, quando o substatus do anúncio for "out of stock" no Mercado Livre, ele permanece ativo no sistema.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Mensagens de pós-venda no Mercado Livre compatíveis com o Assistente de IA da plataforma
+
+O Mercado Livre lançou um Assistente de IA que atua como intermediário nas conversas pós-venda de pedidos Fulfillment. O Assistente tenta resolver automaticamente dúvidas simples do comprador — como status do pedido e informações de entrega — antes de acionar o vendedor. Quando ele não consegue resolver, o vendedor recebe a notificação normalmente.
+
+O sistema agora detecta automaticamente se a conversa tem o Assistente de IA ativo e direciona a resposta ao destinatário correto, sem que você precise fazer nada diferente.
+
+As mensagens de bloqueio de chat também foram atualizadas para serem mais claras:
+
+- **Venda Fulfillment:** "Por ser uma venda Fulfillment, a comunicação com o comprador ficará disponível somente quando o pacote for entregue."
+- **Assistente de IA — prazo expirado:** "O envio de mensagens está desabilitado pois o assistente de IA do Mercado Livre repassou o chat e o vendedor não respondeu dentro de 48h."
+- **Assistente de IA — consulta resolvida:** "O envio de mensagens está desabilitado pois a consulta foi resolvida pelo assistente de IA do Mercado Livre."
+- **Reembolso realizado:** "O envio de mensagens está desabilitado pois já foi realizado um reembolso parcial ou total da venda."
+</Update>
+
+<Update label="Fevereiro de 2026" description="Integrações · Shopee" tags={["Integrações"]}>
+## Valor de pagamento integrado na Shopee calculado corretamente por vendedor
+
+Quando uma compra no carrinho da Shopee reunia produtos de mais de um vendedor, o valor de pagamento integrado registrado no pedido de cada vendedor correspondia ao total da compra inteira — e não apenas ao valor dos itens daquele vendedor. A Shopee confirmou que não ajustará esse comportamento na plataforma deles. O sistema passou a calcular a proporção correta do valor de pagamento para cada vendedor com base no total do pedido individual em relação ao total pago.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Notas Fiscais · DANFE" tags={["Notas Fiscais"]}>
+## Valores de IBS e CBS agora podem ser exibidos nas informações complementares do DANFE
+
+Enquanto o layout oficial do DANFE não é atualizado para contemplar os novos tributos da Reforma Tributária, as informações de IBS e CBS ficavam disponíveis apenas no XML da nota. Para facilitar a visualização diretamente no DANFE, duas novas variáveis foram adicionadas às configurações de operação fiscal: `[VALOR_TOTAL_IBS]` e `[VALOR_TOTAL_CBS]`.
+
+<Frame>
+  <img src="/images/changelog/2026-02/danfe-variaveis-ibs-cbs-configuracao.png" alt="Variáveis de IBS e CBS na tela de configuração de operação fiscal" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-02/danfe-variaveis-ibs-cbs-exemplo.png" alt="Exemplo de uso das variáveis no modelo de DANFE" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-02/danfe-variaveis-ibs-cbs-resultado.png" alt="Resultado das variáveis no DANFE impresso" />
+</Frame>
+
+**Ponto de atenção:** as variáveis ficam visíveis na tela de configuração de operação fiscal apenas quando a Reforma Tributária está habilitada na conta.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Notas Fiscais · Filtros e Exportação" tags={["Notas Fiscais"]}>
+## Novos filtros e exportação aprimorada nas telas de notas fiscais
+
+As telas de Notas Fiscais, Notas Fiscais de Consumidor e Notas de Entrada ganharam novos filtros para facilitar a localização de documentos:
+
+- **Produto ou SKU:** exibe apenas as notas que contêm aquele produto.
+- **Natureza de operação**
+- **Série** da nota
+- **Número do pedido** ou número do pedido no e-commerce
+- **Número da NFS-e** (na tela de notas de serviço)
+- **Finalidade** da nota
+
+A exportação de notas fiscais agora acontece diretamente na tela de listagem, em um modal integrado, e respeita todos os filtros aplicados — incluindo os novos. Antes, a exportação ficava em uma tela separada com apenas filtros por data.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Data de previsão de entrega agora é incluída na emissão de NF-e
+
+A Reforma Tributária incluiu um novo campo na NF-e para registrar a data prevista de entrega da mercadoria. Quando essa data é diferente da data da nota, o débito de IBS e CBS passa a ser considerado no mês da entrega, e não no mês da emissão. Agora, quando o pedido de venda tiver uma data prevista de entrega informada e ela for posterior à data de saída, esse dado é automaticamente levado para a nota fiscal.
+
+<Frame>
+  <img src="/images/changelog/2026-02/nfe-data-prevista-entrega.png" alt="Campo de data prevista de entrega na tela de edição da NF-e" />
+</Frame>
+
+- O campo só é preenchido em NF-e de saída com finalidade Normal ou Devolução de mercadoria.
+- Não se aplica a NFC-e nem a notas de entrada.
+- A data de entrega deve ser sempre posterior à data de saída (ou à data de emissão, quando a de saída não estiver preenchida).
+- Não está disponível quando a modalidade de frete for FOB, Transporte Próprio por conta do Destinatário ou Sem ocorrência de transporte.
+</Update>
+
+<Update label="Fevereiro de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
+## Cálculo do DIFAL Não Contribuinte corrigido para operações com redução em Base Simples
+
+Em notas fiscais interestaduais com incidência de DIFAL para não contribuinte, quando o parâmetro **Forma de cálculo de ICMS DIFAL para não contribuinte em Operações Interestaduais** estava configurado como **Base Simples**, o valor final do DIFAL não considerava a redução pelo ICMS do item. O cálculo está corrigido: agora o valor do ICMS do item é devidamente descontado do DIFAL Não Contribuinte.
+
+<Frame>
+  <img src="/images/changelog/2026-02/nfe-difal-nao-contribuinte-parametro.png" alt="Parâmetros de DIFAL Não Contribuinte nas configurações da conta" />
+</Frame>
+
+**Ponto de atenção:** a correção está sendo liberada gradualmente para evitar impacto abrupto nas notas. Se você ainda não a recebeu, receberá em breve.
+</Update>
+
 <Update label="Fevereiro de 2026" description="Notas Fiscais · NF-e / NFC-e" tags={["Notas Fiscais"]}>
 ## Novos eventos de Reforma Tributária disponíveis para registro em notas fiscais de entrada
 
@@ -40,26 +149,6 @@ Três tipos de evento estão disponíveis nesta primeira versão:
 **Ponto de atenção:** essa funcionalidade está disponível apenas para contas com o parâmetro de RTC habilitado.
 </Update>
 
-<Update label="Fevereiro de 2026" description="Notas Fiscais · DANFE" tags={["Notas Fiscais"]}>
-## Valores de IBS e CBS agora podem ser exibidos nas informações complementares do DANFE
-
-Enquanto o layout oficial do DANFE não é atualizado para contemplar os novos tributos da Reforma Tributária, as informações de IBS e CBS ficavam disponíveis apenas no XML da nota. Para facilitar a visualização diretamente no DANFE, duas novas variáveis foram adicionadas às configurações de operação fiscal: `[VALOR_TOTAL_IBS]` e `[VALOR_TOTAL_CBS]`.
-
-<Frame>
-  <img src="/images/changelog/2026-02/danfe-variaveis-ibs-cbs-configuracao.png" alt="Variáveis de IBS e CBS na tela de configuração de operação fiscal" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-02/danfe-variaveis-ibs-cbs-exemplo.png" alt="Exemplo de uso das variáveis no modelo de DANFE" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-02/danfe-variaveis-ibs-cbs-resultado.png" alt="Resultado das variáveis no DANFE impresso" />
-</Frame>
-
-**Ponto de atenção:** as variáveis ficam visíveis na tela de configuração de operação fiscal apenas quando a Reforma Tributária está habilitada na conta.
-</Update>
-
 <Update label="Fevereiro de 2026" description="Notas Fiscais · NF-e / NFC-e" tags={["Notas Fiscais"]}>
 ## Cálculo da base de IBS e CBS exibido diretamente na nota para facilitar a conferência
 
@@ -88,35 +177,6 @@ Em notas de importação, as informações são apresentadas de acordo com a op�
 </Frame>
 
 **Ponto de atenção:** os campos de IBS e CBS são apenas de destaque em 2026, sem impacto no recolhimento durante o período de transição.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
-## Data de previsão de entrega agora é incluída na emissão de NF-e
-
-A Reforma Tributária incluiu um novo campo na NF-e para registrar a data prevista de entrega da mercadoria. Quando essa data é diferente da data da nota, o débito de IBS e CBS passa a ser considerado no mês da entrega, e não no mês da emissão. Agora, quando o pedido de venda tiver uma data prevista de entrega informada e ela for posterior à data de saída, esse dado é automaticamente levado para a nota fiscal.
-
-<Frame>
-  <img src="/images/changelog/2026-02/nfe-data-prevista-entrega.png" alt="Campo de data prevista de entrega na tela de edição da NF-e" />
-</Frame>
-
-- O campo só é preenchido em NF-e de saída com finalidade Normal ou Devolução de mercadoria.
-- Não se aplica a NFC-e nem a notas de entrada.
-- A data de entrega deve ser sempre posterior à data de saída (ou à data de emissão, quando a de saída não estiver preenchida).
-- Não está disponível quando a modalidade de frete for FOB, Transporte Próprio por conta do Destinatário ou Sem ocorrência de transporte.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Notas Fiscais · Regras Tributárias" tags={["Notas Fiscais"]}>
-## Naturezas de operação de entrada agora podem ser vinculadas às regras tributárias da Reforma
-
-Antes, só era possível vincular naturezas de operação do tipo **saída** ao criar ou editar uma regra tributária para os novos impostos da Reforma Tributária. Agora, todas as naturezas de operação ativas da conta estão disponíveis para seleção, independentemente do tipo.
-
-<Frame>
-  <img src="/images/changelog/2026-02/nfe-regras-tributarias-naturezas-operacao.png" alt="Modal de seleção de natureza de operação na regra tributária com tipos de entrada e saída disponíveis" />
-</Frame>
-
-- É possível ordenar as naturezas por tipo no modal de seleção.
-- Qualquer combinação de tipos pode ser vinculada à mesma regra tributária.
-- A aplicação nas notas de entrada funciona da mesma forma que nas de saída: quando a regra corresponde à natureza e ao NCM ou produto, as configurações são aplicadas automaticamente.
 </Update>
 
 <Update label="Fevereiro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
@@ -149,31 +209,18 @@ Alguns municípios mantiveram sistemas próprios de emissão de NFS-e após a Re
 **Ponto de atenção:** esses modelos atendem a diversos municípios, incluindo capitais com alto volume de emissão. Se você emite NFS-e em municípios que utilizam um desses emissores, a emissão continua normalmente sem nenhuma ação de sua parte.
 </Update>
 
-<Update label="Fevereiro de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
-## Cálculo do DIFAL Não Contribuinte corrigido para operações com redução em Base Simples
+<Update label="Fevereiro de 2026" description="Notas Fiscais · Regras Tributárias" tags={["Notas Fiscais"]}>
+## Naturezas de operação de entrada agora podem ser vinculadas às regras tributárias da Reforma
 
-Em notas fiscais interestaduais com incidência de DIFAL para não contribuinte, quando o parâmetro **Forma de cálculo de ICMS DIFAL para não contribuinte em Operações Interestaduais** estava configurado como **Base Simples**, o valor final do DIFAL não considerava a redução pelo ICMS do item. O cálculo está corrigido: agora o valor do ICMS do item é devidamente descontado do DIFAL Não Contribuinte.
+Antes, só era possível vincular naturezas de operação do tipo **saída** ao criar ou editar uma regra tributária para os novos impostos da Reforma Tributária. Agora, todas as naturezas de operação ativas da conta estão disponíveis para seleção, independentemente do tipo.
 
 <Frame>
-  <img src="/images/changelog/2026-02/nfe-difal-nao-contribuinte-parametro.png" alt="Parâmetros de DIFAL Não Contribuinte nas configurações da conta" />
+  <img src="/images/changelog/2026-02/nfe-regras-tributarias-naturezas-operacao.png" alt="Modal de seleção de natureza de operação na regra tributária com tipos de entrada e saída disponíveis" />
 </Frame>
 
-**Ponto de atenção:** a correção está sendo liberada gradualmente para evitar impacto abrupto nas notas. Se você ainda não a recebeu, receberá em breve.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Notas Fiscais · Filtros e Exportação" tags={["Notas Fiscais"]}>
-## Novos filtros e exportação aprimorada nas telas de notas fiscais
-
-As telas de Notas Fiscais, Notas Fiscais de Consumidor e Notas de Entrada ganharam novos filtros para facilitar a localização de documentos:
-
-- **Produto ou SKU:** exibe apenas as notas que contêm aquele produto.
-- **Natureza de operação**
-- **Série** da nota
-- **Número do pedido** ou número do pedido no e-commerce
-- **Número da NFS-e** (na tela de notas de serviço)
-- **Finalidade** da nota
-
-A exportação de notas fiscais agora acontece diretamente na tela de listagem, em um modal integrado, e respeita todos os filtros aplicados — incluindo os novos. Antes, a exportação ficava em uma tela separada com apenas filtros por data.
+- É possível ordenar as naturezas por tipo no modal de seleção.
+- Qualquer combinação de tipos pode ser vinculada à mesma regra tributária.
+- A aplicação nas notas de entrada funciona da mesma forma que nas de saída: quando a regra corresponde à natureza e ao NCM ou produto, as configurações são aplicadas automaticamente.
 </Update>
 
 <Update label="Fevereiro de 2026" description="PDV · Maquininhas" tags={["PDV"]}>
@@ -209,51 +256,4 @@ Ao concluir uma venda no PDV com pagamento integrado — Crédito, Débito, PIX,
 
 - As informações são totalmente editáveis antes da emissão da nota.
 - O CNPJ do intermediador e o código de autenticação são preenchidos automaticamente apenas para maquininhas POS.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Compras · Necessidade de Compra" tags={["Compras", "Estoque"]}>
-## Filtros para ignorar entradas e saídas previstas de empresas específicas na Necessidade de Compra multiempresa
-
-Na tela de Necessidade de Compra, ao selecionar mais de uma empresa pelo filtro **Multiempresas**, agora aparecem dois filtros opcionais: **Ignorar Entradas Previstas** e **Ignorar Saídas Previstas**. Com eles, você escolhe quais empresas não devem ter suas previsões consideradas no cálculo consolidado — útil para simulações ou para excluir previsões que não refletem a operação real.
-
-- Os dois filtros funcionam de forma independente: você pode ignorar entradas de uma empresa e saídas de outra.
-- Quando nenhuma empresa é selecionada nos filtros de exceção, o comportamento segue o padrão: todas as entradas e saídas previstas das empresas selecionadas são consideradas.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Integrações · Ecommerce Olist" tags={["Integrações", "Performance"]}>
-## Envio de produtos para o Ecommerce da Olist até 20 vezes mais rápido
-
-A sincronização de produtos entre o ERP e o Ecommerce da Olist foi otimizada. Antes, o envio exigia chamadas separadas para cada parte do produto — variações, imagens, SEO e outros dados. Agora tudo é enviado em uma única operação, o que reduz drasticamente o tempo de sincronização.
-
-- Envio de 1 produto: de aproximadamente 15 segundos para aproximadamente 1 segundo.
-- Envio em massa de 1.000 produtos: de cerca de 4 horas para cerca de 12 minutos.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Integrações · Shopee" tags={["Integrações"]}>
-## Valor de pagamento integrado na Shopee calculado corretamente por vendedor
-
-Quando uma compra no carrinho da Shopee reunia produtos de mais de um vendedor, o valor de pagamento integrado registrado no pedido de cada vendedor correspondia ao total da compra inteira — e não apenas ao valor dos itens daquele vendedor. A Shopee confirmou que não ajustará esse comportamento na plataforma deles. O sistema passou a calcular a proporção correta do valor de pagamento para cada vendedor com base no total do pedido individual em relação ao total pago.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
-## Estoque sincronizado automaticamente ao reativar anúncios pausados no Mercado Livre
-
-Ao tentar reativar um anúncio pausado no Mercado Livre, era possível receber o erro "Não foi possível ativar seu anúncio pois ele está com o estoque zerado" mesmo quando o produto tinha estoque disponível no sistema. Isso acontecia porque o sistema enviava apenas a mudança de status, sem atualizar o estoque no Mercado Livre antes da reativação. Agora, ao reativar um anúncio, o estoque atual do produto é sincronizado com o Mercado Livre primeiro e só então o status é alterado para ativo.
-
-**Ponto de atenção:** na importação de anúncios, quando o substatus do anúncio for "out of stock" no Mercado Livre, ele permanece ativo no sistema.
-</Update>
-
-<Update label="Fevereiro de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
-## Mensagens de pós-venda no Mercado Livre compatíveis com o Assistente de IA da plataforma
-
-O Mercado Livre lançou um Assistente de IA que atua como intermediário nas conversas pós-venda de pedidos Fulfillment. O Assistente tenta resolver automaticamente dúvidas simples do comprador — como status do pedido e informações de entrega — antes de acionar o vendedor. Quando ele não consegue resolver, o vendedor recebe a notificação normalmente.
-
-O sistema agora detecta automaticamente se a conversa tem o Assistente de IA ativo e direciona a resposta ao destinatário correto, sem que você precise fazer nada diferente.
-
-As mensagens de bloqueio de chat também foram atualizadas para serem mais claras:
-
-- **Venda Fulfillment:** "Por ser uma venda Fulfillment, a comunicação com o comprador ficará disponível somente quando o pacote for entregue."
-- **Assistente de IA — prazo expirado:** "O envio de mensagens está desabilitado pois o assistente de IA do Mercado Livre repassou o chat e o vendedor não respondeu dentro de 48h."
-- **Assistente de IA — consulta resolvida:** "O envio de mensagens está desabilitado pois a consulta foi resolvida pelo assistente de IA do Mercado Livre."
-- **Reembolso realizado:** "O envio de mensagens está desabilitado pois já foi realizado um reembolso parcial ou total da venda."
 </Update>

@@ -4,6 +4,92 @@ description: "Atualizações de agosto de 2026."
 mode: "default"
 ---
 
+<Update label="Agosto de 2026" description="API · Propostas Comerciais" tags={["API", "Vendas"]}>
+## Propostas comerciais agora podem ser gerenciadas pela API V3
+
+A API V3 do ERP passou a suportar o gerenciamento completo de propostas comerciais. Com ela, é possível criar, consultar, atualizar e excluir propostas, além de alterar a situação de uma proposta, listar modelos disponíveis, gerenciar marcadores e gerar uma venda diretamente a partir de uma proposta.
+
+**Ponto de atenção:** Consulte a [documentação da API](https://api-docs.erp.olist.com/api-reference/orcamentos) para ver todos os endpoints disponíveis e os parâmetros aceitos.
+</Update>
+
+<Update label="Agosto de 2026" description="Contatos · Listagem" tags={["Contatos", "Performance"]}>
+## Busca de contatos por nome ficou mais rápida e precisa
+
+A busca na listagem de contatos foi melhorada em dois pontos. Quando você seleciona um contato pelo autocomplete, a lista agora filtra pelo contato exato escolhido. Antes, o autocomplete era ignorado e a busca usava apenas o nome digitado, o que tornava o resultado impreciso e mais lento para quem tem muitos contatos.
+
+Além disso, a busca por nome passou a aplicar o filtro de forma otimizada, reduzindo o tempo de resposta para bases de contatos maiores.
+
+<Frame>
+  <img src="/images/changelog/2026-08/contatos-filtros.png" alt="Melhorias nos filtros da listagem de contatos" />
+</Frame>
+</Update>
+
+<Update label="Agosto de 2026" description="Estoque · Multiempresa" tags={["Estoque", "Produtos"]}>
+## Campo de origem do produto pode ser excluído da sincronização multiempresa
+
+Agora é possível controlar se o campo "origem" do produto será sincronizado entre as empresas na configuração multiempresa. Por padrão, a sincronização do campo continua ativa — igual ao comportamento anterior. Se você preferir não compartilhar essa informação, basta desabilitar a opção nas configurações de dados compartilhados.
+
+<Frame>
+  <img src="/images/changelog/2026-08/multiempresa-campo-origem.png" alt="Configuração do campo de origem na sincronização multiempresa" />
+</Frame>
+</Update>
+
+<Update label="Agosto de 2026" description="Estoque · Multiempresa" tags={["Estoque", "Relatórios"]}>
+## Relatório de Estoque Multiempresa exibe o saldo de cada componente do kit separadamente
+
+Quando a configuração multiempresa **"Saldo dos itens do kit"** está no modo **Componentes**, o Relatório de Estoque Multiempresa e a Consulta de Estoque Multiempresa passam a mostrar um dropdown com o saldo individual de cada componente, além do saldo consolidado do kit.
+
+- O download do relatório não inclui a visualização dos componentes.
+- O saldo por empresa de cada kit não é exibido, pois o saldo do kit é calculado de forma virtual entre todas as empresas.
+- Os saldos dos componentes não são somados nas colunas de totais por empresa.
+
+<Frame>
+  <img src="/images/changelog/2026-08/multiempresa-kits-relatorio.png" alt="Saldo de componentes do kit no Relatório de Estoque Multiempresa" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-08/multiempresa-kits-consulta.png" alt="Consulta de Estoque Multiempresa com saldo de componentes" />
+</Frame>
+</Update>
+
+<Update label="Agosto de 2026" description="Estoque · Transferências" tags={["Estoque"]}>
+## Transferência de estoque entre depósitos voltou a funcionar corretamente
+
+A transferência do saldo de estoque entre dois depósitos podia falhar para produtos com grande volume de lançamentos. Isso foi corrigido e a transferência agora funciona normalmente para todos os produtos.
+</Update>
+
+<Update label="Agosto de 2026" description="Expedição · Separação" tags={["Expedição", "Estoque"]}>
+## Impressão de separação pode exibir o saldo disponível e físico de cada produto
+
+Nas configurações de separação, agora há dois novos parâmetros: um para exibir o estoque físico e outro para o estoque disponível na impressão da listagem de separações. Ative os que desejar para que as quantidades apareçam direto na folha impressa.
+
+- Se o produto for pai de variações com mais de 20 variações, o saldo não é exibido para garantir a velocidade da impressão.
+
+<Frame>
+  <img src="/images/changelog/2026-08/separacao-saldo-produto-impressao.png" alt="Saldo do produto na impressão de separação" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-08/separacao-saldo-produto-config.png" alt="Parâmetros de saldo nas configurações de separação" />
+</Frame>
+</Update>
+
+<Update label="Agosto de 2026" description="Financeiro · Contas a Pagar, Receber e Caixa" tags={["Financeiro"]}>
+## Seleção de itens agora persiste ao navegar entre páginas no financeiro
+
+Nos módulos de Contas a Pagar, Contas a Receber e Caixa, a seleção de itens agora se mantém mesmo quando você muda de página, aplica filtros ou reordena a listagem. Antes, qualquer navegação apagava os registros marcados e você precisava começar a seleção do zero.
+
+- Ao marcar o primeiro registro, uma barra fixa aparece na parte inferior da tela com as ações disponíveis e um botão para limpar a seleção.
+- O limite máximo de seleção passou para 100 itens. Ações mais sensíveis — como exclusões, cancelamentos, emissão de boletos, envios por e-mail e conciliações — continuam limitadas a 50 itens, com aviso quando esse limite é ultrapassado.
+- Para baixas, recebimentos e edições simples no Caixa: ao selecionar uma página inteira, você pode estender a ação a todos os registros do filtro atual (até 500 itens) sem alterar a seleção manual na tela.
+- Sem nenhum item selecionado, as opções de exportação e impressão no topo da tela funcionam para todos os dados do filtro. Com itens selecionados, essas opções somem e as ações da barra inferior geram os arquivos apenas dos itens marcados.
+- A seleção é mantida até que você a limpe manualmente ou recarregue a página.
+
+<Frame>
+  <video controls src="/assets/changelog/2026-08/financeiro-selecao-persistente-depois.webm" title="Comportamento depois: seleção persistente entre páginas" />
+</Frame>
+</Update>
+
 <Update label="Agosto de 2026" description="Financeiro · Crédito e Conta Digital" tags={["Financeiro", "Crédito", "Conta Digital"]}>
 ## Boleto da Conta Digital não pode mais ser cancelado enquanto está em uso numa antecipação
 
@@ -24,42 +110,6 @@ Quando uma conta a receber com boleto da Conta Digital é incluída em uma opera
 <Frame>
   <img src="/images/changelog/2026-08/financeiro-reuso-boleto-aviso-exclusao.png" alt="Aviso ao tentar excluir venda ou nota vinculada" />
 </Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Financeiro · Contas a Pagar, Receber e Caixa" tags={["Financeiro"]}>
-## Seleção de itens agora persiste ao navegar entre páginas no financeiro
-
-Nos módulos de Contas a Pagar, Contas a Receber e Caixa, a seleção de itens agora se mantém mesmo quando você muda de página, aplica filtros ou reordena a listagem. Antes, qualquer navegação apagava os registros marcados e você precisava começar a seleção do zero.
-
-- Ao marcar o primeiro registro, uma barra fixa aparece na parte inferior da tela com as ações disponíveis e um botão para limpar a seleção.
-- O limite máximo de seleção passou para 100 itens. Ações mais sensíveis — como exclusões, cancelamentos, emissão de boletos, envios por e-mail e conciliações — continuam limitadas a 50 itens, com aviso quando esse limite é ultrapassado.
-- Para baixas, recebimentos e edições simples no Caixa: ao selecionar uma página inteira, você pode estender a ação a todos os registros do filtro atual (até 500 itens) sem alterar a seleção manual na tela.
-- Sem nenhum item selecionado, as opções de exportação e impressão no topo da tela funcionam para todos os dados do filtro. Com itens selecionados, essas opções somem e as ações da barra inferior geram os arquivos apenas dos itens marcados.
-- A seleção é mantida até que você a limpe manualmente ou recarregue a página.
-
-<Frame>
-  <video controls src="/assets/changelog/2026-08/financeiro-selecao-persistente-depois.webm" title="Comportamento depois: seleção persistente entre páginas" />
-</Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Integrações · Shopify" tags={["Integrações"]}>
-## Pedidos da Shopify divididos por estoque quando a loja atende mais de uma empresa
-
-Agora é possível conectar a mesma loja da Shopify a mais de uma empresa no sistema, com cada empresa importando apenas os itens do seu próprio estoque (location). Frete, descontos, taxas e parcelas são distribuídos proporcionalmente entre as empresas.
-
-- Cada empresa passa a ter webhooks próprios. Ao desconectar ou salvar uma integração, apenas os webhooks daquela empresa são afetados.
-- O rastreio e a marcação de entregue usam o fulfillment do estoque correto, sem interferir nas outras empresas conectadas.
-- Pedidos sem itens do estoque configurado para a empresa são ignorados na importação.
-
-**Como habilitar:** Acesse as configurações da integração Shopify, vá até a aba de pedidos e ative a opção **Separar pedido por location**. É necessário ter o **Identificador do estoque na Shopify** configurado previamente na aba de estoque.
-
-**Ponto de atenção:** Integrações sem essa opção ativada continuam importando o pedido completo, sem divisão. Se os dados de fulfillment ainda não estiverem disponíveis na Shopify no momento da importação, o sistema tenta novamente automaticamente.
-</Update>
-
-<Update label="Agosto de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
-## Atualização em massa de anúncios existentes no Mercado Livre e Temu pelo Hub
-
-Ao usar o Mercado Livre ou Temu via Hub da Olist no popup "Enviar para o e-commerce", agora é possível atualizar em massa anúncios já existentes — título, descrição e imagens — além de criar novos. Antes, apenas a criação de novos anúncios era disponível. Antes de confirmar, você vê um resumo de quantos anúncios existentes serão afetados pela atualização.
 </Update>
 
 <Update label="Agosto de 2026" description="Integrações · Amazon" tags={["Integrações"]}>
@@ -86,12 +136,6 @@ O Amazon Smart Connect é a nova geração do programa FBA Onsite, onde você ar
 Ao publicar um anúncio em uma integração com múltiplos depósitos sem mapeamento configurado, o sistema agora usa automaticamente o depósito padrão da sua conta. Antes, esse comportamento já funcionava para a sincronização de estoque, mas não para o envio de anúncios.
 </Update>
 
-<Update label="Agosto de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
-## Itens de catálogo do Mercado Livre migrados corretamente
-
-Itens de catálogo do Mercado Livre podiam falhar na migração por não terem as mesmas marcações que anúncios comuns. Isso foi corrigido e a migração agora funciona normalmente para esse tipo de item.
-</Update>
-
 <Update label="Agosto de 2026" description="Integrações · Hub" tags={["Integrações"]}>
 ## Correção no mapeamento de depósitos em integrações
 
@@ -110,20 +154,16 @@ Você pode relacionar em massa todos os anúncios que ainda não têm vínculo c
 Quando você excluía todos os seus anúncios no hub, alguns podiam permanecer visíveis no sistema. Isso foi corrigido: ao excluir todos os anúncios no hub, eles também são removidos do ERP automaticamente.
 </Update>
 
-<Update label="Agosto de 2026" description="Estoque · Multiempresa" tags={["Estoque", "Produtos"]}>
-## Campo de origem do produto pode ser excluído da sincronização multiempresa
+<Update label="Agosto de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Atualização em massa de anúncios existentes no Mercado Livre e Temu pelo Hub
 
-Agora é possível controlar se o campo "origem" do produto será sincronizado entre as empresas na configuração multiempresa. Por padrão, a sincronização do campo continua ativa — igual ao comportamento anterior. Se você preferir não compartilhar essa informação, basta desabilitar a opção nas configurações de dados compartilhados.
-
-<Frame>
-  <img src="/images/changelog/2026-08/multiempresa-campo-origem.png" alt="Configuração do campo de origem na sincronização multiempresa" />
-</Frame>
+Ao usar o Mercado Livre ou Temu via Hub da Olist no popup "Enviar para o e-commerce", agora é possível atualizar em massa anúncios já existentes — título, descrição e imagens — além de criar novos. Antes, apenas a criação de novos anúncios era disponível. Antes de confirmar, você vê um resumo de quantos anúncios existentes serão afetados pela atualização.
 </Update>
 
-<Update label="Agosto de 2026" description="Estoque · Transferências" tags={["Estoque"]}>
-## Transferência de estoque entre depósitos voltou a funcionar corretamente
+<Update label="Agosto de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
+## Itens de catálogo do Mercado Livre migrados corretamente
 
-A transferência do saldo de estoque entre dois depósitos podia falhar para produtos com grande volume de lançamentos. Isso foi corrigido e a transferência agora funciona normalmente para todos os produtos.
+Itens de catálogo do Mercado Livre podiam falhar na migração por não terem as mesmas marcações que anúncios comuns. Isso foi corrigido e a migração agora funciona normalmente para esse tipo de item.
 </Update>
 
 <Update label="Agosto de 2026" description="Integrações · Shopee" tags={["Integrações", "Expedição"]}>
@@ -139,108 +179,51 @@ Ao imprimir etiquetas de pedidos da Shopee que usam logísticas diferentes, o si
 </Frame>
 </Update>
 
-<Update label="Agosto de 2026" description="Contatos · Listagem" tags={["Contatos", "Performance"]}>
-## Busca de contatos por nome ficou mais rápida e precisa
+<Update label="Agosto de 2026" description="Integrações · Shopify" tags={["Integrações"]}>
+## Pedidos da Shopify divididos por estoque quando a loja atende mais de uma empresa
 
-A busca na listagem de contatos foi melhorada em dois pontos. Quando você seleciona um contato pelo autocomplete, a lista agora filtra pelo contato exato escolhido. Antes, o autocomplete era ignorado e a busca usava apenas o nome digitado, o que tornava o resultado impreciso e mais lento para quem tem muitos contatos.
+Agora é possível conectar a mesma loja da Shopify a mais de uma empresa no sistema, com cada empresa importando apenas os itens do seu próprio estoque (location). Frete, descontos, taxas e parcelas são distribuídos proporcionalmente entre as empresas.
 
-Além disso, a busca por nome passou a aplicar o filtro de forma otimizada, reduzindo o tempo de resposta para bases de contatos maiores.
+- Cada empresa passa a ter webhooks próprios. Ao desconectar ou salvar uma integração, apenas os webhooks daquela empresa são afetados.
+- O rastreio e a marcação de entregue usam o fulfillment do estoque correto, sem interferir nas outras empresas conectadas.
+- Pedidos sem itens do estoque configurado para a empresa são ignorados na importação.
 
-<Frame>
-  <img src="/images/changelog/2026-08/contatos-filtros.png" alt="Melhorias nos filtros da listagem de contatos" />
-</Frame>
+**Como habilitar:** Acesse as configurações da integração Shopify, vá até a aba de pedidos e ative a opção **Separar pedido por location**. É necessário ter o **Identificador do estoque na Shopify** configurado previamente na aba de estoque.
+
+**Ponto de atenção:** Integrações sem essa opção ativada continuam importando o pedido completo, sem divisão. Se os dados de fulfillment ainda não estiverem disponíveis na Shopify no momento da importação, o sistema tenta novamente automaticamente.
 </Update>
 
-<Update label="Agosto de 2026" description="Expedição · Separação" tags={["Expedição", "Estoque"]}>
-## Impressão de separação pode exibir o saldo disponível e físico de cada produto
+<Update label="Agosto de 2026" description="Notas Fiscais · Buscador" tags={["Notas Fiscais"]}>
+## Buscador de notas fiscais ganha detalhes de itens, filtros e opção de ignorar notas
 
-Nas configurações de separação, agora há dois novos parâmetros: um para exibir o estoque físico e outro para o estoque disponível na impressão da listagem de separações. Ative os que desejar para que as quantidades apareçam direto na folha impressa.
+O Buscador de notas fiscais foi aprimorado com mais informações por nota e novos recursos de gerenciamento.
 
-- Se o produto for pai de variações com mais de 20 variações, o saldo não é exibido para garantir a velocidade da impressão.
-
-<Frame>
-  <img src="/images/changelog/2026-08/separacao-saldo-produto-impressao.png" alt="Saldo do produto na impressão de separação" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/separacao-saldo-produto-config.png" alt="Parâmetros de saldo nas configurações de separação" />
-</Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Estoque · Multiempresa" tags={["Estoque", "Relatórios"]}>
-## Relatório de Estoque Multiempresa exibe o saldo de cada componente do kit separadamente
-
-Quando a configuração multiempresa **"Saldo dos itens do kit"** está no modo **Componentes**, o Relatório de Estoque Multiempresa e a Consulta de Estoque Multiempresa passam a mostrar um dropdown com o saldo individual de cada componente, além do saldo consolidado do kit.
-
-- O download do relatório não inclui a visualização dos componentes.
-- O saldo por empresa de cada kit não é exibido, pois o saldo do kit é calculado de forma virtual entre todas as empresas.
-- Os saldos dos componentes não são somados nas colunas de totais por empresa.
+- O modal de detalhes agora exibe o cabeçalho completo (situação de manifestação e valor total) e a tabela de itens com paginação, quando a Sefaz envia essas informações.
+- Filtros de importação permitem ver apenas notas da Sefaz, apenas as já importadas ou todas.
+- É possível ignorar uma nota da listagem e reexibi-la quando quiser, sem perder o registro.
+- O botão "Alterar manifestação" abre diretamente o fluxo para mudar a situação da nota.
+- Na manifestação de desconhecimento, há agora um campo de justificativa (opcional).
+- O CNPJ do remetente aparece formatado ao passar o cursor sobre o nome.
 
 <Frame>
-  <img src="/images/changelog/2026-08/multiempresa-kits-relatorio.png" alt="Saldo de componentes do kit no Relatório de Estoque Multiempresa" />
+  <img src="/images/changelog/2026-08/buscador-notas-detalhes.png" alt="Modal com detalhes da nota fiscal no Buscador" />
 </Frame>
 
 <Frame>
-  <img src="/images/changelog/2026-08/multiempresa-kits-consulta.png" alt="Consulta de Estoque Multiempresa com saldo de componentes" />
+  <img src="/images/changelog/2026-08/buscador-notas-paginacao.png" alt="Paginação de itens no modal de detalhes do Buscador" />
 </Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="API · Propostas Comerciais" tags={["API", "Vendas"]}>
-## Propostas comerciais agora podem ser gerenciadas pela API V3
-
-A API V3 do ERP passou a suportar o gerenciamento completo de propostas comerciais. Com ela, é possível criar, consultar, atualizar e excluir propostas, além de alterar a situação de uma proposta, listar modelos disponíveis, gerenciar marcadores e gerar uma venda diretamente a partir de uma proposta.
-
-**Ponto de atenção:** Consulte a [documentação da API](https://api-docs.erp.olist.com/api-reference/orcamentos) para ver todos os endpoints disponíveis e os parâmetros aceitos.
-</Update>
-
-<Update label="Agosto de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
-## Emissão de NFS-e corrigida para municípios com nome muito longo
-
-Quando o município do tomador tinha nome com mais de 30 caracteres — como Vila Bela da Santíssima Trindade (MT) e São Francisco de Assis do Piauí (PI) —, a nota podia ser enviada com dados incorretos e rejeitada. Agora o sistema identifica corretamente esses municípios e bloqueia a emissão com uma mensagem clara caso o município do tomador não seja reconhecido, em vez de enviar a nota com erro.
-
-- Impressão, consulta de situação e cancelamento de notas já emitidas continuam funcionando normalmente.
-- Tomador no exterior continua tratado como antes.
-- Dados já gravados em notas anteriores não foram alterados. A correção vale para os próximos registros.
-</Update>
-
-<Update label="Agosto de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
-## Novo modal para gerenciar eventos da Reforma Tributária nas notas fiscais
-
-O registro de eventos da Reforma Tributária ganhou um modal próprio, acessível pelo menu de contexto de cada nota ou pelo novo indicador na listagem. Antes, era possível apenas registrar um evento, sem ver o histórico do que já havia sido enviado nem corrigir um registro com erro.
-
-Com o novo modal, é possível:
-- Ver os dados da nota (número, valor e remetente) no cabeçalho, junto das abas de registro e histórico.
-- Consultar o histórico de eventos com data, hora, protocolo e situação de cada um.
-- Identificar eventos pendentes, rejeitados e cancelados, com o motivo informado pela Sefaz.
-- Cancelar um evento já autorizado diretamente pelo modal.
-- Ver um aviso antes de registrar um evento que já existe para aquela nota.
-- Identificar na listagem de notas de entrada quais notas têm eventos registrados e abrir o modal diretamente pelo indicador.
 
 <Frame>
-  <img src="/images/changelog/2026-08/rt-eventos-depois.gif" alt="Novo modal de gerenciamento de eventos da Reforma Tributária" />
+  <img src="/images/changelog/2026-08/buscador-notas-ignorar.png" alt="Opção de ignorar uma nota na listagem do Buscador" />
 </Frame>
-</Update>
 
-<Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas"]}>
-## Seletor de campo para refinar a busca em pedidos de venda e propostas comerciais
+<Frame>
+  <img src="/images/changelog/2026-08/buscador-notas-reexibir.png" alt="Opção de reexibir uma nota ignorada no Buscador" />
+</Frame>
 
-As listagens de pedidos de venda e de propostas comerciais ganharam um seletor ao lado da caixa de pesquisa. Com ele, você escolhe em qual campo a busca deve procurar, em vez de pesquisar em todos os campos ao mesmo tempo.
-
-Nos pedidos de venda, os campos disponíveis são:
-- Cliente
-- Número do pedido
-- Pedido E-commerce
-- Nota fiscal
-- Cupom fiscal (apenas para empresas com esse módulo contratado)
-
-Nas propostas comerciais, os campos disponíveis são:
-- Cliente
-- Número da proposta
-- Número da venda gerada a partir da proposta
-
-- A opção "Não refinar" vem selecionada por padrão e pesquisa por cliente ou número, como sempre funcionou.
-- O campo escolhido fica salvo para os próximos acessos.
-- Nessas duas telas e também na de notas fiscais, trocar o campo de refinamento não dispara mais a listagem automaticamente. A busca acontece quando você pressiona Enter, clica na lupa ou altera um dos filtros da tela.
+<Frame>
+  <img src="/images/changelog/2026-08/buscador-notas-justificativa.png" alt="Campo de justificativa na manifestação de desconhecimento" />
+</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Notas Fiscais · DANFE e Pedidos" tags={["Notas Fiscais", "Vendas"]}>
@@ -312,81 +295,6 @@ Quando a geração de uma guia GNRE falha, o sistema mostrava a mensagem crua do
 </Frame>
 </Update>
 
-<Update label="Agosto de 2026" description="Notas Fiscais · Buscador" tags={["Notas Fiscais"]}>
-## Buscador de notas fiscais ganha detalhes de itens, filtros e opção de ignorar notas
-
-O Buscador de notas fiscais foi aprimorado com mais informações por nota e novos recursos de gerenciamento.
-
-- O modal de detalhes agora exibe o cabeçalho completo (situação de manifestação e valor total) e a tabela de itens com paginação, quando a Sefaz envia essas informações.
-- Filtros de importação permitem ver apenas notas da Sefaz, apenas as já importadas ou todas.
-- É possível ignorar uma nota da listagem e reexibi-la quando quiser, sem perder o registro.
-- O botão "Alterar manifestação" abre diretamente o fluxo para mudar a situação da nota.
-- Na manifestação de desconhecimento, há agora um campo de justificativa (opcional).
-- O CNPJ do remetente aparece formatado ao passar o cursor sobre o nome.
-
-<Frame>
-  <img src="/images/changelog/2026-08/buscador-notas-detalhes.png" alt="Modal com detalhes da nota fiscal no Buscador" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/buscador-notas-paginacao.png" alt="Paginação de itens no modal de detalhes do Buscador" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/buscador-notas-ignorar.png" alt="Opção de ignorar uma nota na listagem do Buscador" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/buscador-notas-reexibir.png" alt="Opção de reexibir uma nota ignorada no Buscador" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/buscador-notas-justificativa.png" alt="Campo de justificativa na manifestação de desconhecimento" />
-</Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Notas Fiscais"]}>
-## Ícone de nota fiscal cancelada agora aparece com risco na listagem de pedidos
-
-Quando a NF-e ou NFC-e vinculada a um pedido estava cancelada, o ícone da nota (N / NC) continuava igual ao de nota emitida normalmente, obrigando você a abrir a nota para descobrir a situação. Agora, quando a nota está cancelada, o ícone aparece com um risco — tanto na listagem quanto dentro do pedido.
-
-<Frame>
-  <img src="/images/changelog/2026-08/pedido-nfe-cancelada.png" alt="Pedido com NF-e cancelada mostrando ícone com risco" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/pedido-nfce-cancelada.png" alt="Pedido com NFC-e cancelada mostrando ícone com risco" />
-</Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Notas Fiscais"]}>
-## Validação impede salvar pedido, proposta ou nota com vendedor inativo ou excluído
-
-Ao salvar um pedido de venda, proposta comercial ou nota fiscal — nova ou clonada — com um vendedor associado que não existe mais ou que está inativo, o sistema exibe uma mensagem informando que o vendedor precisa ser removido ou substituído antes de continuar.
-
-<Frame>
-  <img src="/images/changelog/2026-08/vendedor-inativo-validacao.png" alt="Mensagem de validação de vendedor inativo ao salvar pedido" />
-</Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
-## Notas de débito e crédito seguem novas regras de tributos da Reforma Tributária
-
-Com a Nota Técnica nº 2025.002 (versão 1.51), as regras para emissão de notas de débito e de crédito foram atualizadas. O sistema já segue o novo formato.
-
-Para notas de crédito dos tipos "Retorno por recusa total ou parcial na entrega", "Redução de valores" e "Retorno por não localização do destinatário", e para notas de débito do tipo "Perda em estoque", os impostos anteriores à reforma (ICMS, IPI, PIS, COFINS e outros) continuam sendo enviados normalmente. Ao selecionar um desses tipos em uma nota fiscal, um alerta é exibido na área de tributos para confirmar a configuração.
-
-<Frame>
-  <img src="/images/changelog/2026-08/rt-debito-credito-alerta.png" alt="Alerta de tributos pré-reforma em nota de débito ou crédito" />
-</Frame>
-</Update>
-
-<Update label="Agosto de 2026" description="Notas Fiscais · NFC-e" tags={["Notas Fiscais"]}>
-## URL de autenticação do QRCode do Rio de Janeiro atualizada
-
-A URL utilizada para obtenção e autenticação de QRCode em notas fiscais emitidas no estado do Rio de Janeiro foi atualizada conforme comunicado oficial da Sefaz-RJ. A mudança garante que a validação do QRCode continue funcionando corretamente nos ambientes de produção e homologação.
-</Update>
-
 <Update label="Agosto de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
 ## Agente de Rejeições mostra qual item da nota foi rejeitado pela Sefaz
 
@@ -415,6 +323,22 @@ Quando uma NF-e apresenta erro de formato antes de ser enviada à Sefaz, a mensa
 </Frame>
 </Update>
 
+<Update label="Agosto de 2026" description="Notas Fiscais · NFC-e" tags={["Notas Fiscais"]}>
+## URL de autenticação do QRCode do Rio de Janeiro atualizada
+
+A URL utilizada para obtenção e autenticação de QRCode em notas fiscais emitidas no estado do Rio de Janeiro foi atualizada conforme comunicado oficial da Sefaz-RJ. A mudança garante que a validação do QRCode continue funcionando corretamente nos ambientes de produção e homologação.
+</Update>
+
+<Update label="Agosto de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Emissão de NFS-e corrigida para municípios com nome muito longo
+
+Quando o município do tomador tinha nome com mais de 30 caracteres — como Vila Bela da Santíssima Trindade (MT) e São Francisco de Assis do Piauí (PI) —, a nota podia ser enviada com dados incorretos e rejeitada. Agora o sistema identifica corretamente esses municípios e bloqueia a emissão com uma mensagem clara caso o município do tomador não seja reconhecido, em vez de enviar a nota com erro.
+
+- Impressão, consulta de situação e cancelamento de notas já emitidas continuam funcionando normalmente.
+- Tomador no exterior continua tratado como antes.
+- Dados já gravados em notas anteriores não foram alterados. A correção vale para os próximos registros.
+</Update>
+
 <Update label="Agosto de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
 ## NFS-e emitida pelo e-Notas passa a seguir o novo formato de PIS, COFINS e CSLL retidos
 
@@ -423,6 +347,36 @@ Com a publicação da Nota Técnica SE/CGNFS-e nº 007, a forma de informar os v
 - Os valores informativos de PIS (0,65%) e COFINS (3%) são enviados em campos específicos sem afetar o valor líquido. Se você desabilitar o cálculo automático de impostos, pode ajustar esses percentuais conforme o regime tributário.
 - Os valores retidos de PIS, COFINS e CSLL são informados em um único grupo de Contribuições Sociais Retidas, com alíquota total de 4,65%. A retenção é aplicada conforme o valor configurado nos parâmetros.
 - O nome do campo "Percentual contribuições sociais" foi atualizado para "Percentual retenção - Contribuições Sociais".
+</Update>
+
+<Update label="Agosto de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Novo modal para gerenciar eventos da Reforma Tributária nas notas fiscais
+
+O registro de eventos da Reforma Tributária ganhou um modal próprio, acessível pelo menu de contexto de cada nota ou pelo novo indicador na listagem. Antes, era possível apenas registrar um evento, sem ver o histórico do que já havia sido enviado nem corrigir um registro com erro.
+
+Com o novo modal, é possível:
+- Ver os dados da nota (número, valor e remetente) no cabeçalho, junto das abas de registro e histórico.
+- Consultar o histórico de eventos com data, hora, protocolo e situação de cada um.
+- Identificar eventos pendentes, rejeitados e cancelados, com o motivo informado pela Sefaz.
+- Cancelar um evento já autorizado diretamente pelo modal.
+- Ver um aviso antes de registrar um evento que já existe para aquela nota.
+- Identificar na listagem de notas de entrada quais notas têm eventos registrados e abrir o modal diretamente pelo indicador.
+
+<Frame>
+  <img src="/images/changelog/2026-08/rt-eventos-depois.gif" alt="Novo modal de gerenciamento de eventos da Reforma Tributária" />
+</Frame>
+</Update>
+
+<Update label="Agosto de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
+## Notas de débito e crédito seguem novas regras de tributos da Reforma Tributária
+
+Com a Nota Técnica nº 2025.002 (versão 1.51), as regras para emissão de notas de débito e de crédito foram atualizadas. O sistema já segue o novo formato.
+
+Para notas de crédito dos tipos "Retorno por recusa total ou parcial na entrega", "Redução de valores" e "Retorno por não localização do destinatário", e para notas de débito do tipo "Perda em estoque", os impostos anteriores à reforma (ICMS, IPI, PIS, COFINS e outros) continuam sendo enviados normalmente. Ao selecionar um desses tipos em uma nota fiscal, um alerta é exibido na área de tributos para confirmar a configuração.
+
+<Frame>
+  <img src="/images/changelog/2026-08/rt-debito-credito-alerta.png" alt="Alerta de tributos pré-reforma em nota de débito ou crédito" />
+</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Notas Fiscais · Reforma Tributária" tags={["Notas Fiscais"]}>
@@ -447,6 +401,52 @@ Agora é possível registrar eventos de "Perecimento, perda, roubo ou furto no t
 ## Naturezas de operação criadas no onboarding consideram segmento e regime tributário
 
 Ao concluir o onboarding fiscal, o sistema agora gera naturezas de operação especializadas com base no segmento e no regime tributário da empresa. Antes, as naturezas criadas automaticamente eram genéricas e precisavam ser ajustadas manualmente.
+</Update>
+
+<Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas"]}>
+## Seletor de campo para refinar a busca em pedidos de venda e propostas comerciais
+
+As listagens de pedidos de venda e de propostas comerciais ganharam um seletor ao lado da caixa de pesquisa. Com ele, você escolhe em qual campo a busca deve procurar, em vez de pesquisar em todos os campos ao mesmo tempo.
+
+Nos pedidos de venda, os campos disponíveis são:
+- Cliente
+- Número do pedido
+- Pedido E-commerce
+- Nota fiscal
+- Cupom fiscal (apenas para empresas com esse módulo contratado)
+
+Nas propostas comerciais, os campos disponíveis são:
+- Cliente
+- Número da proposta
+- Número da venda gerada a partir da proposta
+
+- A opção "Não refinar" vem selecionada por padrão e pesquisa por cliente ou número, como sempre funcionou.
+- O campo escolhido fica salvo para os próximos acessos.
+- Nessas duas telas e também na de notas fiscais, trocar o campo de refinamento não dispara mais a listagem automaticamente. A busca acontece quando você pressiona Enter, clica na lupa ou altera um dos filtros da tela.
+</Update>
+
+<Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Notas Fiscais"]}>
+## Ícone de nota fiscal cancelada agora aparece com risco na listagem de pedidos
+
+Quando a NF-e ou NFC-e vinculada a um pedido estava cancelada, o ícone da nota (N / NC) continuava igual ao de nota emitida normalmente, obrigando você a abrir a nota para descobrir a situação. Agora, quando a nota está cancelada, o ícone aparece com um risco — tanto na listagem quanto dentro do pedido.
+
+<Frame>
+  <img src="/images/changelog/2026-08/pedido-nfe-cancelada.png" alt="Pedido com NF-e cancelada mostrando ícone com risco" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-08/pedido-nfce-cancelada.png" alt="Pedido com NFC-e cancelada mostrando ícone com risco" />
+</Frame>
+</Update>
+
+<Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Notas Fiscais"]}>
+## Validação impede salvar pedido, proposta ou nota com vendedor inativo ou excluído
+
+Ao salvar um pedido de venda, proposta comercial ou nota fiscal — nova ou clonada — com um vendedor associado que não existe mais ou que está inativo, o sistema exibe uma mensagem informando que o vendedor precisa ser removido ou substituído antes de continuar.
+
+<Frame>
+  <img src="/images/changelog/2026-08/vendedor-inativo-validacao.png" alt="Mensagem de validação de vendedor inativo ao salvar pedido" />
+</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Vendas · Pedidos de Venda" tags={["Vendas", "Performance"]}>

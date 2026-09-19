@@ -54,16 +54,6 @@ Agora é possível configurar o vencimento da GNRE para cair sempre no próximo 
 Ao salvar uma nota fiscal com um número que já está em uso na mesma série, o sistema passa a atribuir automaticamente o próximo número disponível e avisa você sobre a alteração. Antes, a operação era bloqueada com mensagem de erro.
 </Update>
 
-<Update label="17 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
-## Regras fiscais não se duplicam mais ao salvar uma natureza de operação
-
-Naturezas de operação com muitas regras fiscais podiam ficar com regras duplicadas, o que exigia restaurar um backup para corrigir. Isso foi corrigido.
-
-- Se algo falhar durante o salvamento, a natureza de operação volta ao estado anterior, sem perda parcial de dados.
-- Dois salvamentos simultâneos da mesma natureza não são mais permitidos: se você tentar salvar enquanto outro salvamento está em andamento, verá uma mensagem avisando.
-- Ao excluir várias naturezas de uma vez, o processo continua mesmo se uma falhar, e as que não foram excluídas aparecem na mensagem final.
-</Update>
-
 <Update label="17 de Setembro de 2026" description="Notas Fiscais · Exportação de Planilha" tags={["Notas Fiscais"]}>
 ## Exportação de planilha de notas fiscais com mais linhas e acompanhamento de progresso
 
@@ -72,6 +62,16 @@ A exportação de planilha de notas fiscais agora acontece em segundo plano, com
 - Formatos Excel e CSV suportam até 200.000 linhas. O formato Excel 97-2003 (.xls) mantém o limite de 5.000 linhas.
 - O limite conta por linha do arquivo: sem itens detalhados, cada linha é uma nota; com itens, cada linha é um item.
 - Formatos que não estiverem disponíveis aparecem desabilitados na lista, com explicação do motivo.
+</Update>
+
+<Update label="17 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
+## Regras fiscais não se duplicam mais ao salvar uma natureza de operação
+
+Naturezas de operação com muitas regras fiscais podiam ficar com regras duplicadas, o que exigia restaurar um backup para corrigir. Isso foi corrigido.
+
+- Se algo falhar durante o salvamento, a natureza de operação volta ao estado anterior, sem perda parcial de dados.
+- Dois salvamentos simultâneos da mesma natureza não são mais permitidos: se você tentar salvar enquanto outro salvamento está em andamento, verá uma mensagem avisando.
+- Ao excluir várias naturezas de uma vez, o processo continua mesmo se uma falhar, e as que não foram excluídas aparecem na mensagem final.
 </Update>
 
 <Update label="17 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
@@ -92,6 +92,20 @@ Quando a retenção de IR estava desativada nas configurações da NFS-e, o valo
 O parâmetro foi renomeado para **Reter IR na NFS-e**, com a descrição: "Define se a retenção de IR deve ser considerada na emissão da NFS-e."
 </Update>
 
+<Update label="9 de Setembro de 2026" description="Financeiro · Configurações" tags={["Financeiro"]}>
+## Configurações do financeiro reorganizadas e marcadores unificados em uma só tela
+
+As configurações do módulo financeiro foram reorganizadas para ficarem mais fáceis de encontrar, com a remoção de opções que não estavam mais em uso. Além disso, agora é possível criar um marcador em uma área e replicá-lo para outras — por exemplo, um marcador criado no Caixa pode ser aplicado também em Contas a Receber e Contas a Pagar.
+
+<Frame caption="Reorganização das configurações do financeiro">
+  ![Reorganização das configurações do financeiro](/images/changelog/2026-09/financeiro-configuracoes.png)
+</Frame>
+
+<Frame caption="Unificação de marcadores">
+  <video controls src="/assets/changelog/2026-09/financeiro-unificacao-marcadores.webm" />
+</Frame>
+</Update>
+
 <Update label="9 de Setembro de 2026" description="Financeiro · Maquininhas de Cartão" tags={["Financeiro"]}>
 ## Stone agora aparece na página central de Maquininhas de Cartão
 
@@ -110,20 +124,6 @@ A maquininha Stone passou a ser configurada diretamente pela página de Maquinin
 
 <Frame caption="Configuração do gateway Stone">
   ![Configuração do gateway Stone](/images/changelog/2026-09/stone-maquininha.png)
-</Frame>
-</Update>
-
-<Update label="9 de Setembro de 2026" description="Financeiro · Configurações" tags={["Financeiro"]}>
-## Configurações do financeiro reorganizadas e marcadores unificados em uma só tela
-
-As configurações do módulo financeiro foram reorganizadas para ficarem mais fáceis de encontrar, com a remoção de opções que não estavam mais em uso. Além disso, agora é possível criar um marcador em uma área e replicá-lo para outras — por exemplo, um marcador criado no Caixa pode ser aplicado também em Contas a Receber e Contas a Pagar.
-
-<Frame caption="Reorganização das configurações do financeiro">
-  ![Reorganização das configurações do financeiro](/images/changelog/2026-09/financeiro-configuracoes.png)
-</Frame>
-
-<Frame caption="Unificação de marcadores">
-  <video controls src="/assets/changelog/2026-09/financeiro-unificacao-marcadores.webm" />
 </Frame>
 </Update>
 
