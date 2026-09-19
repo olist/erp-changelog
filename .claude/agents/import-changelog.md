@@ -145,8 +145,19 @@ Parágrafo direto com o que mudou e por quê importa para você.
 1. Derive o mês e ano da data de cada item
 2. Abra `changelog/YYYY-MM/index.mdx` (ex: `changelog/2026-09/index.mdx`)
 3. Se o arquivo não existir, avise o usuário e pergunte se deve criá-lo antes de prosseguir
-4. Insira os novos blocos `<Update>` em **ordem cronológica decrescente** (datas mais recentes primeiro dentro do arquivo)
+4. Insira os novos blocos `<Update>` respeitando a regra de ordenação abaixo
 5. Itens com a mesma data são inseridos juntos, agrupados por módulo
+
+### Regra de ordenação dos blocos
+
+**Arquivo sem data específica** (label contém apenas mês e ano — ex: `"Agosto de 2026"`):
+- Ordene todos os blocos **alfabeticamente pelo primeiro elemento de `tags`** (A→Z, case-insensitive)
+- Empate no primeiro tag: ordene pelo campo `description` (A→Z, case-insensitive)
+
+**Arquivo com data específica** (label contém dia, mês e ano — ex: `"18 de Setembro de 2026"`):
+- Ordene por **data decrescente** (mais recente primeiro)
+- Empate na data: ordene **alfabeticamente pelo primeiro elemento de `tags`** (A→Z, case-insensitive)
+- Empate no primeiro tag: ordene pelo campo `description` (A→Z, case-insensitive)
 
 ---
 

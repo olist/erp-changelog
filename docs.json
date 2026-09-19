@@ -1,8 +1,8 @@
 {
     "$schema": "https://mintlify.com/docs.json",
     "theme": "mint",
-    "name": "ERP Olist Changelog",
-    "description": "Histórico de atualizações do ERP da Olist.",
+    "name": "Changelog Sistema ERP da Olist",
+    "description": "Histórico de atualizações do Sistema ERP da Olist.",
     "colors": {
         "primary": "#0050dc",
         "light": "#d4e9ff",
@@ -33,7 +33,7 @@
         "links": [],
         "primary": {
             "type": "button",
-            "label": "ERP da Olist",
+            "label": "Sistema ERP da Olist",
             "href": "https://erp.olist.com"
         }
     },

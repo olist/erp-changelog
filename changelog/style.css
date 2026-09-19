@@ -23,7 +23,8 @@
 }
 
 /* Spacing between consecutive Frame blocks */
-.update-container figure {
+.update-container figure,
+.update-container .frame {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
