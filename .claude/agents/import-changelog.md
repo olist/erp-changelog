@@ -17,13 +17,27 @@ Leia o arquivo indicado pelo usuário. Identifique cada item separado por `---` 
 
 - **Data de produção:** procure o campo "Em produção desde:" e use essa data. Se ausente, use "Previsão de lançamento:". Se nenhum campo estiver presente, use a data de hoje.
 - **Tipo de mudança:** nova funcionalidade, correção de bug ou remoção de funcionalidade.
-- **Links de imagem e vídeo:** preserve exatamente como estão no arquivo original — o usuário fará a troca pelo caminho local posteriormente.
+- **Links de imagem e vídeo:** colete todas as URLs de imagem (`.png`, `.jpg`, `.gif`, `.webp`) e vídeo (`.webm`, `.mp4`) encontradas no item. Elas serão baixadas e substituídas no Passo 2b.
 
 Ignore qualquer seção interna como: "O que o suporte deve orientar", "Como orientar o cliente", "Contexto", "Observações importantes para suporte", "Pontos de atenção para suporte".
 
 ---
 
-## Passo 2 — Reescrever cada item
+## Passo 2a — Baixar imagens e vídeos localmente
+
+Para cada URL de imagem ou vídeo coletada no Passo 1:
+
+1. Derive o mês/ano da data do item para montar o caminho de destino.
+2. Crie os diretórios se não existirem:
+   - Imagens: `images/changelog/YYYY-MM/`
+   - Vídeos: `assets/changelog/YYYY-MM/`
+3. Gere um nome de arquivo descritivo em kebab-case a partir do contexto do item (ex: `stone-abertura-chamado.webm`, `gnre-vencimento.png`). Nunca use o nome original da URL.
+4. Baixe o arquivo com `curl -sL "<url>" -o <caminho-destino>`.
+5. Guarde o mapeamento `URL original → caminho local` para usar no Passo 4.
+
+---
+
+## Passo 2b — Reescrever cada item
 
 Reescreva o conteúdo de cada item seguindo as regras abaixo.
 
@@ -111,7 +125,18 @@ Parágrafo direto com o que mudou e por quê importa para você.
 - `label`: por extenso em português — ex: `"18 de Setembro de 2026"`
 - `description`: módulo principal seguido da sub-área específica, no formato `"Macro · Sub-área"` — ex: `"Notas Fiscais · GNRE"`, `"Financeiro · Contas a Pagar"`, `"Integrações · Amazon"`. Quando o item tocar mais de um módulo principal, use o mais relevante para o usuário.
 - `tags`: array com as tags dos módulos — ex: `{["Notas Fiscais"]}` ou `{["Financeiro", "Conta Digital"]}`
-- Preserve links de imagem e vídeo exatamente como estão no arquivo de origem
+- Substitua cada URL de imagem pelo componente `<Frame>` com o caminho local:
+  ```mdx
+  <Frame>
+    <img src="/images/changelog/YYYY-MM/nome-descritivo.png" alt="Descrição da imagem" />
+  </Frame>
+  ```
+- Substitua cada URL de vídeo pelo componente `<Frame>` com tag `<video>`:
+  ```mdx
+  <Frame>
+    <video controls src="/assets/changelog/YYYY-MM/nome-descritivo.webm" title="Descrição do vídeo" />
+  </Frame>
+  ```
 
 ---
 
@@ -130,5 +155,5 @@ Parágrafo direto com o que mudou e por quê importa para você.
 - Cada item do arquivo de entrada virou um bloco `<Update>` bem formado
 - O conteúdo está em linguagem simples, voltada ao usuário final
 - Seções internas de suporte foram removidas
-- Links de imagem e vídeo foram preservados
+- Imagens e vídeos foram baixados localmente (`images/` e `assets/`) e referenciados com o componente `<Frame>`
 - Os blocos foram inseridos no `index.mdx` do mês correto, em ordem decrescente de data
