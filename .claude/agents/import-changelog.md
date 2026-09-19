@@ -96,7 +96,7 @@ Escolha a tag correta entre os módulos abaixo. Um item pode ter mais de uma tag
 ## Passo 4 — Montar o bloco `<Update>`
 
 ```mdx
-<Update label="D de Mês de YYYY" description="<módulo(s)>" tags={["<Tag1>", "<Tag2>"]}>
+<Update label="D de Mês de YYYY" description="<Módulo · Sub-área>" tags={["<Tag1>", "<Tag2>"]}>
 ## Título resumindo a mudança em uma frase
 
 Parágrafo direto com o que mudou e por quê importa para você.
@@ -109,7 +109,7 @@ Parágrafo direto com o que mudou e por quê importa para você.
 ```
 
 - `label`: por extenso em português — ex: `"18 de Setembro de 2026"`
-- `description`: nome do(s) módulo(s) afetados — ex: `"Notas Fiscais"` ou `"Financeiro e Conta Digital"`
+- `description`: módulo principal seguido da sub-área específica, no formato `"Macro · Sub-área"` — ex: `"Notas Fiscais · GNRE"`, `"Financeiro · Contas a Pagar"`, `"Integrações · Amazon"`. Quando o item tocar mais de um módulo principal, use o mais relevante para o usuário.
 - `tags`: array com as tags dos módulos — ex: `{["Notas Fiscais"]}` ou `{["Financeiro", "Conta Digital"]}`
 - Preserve links de imagem e vídeo exatamente como estão no arquivo de origem
 
