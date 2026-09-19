@@ -20,10 +20,6 @@ Também foi corrigida a validação do campo **ID da conta** nas configurações
 </Frame>
 
 <Frame>
-  <video controls src="/assets/changelog/2026-01/stone-pdv-polling-antes.mp4" title="Verificação de pagamento continuava rodando mesmo após conclusão" />
-</Frame>
-
-<Frame>
   <img src="/images/changelog/2026-01/stone-pdv-account-id-exemplos.png" alt="Exemplos de preenchimento do campo ID da conta" />
 </Frame>
 
@@ -42,14 +38,6 @@ Também foi corrigida a validação do campo **ID da conta** nas configurações
 Ao adicionar cartão de crédito como forma de pagamento no PDV, o sistema agora seleciona automaticamente a opção à vista (1x), sem que você precise escolher manualmente. Antes, essa seleção automática acontecia apenas para quem usava a Conta Digital.
 
 Junto com isso, foi corrigido um erro em que desativar a opção **repassar taxas para o cliente** não surtia efeito na primeira vez — o sistema continuava calculando o valor com juros. Agora o recálculo é feito corretamente assim que você desativa a função.
-
-<Frame>
-  <img src="/images/changelog/2026-01/pdv-cartao-credito-parcela-branco.png" alt="Campo de parcela em branco antes da correção" />
-</Frame>
-
-<Frame>
-  <video controls src="/assets/changelog/2026-01/pdv-cartao-credito-bug-repasse-taxas.mp4" title="Comportamento antes da correção: desativar repasse de taxas não funcionava na primeira vez" />
-</Frame>
 
 <Frame>
   <video controls src="/assets/changelog/2026-01/pdv-cartao-credito-parcela-automatica.mp4" title="Comportamento após a correção: parcela selecionada automaticamente e recálculo correto ao desativar repasse" />
@@ -234,10 +222,6 @@ Ao gerar o relatório de contas a receber agrupado por cliente e data de vencime
 </Frame>
 
 <Frame>
-  <img src="/images/changelog/2026-01/contas-receber-problema.png" alt="Totais desalinhados antes da correção" />
-</Frame>
-
-<Frame>
   <img src="/images/changelog/2026-01/contas-receber-resolucao.png" alt="Totais alinhados corretamente após a correção" />
 </Frame>
 </Update>
@@ -246,10 +230,6 @@ Ao gerar o relatório de contas a receber agrupado por cliente e data de vencime
 ## Ocorrências de pedidos agora identificam corretamente quando o usuário foi excluído do sistema
 
 Quando o usuário responsável por importar um pedido era excluído do sistema, as ocorrências desse pedido passavam a exibir "automático" no campo de usuário — o que causava confusão. Agora, nesses casos, o sistema exibe a indicação **usuário não encontrado**, tornando mais claro que o usuário original não existe mais.
-
-<Frame>
-  <img src="/images/changelog/2026-01/ocorrencias-usuario-excluido-antes.png" alt="Ocorrência exibindo usuário como automático antes da correção" />
-</Frame>
 
 <Frame>
   <img src="/images/changelog/2026-01/ocorrencias-usuario-excluido-depois.png" alt="Ocorrência exibindo usuário não encontrado após a correção" />
