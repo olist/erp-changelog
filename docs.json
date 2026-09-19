@@ -26,6 +26,13 @@
                     "changelog/2026-02/index",
                     "changelog/2026-01/index"
                 ]
+            },
+            {
+                "group": "2025",
+                "pages": [
+                    "changelog/2025-12/index",
+                    "changelog/2025-11/index"
+                ]
             }
         ]
     },

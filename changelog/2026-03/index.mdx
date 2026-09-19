@@ -36,6 +36,31 @@ Ao criar um pedido via API V2, agora é possível incluir o CPF do consumidor fi
 Ao consultar pedidos pela API V3, o campo que indica quem paga o frete não estava sendo retornado. O dado existia internamente, mas não era incluído na resposta. Agora ele é retornado corretamente em todas as consultas de pedidos.
 </Update>
 
+<Update label="Março de 2026" description="Crédito · Antecipação Imediata" tags={["Crédito", "Vendas"]}>
+## Antecipação Imediata: antecipe recebíveis diretamente ao criar um pedido de venda
+
+A Antecipação Imediata permite marcar uma venda para antecipação já no momento da criação do pedido. A opção é exibida automaticamente quando o pedido cumpre os requisitos:
+
+- Forma de recebimento: Boleto, Duplicata Mercantil ou Personalizada (com ao menos uma parcela nesse formato)
+- Uma ou mais parcelas geradas
+- Prazo mínimo de 9 dias para recebimento
+- Valor total acima de R$ 100,00
+
+As vendas marcadas ficam na tela de **Antecipações Imediatas** com status de acompanhamento. Quando a nota fiscal é emitida e aprovada, você seleciona os itens que deseja antecipar e parte direto para a simulação no módulo de Crédito.
+
+<Frame>
+  <img src="/images/changelog/2026-03/credito-antecipacao-imediata-venda.gif" alt="Seleção de vendas para antecipação imediata no pedido" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-03/credito-antecipacao-imediata-tela.jpg" alt="Tela de antecipação imediata com as vendas listadas e seus status" />
+</Frame>
+
+<Frame>
+  <img src="/images/changelog/2026-03/credito-antecipacao-imediata-simular.png" alt="Opção de simular o carrinho completo direto no módulo de Crédito" />
+</Frame>
+</Update>
+
 <Update label="Março de 2026" description="Estoque · Inventário" tags={["Estoque"]}>
 ## Cálculo do saldo de estoque considerando todos os depósitos corrigido
 
