@@ -21,10 +21,6 @@ Valores de quantidade com casas decimais na Ordem de Compra não eram formatados
 
 Agora é possível aplicar taxas de cartão personalizadas para pagamentos realizados via Conta Digital. Ao simular um pagamento, o sistema identifica a conta associada e aplica automaticamente as taxas configuradas para ela, sem necessidade de ajuste manual a cada transação.
 
-<Frame>
-  <img src="/images/changelog/2026-04/conta-digital-simulacao-taxas.png" alt="Modal de pagamento com Conta Digital com taxas personalizadas" />
-</Frame>
-
 **Ponto de atenção:** A personalização de taxas é configurada de forma pontual para cada conta. Caso você não tenha uma configuração específica, as taxas padrão continuam sendo aplicadas.
 </Update>
 
@@ -92,13 +88,6 @@ A listagem de antecipações passou a ter duas opções de filtro de período: p
 
 Quando há documentos pendentes ou assinatura do termo do fundo em aberto, banners de aviso passam a aparecer nas listagens de Pedidos de Venda, Notas Fiscais e Contas a Pagar/Receber. O topo das páginas de Crédito também exibe um carrossel de avisos para organizar as notificações.
 
-<Frame>
-  <img src="/images/changelog/2026-04/credito-pendencia-documentos-banner.png" alt="Banner de aviso para envio de documentos" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-04/credito-pendencia-assinatura-banner.png" alt="Banner de aviso para assinatura da documentação do fundo" />
-</Frame>
 </Update>
 
 <Update label="Abril de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
@@ -110,9 +99,6 @@ Os motivos pelos quais uma nota fiscal não está disponível para antecipação
 - "Parcelas inválidas: vencimento da parcela deve ser entre 6 e 190 dias"
 - "Parcelas inválidas: valor mínimo da parcela deve ser R$ 100,00"
 
-<Frame>
-  <img src="/images/changelog/2026-04/credito-mensagens-notas-nao-elegiveis.png" alt="Badge de nota inválida com mensagem detalhada" />
-</Frame>
 </Update>
 
 <Update label="Abril de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
@@ -206,7 +192,7 @@ Ao gerar uma guia de pagamento no módulo GNRE, o sistema cria automaticamente u
 <Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
 ## Novo campo de informações ao fisco (infAdFisco) disponível na edição de itens da NF-e
 
-A Nota Técnica 012/2026 exige o preenchimento de informações adicionais ao fisco no registro C110 do EFD Contribuições. Para atender a essa exigência, agora é possível preencher manualmente essas informações diretamente na edição de cada item da nota fiscal. Nas naturezas de operação, você também pode configurar um valor padrão por imposto, que será preenchido automaticamente nos itens. As informações de cada imposto são concatenadas e enviadas na respectiva campo do XML.
+A Nota Técnica 012/2026 exige o preenchimento de informações adicionais ao fisco no registro C110 do EFD Contribuições. Para atender a essa exigência, agora é possível preencher manualmente essas informações diretamente na edição de cada item da nota fiscal. Nas naturezas de operação, você também pode configurar um valor padrão por imposto, que será preenchido automaticamente nos itens. As informações de cada imposto são concatenadas e enviadas no respectivo campo do XML.
 </Update>
 
 <Update label="Abril de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
@@ -291,7 +277,7 @@ Ao importar um XML de nota de entrada com fornecedor estrangeiro sem identificad
 <Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
 ## Código Indicador de Operação (cIndOp) agora tem seletor com busca nos tributos IBS/CBS da NFS-e
 
-Ao configurar os tributos IBS/CBS para emissão de NFS-e no padrão nacional, você não precisa mais digitar manualmente o Código Indicador de Operação (cIndOp) consultando tabelas externas. Em Configurações > aba Tributação (RTC) > Configurações gerais para IBS/CBS da NFSe, o campo conta com um seletor com busca que lista os códigos oficiais. Para cada código você visualiza o número da operação (6 dígitos), o nome e o local do fornecimento do serviço. Os códigos são atualizados automaticamente pelo sistema com sincronização diária junto à fonte oficial do Ambiente Nacional.
+Ao configurar os tributos IBS/CBS para emissão de NFS-e no padrão nacional, você não precisa mais digitar manualmente o Código Indicador de Operação (cIndOp) consultando tabelas externas. Em Configurações → aba Tributação (RTC) → Configurações gerais para IBS/CBS da NFSe, o campo conta com um seletor com busca que lista os códigos oficiais. Para cada código você visualiza o número da operação (6 dígitos), o nome e o local do fornecimento do serviço. Os códigos são atualizados automaticamente pelo sistema com sincronização diária junto à fonte oficial do Ambiente Nacional.
 </Update>
 
 <Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
@@ -325,9 +311,6 @@ Agora é possível exportar o arquivo XML de NFS-e autorizadas individualmente o
 
 Antes, ao enviar um lote de NFS-e, o processamento parava no primeiro erro e as demais notas ficavam pendentes. Agora, o lote é processado por completo, independentemente de erros individuais. Ao final, um resumo exibe quantas notas foram autorizadas, ficaram em processamento e foram rejeitadas.
 
-<Frame>
-  <img src="/images/changelog/2026-04/nfse-lote-resultado-envio-pendentes.png" alt="Resumo do resultado do envio em lote de NFS-e" />
-</Frame>
 </Update>
 
 <Update label="Abril de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>

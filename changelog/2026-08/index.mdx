@@ -44,34 +44,18 @@ Agora é possível assinar um mandato eletrônico único que autoriza a contrata
 A contratação de Capital de Giro passou a funcionar para quem ainda não tem cadastro habilitado no fundo. Se você incluir Capital de Giro na sua primeira operação, o sistema apresenta etapas para envio dos documentos da empresa e dos sócios. Os valores são divididos em dois prazos: "Receber ainda hoje" (recebíveis de cartão/boleto) e "Em até 7 dias" (Capital de Giro, referente ao período de análise documental).
 
 Para quem já realizou a primeira operação, um banner e um modal com slider permitem simular valores e quantidade de parcelas em tempo real e contratar o Capital de Giro diretamente, sem precisar passar pela seleção de recebíveis.
-
-<Frame>
-  <video controls src="/assets/changelog/2026-08/credito-capital-giro-v2-primeira-operacao.webm" title="Primeira operação com Capital de Giro incluindo envio de documentos" />
-</Frame>
-
-<Frame>
-  <video controls src="/assets/changelog/2026-08/credito-capital-giro-v2-apenas-capital.webm" title="Operação exclusiva de Capital de Giro" />
-</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Crédito · Capital de Giro" tags={["Crédito"]}>
 ## Simulação do Capital de Giro atualiza os valores em tempo real
 
 A tela de simulação do Capital de Giro passou a exibir o cálculo do valor e das parcelas de forma dinâmica conforme você ajusta o slider. Antes era necessário aguardar o fim da interação para ver os resultados atualizados.
-
-<Frame>
-  <video controls src="/assets/changelog/2026-08/credito-capital-giro-simulacao.webm" title="Simulação em tempo real do Capital de Giro" />
-</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Crédito · Simulação" tags={["Crédito"]}>
 ## Botão para solicitar avaliação manual do carrinho quando a simulação apresenta erro
 
 Quando a simulação de antecipação apresenta um erro que impede o avanço, agora aparece um botão para solicitar a avaliação do carrinho manualmente, sem precisar acionar o suporte.
-
-<Frame>
-  <video controls src="/assets/changelog/2026-08/credito-avaliacao-carrinho.webm" title="Solicitação de avaliação do carrinho em caso de erro" />
-</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Estoque · Multiempresa" tags={["Estoque", "Produtos"]}>
@@ -150,10 +134,6 @@ Quando uma conta a receber com boleto da Conta Digital é incluída em uma opera
 - Se você tentar excluir uma venda ou nota vinculada a essa conta, o sistema bloqueia a ação e exibe um aviso.
 
 <Frame>
-  <img src="/images/changelog/2026-08/financeiro-reuso-boleto-comunicacao.png" alt="Aviso exibido na criação da operação de antecipação" />
-</Frame>
-
-<Frame>
   <img src="/images/changelog/2026-08/financeiro-reuso-boleto-conta-receber.png" alt="Conta a receber com boleto em reuso — sem ações disponíveis" />
 </Frame>
 
@@ -207,7 +187,7 @@ Quando você excluía todos os seus anúncios no hub, alguns podiam permanecer v
 <Update label="Agosto de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
 ## Atualização em massa de anúncios existentes no Mercado Livre e Temu pelo Hub
 
-Ao usar o Mercado Livre ou Temu via Hub da Olist no popup "Enviar para o e-commerce", agora é possível atualizar em massa anúncios já existentes — título, descrição e imagens — além de criar novos. Antes, apenas a criação de novos anúncios era disponível. Antes de confirmar, você vê um resumo de quantos anúncios existentes serão afetados pela atualização.
+Ao usar o Mercado Livre ou Temu via Hub da Olist no popup "Enviar para o e-commerce", agora é possível atualizar em massa anúncios já existentes — título, descrição e imagens — além de criar novos. Antes, apenas a criação de novos anúncios estava disponível. Antes de confirmar, você vê um resumo de quantos anúncios existentes serão afetados pela atualização.
 </Update>
 
 <Update label="Agosto de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
@@ -224,9 +204,6 @@ Ao imprimir etiquetas de pedidos da Shopee que usam logísticas diferentes, o si
 - O fluxo de trabalho não muda: você seleciona os pedidos normalmente e o sistema trata a separação internamente.
 - Dependendo do número de logísticas diferentes, você pode receber mais de um arquivo de etiqueta para download.
 
-<Frame>
-  <img src="/images/changelog/2026-08/shopee-one-step-envios.png" alt="Impressão de etiquetas Shopee agrupadas por logística" />
-</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Integrações · Shopify" tags={["Integrações"]}>
@@ -291,7 +268,7 @@ Os e-mails de pedido de venda, DANFE e NFS-e enviados pelo ERP passaram a exibir
 <Update label="Agosto de 2026" description="Notas Fiscais · GNRE" tags={["Notas Fiscais", "Conta Digital"]}>
 ## Pagamento de guias GNRE em lote considera todo o filtro aplicado
 
-Na aba de Guias Geradas (Vendas > Notas Fiscais), agora é possível pagar e visualizar guias em lote considerando todo o filtro aplicado, e não apenas as guias da página visível.
+Na aba de Guias Geradas (Vendas → Notas Fiscais), agora é possível pagar e visualizar guias em lote considerando todo o filtro aplicado, e não apenas as guias da página visível.
 
 - Ao acionar o pagamento em lote com a Conta Digital, um modal de confirmação mostra o total de guias, o limite do lote e as pendências em aberto.
 - O sistema processa automaticamente lotes de até 500 guias, priorizando as com vencimento mais próximo.
@@ -350,13 +327,6 @@ Quando a geração de uma guia GNRE falha, o sistema mostrava a mensagem crua do
 
 Quando a Sefaz rejeita uma NF-e e informa qual item causou a rejeição, essa informação agora aparece de forma destacada no título e no detalhe do erro, junto com a diferença de valor quando informada. Antes, o agente mostrava a orientação, mas o item afetado ficava misturado no texto da mensagem da Sefaz.
 
-<Frame>
-  <img src="/images/changelog/2026-08/rejeicoes-nitem-detalhe1.png" alt="Agente de Rejeições mostrando o item afetado na rejeição da Sefaz" />
-</Frame>
-
-<Frame>
-  <img src="/images/changelog/2026-08/rejeicoes-nitem-detalhe2.png" alt="Detalhe do erro de rejeição com informação de valor calculado" />
-</Frame>
 </Update>
 
 <Update label="Agosto de 2026" description="Notas Fiscais · NF-e" tags={["Notas Fiscais"]}>
@@ -479,10 +449,6 @@ Nas propostas comerciais, os campos disponíveis são:
 ## Ícone de nota fiscal cancelada agora aparece com risco na listagem de pedidos
 
 Quando a NF-e ou NFC-e vinculada a um pedido estava cancelada, o ícone da nota (N / NC) continuava igual ao de nota emitida normalmente, obrigando você a abrir a nota para descobrir a situação. Agora, quando a nota está cancelada, o ícone aparece com um risco — tanto na listagem quanto dentro do pedido.
-
-<Frame>
-  <img src="/images/changelog/2026-08/pedido-nfe-cancelada.png" alt="Pedido com NF-e cancelada mostrando ícone com risco" />
-</Frame>
 
 <Frame>
   <img src="/images/changelog/2026-08/pedido-nfce-cancelada.png" alt="Pedido com NFC-e cancelada mostrando ícone com risco" />
