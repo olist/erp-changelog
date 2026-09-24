@@ -4,6 +4,20 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · ICMS desonerado" tags={["Notas Fiscais"]}>
+## Novo parâmetro "Calcular ICMS Desonerado" na natureza de operação e no item da nota
+
+Agora você escolhe se o **ICMS desonerado** deve ser calculado. O campo **Calcular ICMS Desonerado** (Sim/Não) aparece nas regras de ICMS da natureza de operação e na edição do item da nota fiscal. Assim você emite a nota sem demonstrar a desoneração quando ela não se aplica à sua operação.
+
+- O campo aparece quando a empresa usa o detalhamento da desoneração ou quando a natureza é de Zona Franca de Manaus. Ele não aparece no Simples Nacional.
+- Vale apenas para os CSTs 20, 30, 40, 41, 50, 70 e 90. Nos demais CSTs a nota sai sem ICMS desonerado.
+- Com o campo em **Não**, a nota sai sem o valor desonerado e o motivo da desoneração é ocultado e limpo. Um valor que já estava gravado no item também deixa de ser considerado.
+- Com o campo em **Sim**, o motivo da desoneração passa a ser obrigatório. O sistema avisa ao salvar a natureza de operação e ao validar a nota antes do envio, evitando a rejeição pela Sefaz. Na Zona Franca de Manaus o motivo continua sendo preenchido automaticamente.
+- Nas naturezas de operação do Simples Nacional e nas empresas que não detalham a desoneração, o motivo não é exigido ao salvar.
+
+**Ponto de atenção:** as regras já cadastradas começam com **Sim**, então o cálculo continua como antes até você alterar o campo.
+</Update>
+
 <Update label="22 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
 ## Emissão de NFS-e por Integração Externa (gateway) em Araucária, Gramado e Novo Hamburgo
 
