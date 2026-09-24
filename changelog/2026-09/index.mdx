@@ -22,6 +22,30 @@ Agora você pode fazer a conciliação bancária inteira pela API pública: impo
 Consulte a [documentação da API](https://api-docs.erp.olist.com/api-reference/extratos-bancarios) para ver todos os endpoints disponíveis e os parâmetros aceitos.
 </Update>
 
+<Update label="24 de Setembro de 2026" description="Integrações · Nuvemshop" tags={["Integrações", "Contatos"]}>
+## Inscrição Estadual não vinha nos pedidos da Nuvemshop
+
+Ao importar um pedido da Nuvemshop feito por uma empresa (pessoa jurídica) que informou a Inscrição Estadual, o contato era criado no ERP sem esse dado. Agora a Inscrição Estadual informada na loja é preenchida automaticamente no contato.
+
+**Ponto de atenção:** a Inscrição Estadual só é importada para compradores pessoa jurídica. Pedidos de pessoa física continuam sem esse preenchimento.
+
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Buscador de notas" tags={["Notas Fiscais"]}>
+## Buscador de notas agora acompanha CT-e
+
+O **Buscador de notas**, que encontra e importa documentos emitidos por terceiros direto da SEFAZ, passa a acompanhar também o **CT-e**, o conhecimento de transporte eletrônico. Além das notas fiscais (NF-e), você pode localizar e importar os documentos de frete emitidos contra a sua empresa, de forma manual ou automática.
+
+- Na listagem, um seletor no topo permite alternar entre **NF-e** e **CT-e**.
+- Para CT-e não existe manifestação do destinatário: basta selecionar os documentos e importar, sem etapa extra.
+- A **importação automática de CT-e** tem configuração própria, separada da de NF-e: você define se vale para todos os prestadores ou apenas para CNPJs específicos. Entram automaticamente somente os CT-e em que a sua empresa é a tomadora do serviço (contratante do frete).
+- Ao ligar a importação automática de um tipo de documento cujo buscador ainda não está ativo, o sistema oferece ativar o buscador na sequência, sem passos manuais.
+- Documentos já importados no ERP por outros meios agora aparecem corretamente como "importados" na listagem do buscador.
+
+**Ponto de atenção:** ao ativar o buscador, a sincronização começa pelos documentos mais recentes; o histórico dos meses anteriores não é importado.
+
+</Update>
+
 <Update label="24 de Setembro de 2026" description="Notas Fiscais · Itens da nota" tags={["Notas Fiscais"]}>
 ## Desconto por item disponível em todas as notas fiscais
 
@@ -50,6 +74,10 @@ Agora é possível **alterar a data de entrega** de uma NF-e já autorizada quan
 - Datas passadas são aceitas, para quando a entrega já atrasou.
 
 **Ponto de atenção:** a opção só aparece para NF-e (modelo 55) de saída emitida pela sua empresa, com situação Autorizada, Emitida DANFE ou Registrada, e somente quando os recursos da Reforma Tributária estão habilitados na conta.
+
+<Frame caption="Alteração da data de entrega">
+  ![Alteração da data de entrega](/images/changelog/2026-09/nfe-alterar-data-entrega.png)
+</Frame>
 </Update>
 
 <Update label="24 de Setembro de 2026" description="Notas Fiscais · ICMS desonerado" tags={["Notas Fiscais"]}>
