@@ -22,6 +22,16 @@ Agora você pode fazer a conciliação bancária inteira pela API pública: impo
 Consulte a [documentação da API](https://api-docs.erp.olist.com/api-reference/extratos-bancarios) para ver todos os endpoints disponíveis e os parâmetros aceitos.
 </Update>
 
+<Update label="24 de Setembro de 2026" description="Vendas · Pedidos e Propostas" tags={["Vendas", "Performance"]}>
+## Pedidos e propostas com muitos itens agora são salvos mais rapidamente
+
+Melhoramos o desempenho ao salvar **pedidos de venda** e **propostas comerciais** com um grande número de itens. O cálculo dos impostos de cada item passou a aproveitar informações já consultadas durante a operação, e o salvamento ocorre de forma agrupada em vez de item por item.
+
+- A diferença é mais perceptível em pedidos com dezenas ou centenas de itens, que antes podiam demorar bastante ou até falhar por demora ao salvar.
+- Os valores de impostos de cada item continuam calculados e gravados da mesma forma — nada muda no resultado, apenas na velocidade.
+
+</Update>
+
 <Update label="24 de Setembro de 2026" description="Integrações · Nuvemshop" tags={["Integrações", "Contatos"]}>
 ## Inscrição Estadual não vinha nos pedidos da Nuvemshop
 
@@ -44,6 +54,10 @@ O **Buscador de notas**, que encontra e importa documentos emitidos por terceiro
 
 **Ponto de atenção:** ao ativar o buscador, a sincronização começa pelos documentos mais recentes; o histórico dos meses anteriores não é importado.
 
+<Frame>
+  <video controls src="/assets/changelog/2026-09/buscador-notas-cte.mp4" title="Buscador de notas com CT-e" />
+</Frame>
+
 </Update>
 
 <Update label="24 de Setembro de 2026" description="Notas Fiscais · Itens da nota" tags={["Notas Fiscais"]}>
@@ -54,6 +68,14 @@ Agora você pode informar o **desconto diretamente em cada item** da nota fiscal
 - Ao alterar o desconto total da nota, o sistema avisa que o valor será rateado entre os itens e que valores digitados manualmente nos itens serão substituídos.
 - Em notas importadas por XML, o desconto de cada item do arquivo passa a ser aproveitado na importação.
 - Corrigimos também a exibição do valor de desconto do item na tela de edição: em alguns casos ele aparecia zerado ou com valor divergente do que estava gravado.
+
+<Frame caption="Campo de Desconto no Item da Nota">
+  ![Campo de Desconto no Item da Nota](/images/changelog/2026-09/campo-desconto-item.png)
+</Frame>
+
+<Frame caption="Mensagem de rateio forçado ao alterar desconto total da nota diretamente">
+  ![Mensagem de rateio forçado ao alterar desconto total da nota diretamente](/images/changelog/2026-09/mensagem-rateio-forcado-desconto-total-nota.png)
+</Frame>
 </Update>
 
 <Update label="24 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
