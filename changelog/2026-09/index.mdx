@@ -4,6 +4,24 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
+<Update label="24 de Setembro de 2026" description="Financeiro · Extrato Bancário" tags={["Financeiro", "API"]}>
+## Conciliação bancária pela API pública
+
+Agora você pode fazer a conciliação bancária inteira pela API pública: importar o extrato do banco, acompanhar as movimentações e conciliá-las com suas contas a pagar e a receber, sem precisar abrir a tela de conciliação.
+
+- Importe um arquivo de extrato bancário (OFX ou XML) para uma conta financeira cadastrada.
+- Consulte os extratos importados com filtros por nome do arquivo, período e conta financeira, e veja todos os detalhes de um extrato, incluindo suas movimentações.
+- Concilie uma movimentação com uma ou mais contas a pagar ou a receber, informando valor parcial, juros, desconto, acréscimo e taxa.
+- Transforme uma movimentação em lançamento no caixa, definindo categoria, contato e histórico.
+- Ignore movimentações que não precisam de conciliação — e desfaça o ignorar quando quiser.
+- Estorne lançamentos criados a partir de uma movimentação.
+- Exclua um extrato importado.
+
+**Como habilitar:** o usuário da API precisa das novas permissões de extrato bancário (leitura, escrita e exclusão) liberadas no gerenciamento de acessos.
+
+Consulte a [documentação da API](https://api-docs.erp.olist.com/api-reference/extrato-bancário) para ver todos os endpoints disponíveis e os parâmetros aceitos.
+</Update>
+
 <Update label="24 de Setembro de 2026" description="PDV · Crediário" tags={["PDV"]}>
 ## Impressão de carnê do crediário no PDV
 
@@ -33,14 +51,13 @@ Agora é possível ampliar a capacidade das integrações conectadas à **API V3
 - Um pacote adiciona **180 leituras e 120 escritas por minuto**.
 - Outro pacote adiciona **240 leituras e 180 escritas por minuto**.
 - Os limites adicionais são somados à capacidade já disponível no plano.
-- É possível combinar pacotes para adequar a capacidade ao volume da integração.
 - O limite aplicado pode ser consultado no campo `X-RateLimit-Limit` retornado pela API.
 
 <Frame>
   <img src="/assets/changelog/2026-09/limite-adicional-api-aplicado.png" alt="Retorno da API mostrando o limite de 630 requisições por minuto após a contratação dos pacotes adicionais" />
 </Frame>
 
-**Como habilitar:** contrate um ou mais pacotes de limite adicional disponíveis para o seu plano. Após a ativação, os novos limites são aplicados automaticamente.
+**Como habilitar:** contrate o pacote de limite adicional caso esteja disponível para o seu plano, através da loja de extensões. Após a ativação, os novos limites são aplicados automaticamente.
 
 </Update>
 
