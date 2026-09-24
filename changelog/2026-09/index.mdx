@@ -4,6 +4,25 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
+<Update label="24 de Setembro de 2026" description="API · Limites de requisições" tags={["API"]}>
+## Ampliação dos limites de uso da API V3
+
+Agora é possível ampliar a capacidade das integrações conectadas à **API V3** por meio de pacotes adicionais de requisições, permitindo realizar mais operações por minuto.
+
+- Um pacote adiciona **180 leituras e 120 escritas por minuto**.
+- Outro pacote adiciona **240 leituras e 180 escritas por minuto**.
+- Os limites adicionais são somados à capacidade já disponível no plano.
+- É possível combinar pacotes para adequar a capacidade ao volume da integração.
+- O limite aplicado pode ser consultado no campo `X-RateLimit-Limit` retornado pela API.
+
+<Frame>
+  <img src="/assets/changelog/2026-09/limite-adicional-api-aplicado.png" alt="Retorno da API mostrando o limite de 630 requisições por minuto após a contratação dos pacotes adicionais" />
+</Frame>
+
+**Como habilitar:** contrate um ou mais pacotes de limite adicional disponíveis para o seu plano. Após a ativação, os novos limites são aplicados automaticamente.
+
+</Update>
+
 <Update label="24 de Setembro de 2026" description="Vendas · Pedidos e Propostas" tags={["Vendas", "Performance"]}>
 ## Pedidos e propostas com muitos itens agora são salvos mais rapidamente
 
