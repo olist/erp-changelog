@@ -50,3 +50,17 @@
   line-height: 1.5;
   word-break: normal;
 }
+
+/* Alpha badge style */
+.alpha-update [data-component-part="update-tag-list"]::before {
+  content: "Alpha";
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  color: #fff;
+  background: linear-gradient(to right, #155AE3, #81CAD8);
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
