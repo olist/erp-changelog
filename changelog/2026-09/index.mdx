@@ -4,25 +4,123 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
-<Update label="22 de Setembro de 2026" description="API · Limite de requisições" tags={["API"]}>
-## Ampliação do limite de requisições da API
+<Update label="24 de Setembro de 2026" description="API · Limites de requisições" tags={["API"]}>
+## Ampliação dos limites de uso da API V3
 
-Agora é possível contratar capacidade adicional para aumentar o limite de requisições da API, atendendo integrações que precisam processar um volume maior de dados.
+Agora é possível ampliar a capacidade das integrações conectadas à **API V3** por meio de pacotes adicionais de requisições, permitindo realizar mais operações por minuto.
 
-O novo limite passa a valer automaticamente após a contratação da extensão.
+- Um pacote adiciona **180 leituras e 120 escritas por minuto**.
+- Outro pacote adiciona **240 leituras e 180 escritas por minuto**.
+- Os limites adicionais são somados à capacidade já disponível no plano.
+- É possível combinar pacotes para adequar a capacidade ao volume da integração.
+- O limite aplicado pode ser consultado no campo `X-RateLimit-Limit` retornado pela API.
 
 <Frame>
-  <img src="/assets/changelog/2026-09/limite-adicional-api.png" alt="Extensão de limite adicional da API disponível para instalação" />
+  <img src="/assets/changelog/2026-09/limite-adicional-api-aplicado.png" alt="Retorno da API mostrando o limite de 630 requisições por minuto após a contratação dos pacotes adicionais" />
 </Frame>
 
-**Como habilitar:** contrate uma extensão de limite adicional da API na loja de extensões.
+**Como habilitar:** contrate um ou mais pacotes de limite adicional disponíveis para o seu plano. Após a ativação, os novos limites são aplicados automaticamente.
 
 </Update>
 
-<Update label="22 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
-## Emissão de NFS-e por E-notas / Nota Gateway em Araucária, Gramado e Novo Hamburgo
+<Update label="24 de Setembro de 2026" description="Vendas · Pedidos e Propostas" tags={["Vendas", "Performance"]}>
+## Pedidos e propostas com muitos itens agora são salvos mais rapidamente
 
-Os municípios de **Araucária (PR)**, **Gramado (RS)** e **Novo Hamburgo (RS)** passaram a emitir NFS-e pelo **E-notas / Nota Gateway**. A emissão das notas continua funcionando normalmente — apenas a integração utilizada para o envio ao município foi alterada.
+Melhoramos o desempenho ao salvar **pedidos de venda** e **propostas comerciais** com um grande número de itens. O cálculo dos impostos de cada item passou a aproveitar informações já consultadas durante a operação, e o salvamento ocorre de forma agrupada em vez de item por item.
+
+- A diferença é mais perceptível em pedidos com dezenas ou centenas de itens, que antes podiam demorar bastante ou até falhar por demora ao salvar.
+- Os valores de impostos de cada item continuam calculados e gravados da mesma forma — nada muda no resultado, apenas na velocidade.
+
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Integrações · Nuvemshop" tags={["Integrações", "Contatos"]}>
+## Inscrição Estadual não vinha nos pedidos da Nuvemshop
+
+Ao importar um pedido da Nuvemshop feito por uma empresa (pessoa jurídica) que informou a Inscrição Estadual, o contato era criado no ERP sem esse dado. Agora a Inscrição Estadual informada na loja é preenchida automaticamente no contato.
+
+**Ponto de atenção:** a Inscrição Estadual só é importada para compradores pessoa jurídica. Pedidos de pessoa física continuam sem esse preenchimento.
+
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Buscador de notas" tags={["Notas Fiscais"]}>
+## Buscador de notas agora acompanha CT-e
+
+O **Buscador de notas**, que encontra e importa documentos emitidos por terceiros direto da SEFAZ, passa a acompanhar também o **CT-e**, o conhecimento de transporte eletrônico. Além das notas fiscais (NF-e), você pode localizar e importar os documentos de frete emitidos contra a sua empresa, de forma manual ou automática.
+
+- Na listagem, um seletor no topo permite alternar entre **NF-e** e **CT-e**.
+- Para CT-e não existe manifestação do destinatário: basta selecionar os documentos e importar, sem etapa extra.
+- A **importação automática de CT-e** tem configuração própria, separada da de NF-e: você define se vale para todos os prestadores ou apenas para CNPJs específicos. Entram automaticamente somente os CT-e em que a sua empresa é a tomadora do serviço (contratante do frete).
+- Ao ligar a importação automática de um tipo de documento cujo buscador ainda não está ativo, o sistema oferece ativar o buscador na sequência, sem passos manuais.
+- Documentos já importados no ERP por outros meios agora aparecem corretamente como "importados" na listagem do buscador.
+
+**Ponto de atenção:** ao ativar o buscador, a sincronização começa pelos documentos mais recentes; o histórico dos meses anteriores não é importado.
+
+<Frame>
+  <video controls src="/assets/changelog/2026-09/buscador-notas-cte.mp4" title="Buscador de notas com CT-e" />
+</Frame>
+
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Itens da nota" tags={["Notas Fiscais"]}>
+## Desconto por item disponível em todas as notas fiscais
+
+Agora você pode informar o **desconto diretamente em cada item** da nota fiscal em qualquer modelo de nota — antes esse campo só estava disponível para NFC-e emitida via aplicativo PAF. O valor de desconto de cada item é mantido exatamente como você digitou, sem ser alterado pelo desconto geral da nota.
+
+- Ao alterar o desconto total da nota, o sistema avisa que o valor será rateado entre os itens e que valores digitados manualmente nos itens serão substituídos.
+- Em notas importadas por XML, o desconto de cada item do arquivo passa a ser aproveitado na importação.
+- Corrigimos também a exibição do valor de desconto do item na tela de edição: em alguns casos ele aparecia zerado ou com valor divergente do que estava gravado.
+
+<Frame caption="Campo de Desconto no Item da Nota">
+  ![Campo de Desconto no Item da Nota](/images/changelog/2026-09/campo-desconto-item.png)
+</Frame>
+
+<Frame caption="Mensagem de rateio forçado ao alterar desconto total da nota diretamente">
+  ![Mensagem de rateio forçado ao alterar desconto total da nota diretamente](/images/changelog/2026-09/mensagem-rateio-forcado-desconto-total-nota.png)
+</Frame>
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
+## Naturezas de operação agora acompanham o regime tributário definido no onboarding
+
+Quando o regime tributário da empresa é definido pelo onboarding, as naturezas de operação recomendadas podem demorar a ser criadas ou ficar desatualizadas. Agora, assim que o regime tributário é identificado, o sistema atualiza automaticamente as suas naturezas de operação para as corretas — desde que elas ainda não tenham sido utilizadas em vendas ou notas fiscais. Se já houver movimentação, suas naturezas são preservadas.
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Eventos da NF-e" tags={["Notas Fiscais"]}>
+## Alteração da data de entrega em notas fiscais de saída
+
+Agora é possível **alterar a data de entrega** de uma NF-e já autorizada quando algum imprevisto no envio mudar o dia em que o cliente vai receber a mercadoria. A nova data é comunicada à Sefaz e passa a valer para a apuração do IBS e da CBS.
+
+- Você encontra a opção **Alterar data de entrega** no menu de ações da nota fiscal, na lista de notas. Ela também aparece como um card em **Registrar evento**.
+- O formulário mostra a data prevista na nota e, se já houver, a data do último registro. O campo já vem preenchido com a data que está valendo.
+- Você pode alterar a data mais de uma vez. Vale sempre o último registro que não foi cancelado.
+- A nova data aparece no histórico de eventos da nota, logo abaixo do nome do evento. O documento autorizado continua com a data original.
+- Datas passadas são aceitas, para quando a entrega já atrasou.
+
+**Ponto de atenção:** a opção só aparece para NF-e (modelo 55) de saída emitida pela sua empresa, com situação Autorizada, Emitida DANFE ou Registrada, e somente quando os recursos da Reforma Tributária estão habilitados na conta.
+
+<Frame caption="Alteração da data de entrega">
+  ![Alteração da data de entrega](/images/changelog/2026-09/nfe-alterar-data-entrega.png)
+</Frame>
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · ICMS desonerado" tags={["Notas Fiscais"]}>
+## Novo parâmetro "Calcular ICMS Desonerado" na natureza de operação e no item da nota
+
+Agora você escolhe se o **ICMS desonerado** deve ser calculado. O campo **Calcular ICMS Desonerado** (Sim/Não) aparece nas regras de ICMS da natureza de operação e na edição do item da nota fiscal. Assim você emite a nota sem demonstrar a desoneração quando ela não se aplica à sua operação.
+
+- O campo aparece quando a empresa usa o detalhamento da desoneração ou quando a natureza é de Zona Franca de Manaus. Ele não aparece no Simples Nacional.
+- Vale apenas para os CSTs 20, 30, 40, 41, 50, 70 e 90. Nos demais CSTs a nota sai sem ICMS desonerado.
+- Com o campo em **Não**, a nota sai sem o valor desonerado e o motivo da desoneração é ocultado e limpo. Um valor que já estava gravado no item também deixa de ser considerado.
+- Com o campo em **Sim**, o motivo da desoneração passa a ser obrigatório. O sistema avisa ao salvar a natureza de operação e ao validar a nota antes do envio, evitando a rejeição pela Sefaz. Na Zona Franca de Manaus o motivo continua sendo preenchido automaticamente.
+- Nas naturezas de operação do Simples Nacional e nas empresas que não detalham a desoneração, o motivo não é exigido ao salvar.
+
+**Ponto de atenção:** as regras já cadastradas começam com **Sim**, então o cálculo continua como antes até você alterar o campo.
+</Update>
+
+<Update label="22 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
+## Emissão de NFS-e por Integração Externa (gateway) em Araucária, Gramado e Novo Hamburgo
+
+Os municípios de **Araucária (PR)**, **Gramado (RS)** e **Novo Hamburgo (RS)** passaram a emitir NFS-e via integração externa (gateway). A emissão das notas continua funcionando normalmente — apenas a integração utilizada para o envio ao município foi alterada.
 
 **Ponto de atenção:** Se você emite NFS-e em um desses municípios, revise as configurações de emissão no ERP antes de enviar o próximo lote de notas.
 </Update>
