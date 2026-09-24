@@ -4,17 +4,43 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
-<Update label="22 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
 ## Naturezas de operação agora acompanham o regime tributário definido no onboarding
 
 Quando o regime tributário da empresa é definido pelo onboarding, as naturezas de operação recomendadas podem demorar a ser criadas ou ficar desatualizadas. Agora, assim que o regime tributário é identificado, o sistema atualiza automaticamente as suas naturezas de operação para as corretas — desde que elas ainda não tenham sido utilizadas em vendas ou notas fiscais. Se já houver movimentação, suas naturezas são preservadas.
 
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · Eventos da NF-e" tags={["Notas Fiscais"]}>
+## Alteração da data de entrega em notas fiscais de saída
+
+Agora é possível **alterar a data de entrega** de uma NF-e já autorizada quando algum imprevisto no envio mudar o dia em que o cliente vai receber a mercadoria. A nova data é comunicada à Sefaz e passa a valer para a apuração do IBS e da CBS.
+
+- Você encontra a opção **Alterar data de entrega** no menu de ações da nota fiscal, na lista de notas. Ela também aparece como um card em **Registrar evento**.
+- O formulário mostra a data prevista na nota e, se já houver, a data do último registro. O campo já vem preenchido com a data que está valendo.
+- Você pode alterar a data mais de uma vez. Vale sempre o último registro que não foi cancelado.
+- A nova data aparece no histórico de eventos da nota, logo abaixo do nome do evento. O documento autorizado continua com a data original.
+- Datas passadas são aceitas, para quando a entrega já atrasou.
+
+**Ponto de atenção:** a opção só aparece para NF-e (modelo 55) de saída emitida pela sua empresa, com situação Autorizada, Emitida DANFE ou Registrada, e somente quando os recursos da Reforma Tributária estão habilitados na conta.
+</Update>
+
+<Update label="24 de Setembro de 2026" description="Notas Fiscais · ICMS desonerado" tags={["Notas Fiscais"]}>
+## Novo parâmetro "Calcular ICMS Desonerado" na natureza de operação e no item da nota
+
+Agora você escolhe se o **ICMS desonerado** deve ser calculado. O campo **Calcular ICMS Desonerado** (Sim/Não) aparece nas regras de ICMS da natureza de operação e na edição do item da nota fiscal. Assim você emite a nota sem demonstrar a desoneração quando ela não se aplica à sua operação.
+
+- O campo aparece quando a empresa usa o detalhamento da desoneração ou quando a natureza é de Zona Franca de Manaus. Ele não aparece no Simples Nacional.
+- Vale apenas para os CSTs 20, 30, 40, 41, 50, 70 e 90. Nos demais CSTs a nota sai sem ICMS desonerado.
+- Com o campo em **Não**, a nota sai sem o valor desonerado e o motivo da desoneração é ocultado e limpo. Um valor que já estava gravado no item também deixa de ser considerado.
+- Com o campo em **Sim**, o motivo da desoneração passa a ser obrigatório. O sistema avisa ao salvar a natureza de operação e ao validar a nota antes do envio, evitando a rejeição pela Sefaz. Na Zona Franca de Manaus o motivo continua sendo preenchido automaticamente.
+- Nas naturezas de operação do Simples Nacional e nas empresas que não detalham a desoneração, o motivo não é exigido ao salvar.
+
+**Ponto de atenção:** as regras já cadastradas começam com **Sim**, então o cálculo continua como antes até você alterar o campo.
 </Update>
 
 <Update label="22 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
-## Emissão de NFS-e por E-notas / Nota Gateway em Araucária, Gramado e Novo Hamburgo
+## Emissão de NFS-e por Integração Externa (gateway) em Araucária, Gramado e Novo Hamburgo
 
-Os municípios de **Araucária (PR)**, **Gramado (RS)** e **Novo Hamburgo (RS)** passaram a emitir NFS-e pelo **E-notas / Nota Gateway**. A emissão das notas continua funcionando normalmente — apenas a integração utilizada para o envio ao município foi alterada.
+Os municípios de **Araucária (PR)**, **Gramado (RS)** e **Novo Hamburgo (RS)** passaram a emitir NFS-e via integração externa (gateway). A emissão das notas continua funcionando normalmente — apenas a integração utilizada para o envio ao município foi alterada.
 
 **Ponto de atenção:** Se você emite NFS-e em um desses municípios, revise as configurações de emissão no ERP antes de enviar o próximo lote de notas.
 </Update>
