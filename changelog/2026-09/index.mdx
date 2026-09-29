@@ -4,6 +4,26 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
+<Update label="29 de Setembro de 2026" description="Financeiro · Contas a Pagar e Receber" tags={["Financeiro"]}>
+## Novos filtros e buscas em Contas a Pagar, Contas a Receber e Caixa
+
+Agora você encontra uma conta financeira pelo número do documento que a gerou, como o pedido, a nota fiscal ou a ordem de compra, sem precisar procurar pelo nome do contato.
+
+- **Contas a Receber:** novas opções de busca por **Nota Fiscal**, **Pedido de venda** e **Pedido E-commerce**. Também é possível filtrar por **integração de e-commerce** e **canal de venda**, incluindo as opções de contas sem vínculo com e-commerce e de pedidos recebidos via API.
+- **Contas a Pagar:** novas opções de busca por **Nº nota de entrada** e **Nº ordem de compra**.
+- **Caixa:** novas opções de busca por **Pedido de venda**, **Nota Fiscal**, **Nota de Entrada** e **Ordem de Compra**. A busca também vale na impressão e na exportação do relatório.
+- **Filtro por período:** em Contas a Pagar e Contas a Receber, você escolhe qual data usar: **emissão**, **vencimento**, **pagamento** ou **competência**. A competência só aparece para quem tem o módulo de DRE. Em Contas a Pagar, o filtro funciona em todas as situações da conta: em aberto, pagas, atrasadas e canceladas.
+- **Filtro por vendedor em Contas a Receber:** o filtro passa a usar o vendedor informado no pedido de venda ou na nota fiscal que gerou a conta.
+
+## Origem da conta a pagar visível na listagem
+
+A listagem de Contas a Pagar ganhou a coluna **Integrações**. Ela mostra de onde veio cada conta: Devolução de Venda (DV), Ordem de Compra (OC), Nota Fiscal (N), Serviço Tomado (ST) ou GNRE. Ao clicar no indicador, você abre o documento de origem. O mesmo indicador aparece na visualização da conta.
+
+## Remoção da opção "Outras contas" em Contas a Pagar
+
+A separação entre **Contas a pagar** e **Outras contas** foi removida. Todas as contas aparecem juntas em uma única listagem. No cadastro, o campo **Nº do documento** fica sempre visível e o campo de data passa a se chamar **Data de emissão**.
+</Update>
+
 <Update label="29 de Setembro de 2026" description="Integrações · Nuvemshop" tags={["Integrações", "Vendas"]}>
 ## Data prevista de entrega nos pedidos da Nuvemshop
 
