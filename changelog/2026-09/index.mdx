@@ -4,16 +4,6 @@ description: "Atualizações de setembro de 2026."
 mode: "default"
 ---
 
-<Update label="30 de Setembro de 2026" description="Financeiro · Contas a Pagar" tags={["Financeiro"]}>
-## Contas a pagar lançadas automaticamente em contas novas
-
-Nas contas novas, as contas a pagar passam a ser lançadas **automaticamente quando a nota fiscal é autorizada**. Assim, você não precisa lançar cada pagamento manualmente depois que a nota é autorizada.
-
-- Vale só para contas criadas a partir de agora. Nas contas que já existem, a configuração continua como está.
-- Para mudar, acesse as configurações gerais do Financeiro e altere a opção **Lançamento de contas a pagar** para **Manual** ou outra forma que preferir.
-
-</Update>
-
 <Update label="29 de Setembro de 2026" description="Integrações · Nuvemshop" tags={["Integrações", "Vendas"]}>
 ## Data prevista de entrega nos pedidos da Nuvemshop
 
@@ -22,6 +12,7 @@ Os pedidos importados da Nuvemshop agora trazem a **data prevista de entrega** p
 - A Nuvemshop informa um intervalo de entrega (data mínima e máxima). Como o pedido no ERP tem um campo só, ele é preenchido com a data mínima.
 
 **Ponto de atenção:** se a Nuvemshop não informar a janela de entrega no pedido, o campo continua vazio.
+
 </Update>
 
 <Update label="25 de Setembro de 2026" description="Integrações · Mercado Livre" tags={["Integrações"]}>
@@ -71,7 +62,10 @@ Na ficha técnica do anúncio da Shopee, agora é possível escolher a marca da 
 **Ponto de atenção:** se nenhuma marca for escolhida e o produto não tiver uma marca que exista na categoria, o anúncio é enviado sem marca.
 
 <Frame>
-  <img src="/assets/changelog/2026-09/shopee-revisao-anuncios-ficha-tecnica.gif" alt="Revisão dos anúncios da Shopee, com o produto e o link Ficha técnica" />
+  <img
+    src="/assets/changelog/2026-09/shopee-revisao-anuncios-ficha-tecnica.gif"
+    alt="Revisão dos anúncios da Shopee, com o produto e o link Ficha técnica"
+  />
 </Frame>
 
 </Update>
@@ -92,27 +86,34 @@ Agora você pode fazer a conciliação bancária inteira pela API pública: impo
 **Como habilitar:** o usuário da API precisa das novas permissões de extrato bancário (leitura, escrita e exclusão) liberadas no gerenciamento de acessos.
 
 Consulte a [documentação da API](https://api-docs.erp.olist.com/api-reference/extrato-bancário) para ver todos os endpoints disponíveis e os parâmetros aceitos.
+
 </Update>
 
 <Update label="24 de Setembro de 2026" description="PDV · Crediário" tags={["PDV"]}>
-## Impressão de carnê do crediário no PDV
+    ## Impressão de carnê do crediário no PDV
 
-Agora é possível imprimir o **carnê de pagamento** logo após finalizar uma venda no PDV com crediário. Na tela de venda finalizada aparece a opção **Imprimir carnê**, que gera um comprovante em formato de impressora térmica pra entregar ao cliente.
+    Agora é possível imprimir o **carnê de pagamento** logo após finalizar uma venda no PDV com crediário. Na tela de venda finalizada aparece a opção **Imprimir carnê**, que gera um comprovante em formato de impressora térmica pra entregar ao cliente.
 
-O carnê traz:
-- Nome da loja e do cliente
-- Data e total da compra
-- Lista de parcelas com número (ex.: 1/3), vencimento e valor
+    O carnê traz:
 
-<Frame>
-  <img src="/assets/changelog/2026-09/pdv-impressao-carne-crediario.png" alt="Pré-visualização do carnê de pagamento com dados da loja, cliente, compra e parcelas do crediário" />
-</Frame>
+    - Nome da loja e do cliente
+    - Data e total da compra
+    - Lista de parcelas com número (ex.: 1/3), vencimento e valor
 
-**Pontos de atenção:**
-- A opção só aparece quando a venda tem crediário, seja como forma única ou junto com outras formas de pagamento.
-- Em vendas com mais de uma forma de pagamento, o total do carnê considera só as parcelas do crediário.
-- Vendas salvas para finalizar depois não geram carnê, porque as parcelas ainda não foram lançadas no financeiro.
-- A opção não aparece para quem usa o módulo PAF-NFC-e.
+    <Frame>
+    <img
+        src="/assets/changelog/2026-09/pdv-impressao-carne-crediario.png"
+        alt="Pré-visualização do carnê de pagamento com dados da loja, cliente, compra e parcelas do crediário"
+    />
+    </Frame>
+
+    **Pontos de atenção:**
+
+    - A opção só aparece quando a venda tem crediário, seja como forma única ou junto com outras formas de pagamento.
+    - Em vendas com mais de uma forma de pagamento, o total do carnê considera só as parcelas do crediário.
+    - Vendas salvas para finalizar depois não geram carnê, porque as parcelas ainda não foram lançadas no financeiro.
+    - A opção não aparece para quem usa o módulo PAF-NFC-e.
+
 </Update>
 
 <Update label="24 de Setembro de 2026" description="API · Limites de requisições" tags={["API"]}>
@@ -126,7 +127,10 @@ Agora é possível ampliar a capacidade das integrações conectadas à **API V3
 - O limite aplicado pode ser consultado no campo `X-RateLimit-Limit` retornado pela API.
 
 <Frame>
-  <img src="/assets/changelog/2026-09/limite-adicional-api-aplicado.png" alt="Retorno da API mostrando o limite de 630 requisições por minuto após a contratação dos pacotes adicionais" />
+  <img
+    src="/assets/changelog/2026-09/limite-adicional-api-aplicado.png"
+    alt="Retorno da API mostrando o limite de 630 requisições por minuto após a contratação dos pacotes adicionais"
+  />
 </Frame>
 
 **Como habilitar:** contrate o pacote de limite adicional caso esteja disponível para o seu plano, através da loja de extensões. Após a ativação, os novos limites são aplicados automaticamente.
@@ -193,6 +197,7 @@ Agora você pode informar o **desconto diretamente em cada item** da nota fiscal
 ## Naturezas de operação agora acompanham o regime tributário definido no onboarding
 
 Quando o regime tributário da empresa é definido pelo onboarding, as naturezas de operação recomendadas podem demorar a ser criadas ou ficar desatualizadas. Agora, assim que o regime tributário é identificado, o sistema atualiza automaticamente as suas naturezas de operação para as corretas — desde que elas ainda não tenham sido utilizadas em vendas ou notas fiscais. Se já houver movimentação, suas naturezas são preservadas.
+
 </Update>
 
 <Update label="24 de Setembro de 2026" description="Notas Fiscais · Eventos da NF-e" tags={["Notas Fiscais"]}>
@@ -225,6 +230,7 @@ Agora você escolhe se o **ICMS desonerado** deve ser calculado. O campo **Calcu
 - Nas naturezas de operação do Simples Nacional e nas empresas que não detalham a desoneração, o motivo não é exigido ao salvar.
 
 **Ponto de atenção:** as regras já cadastradas começam com **Sim**, então o cálculo continua como antes até você alterar o campo.
+
 </Update>
 
 <Update label="22 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
@@ -233,6 +239,7 @@ Agora você escolhe se o **ICMS desonerado** deve ser calculado. O campo **Calcu
 Os municípios de **Araucária (PR)**, **Gramado (RS)** e **Novo Hamburgo (RS)** passaram a emitir NFS-e via integração externa (gateway). A emissão das notas continua funcionando normalmente — apenas a integração utilizada para o envio ao município foi alterada.
 
 **Ponto de atenção:** Se você emite NFS-e em um desses municípios, revise as configurações de emissão no ERP antes de enviar o próximo lote de notas.
+
 </Update>
 
 <Update label="18 de Setembro de 2026" description="Financeiro · Contas a Pagar, Receber e Caixa" tags={["Financeiro"]}>
@@ -241,6 +248,7 @@ Os municípios de **Araucária (PR)**, **Gramado (RS)** e **Novo Hamburgo (RS)**
 Agora as listagens de Contas a Pagar, Contas a Receber e Caixa exibem a coluna de data de competência de cada registro. Antes, era possível filtrar por competência, mas a data não aparecia na tabela.
 
 **Ponto de atenção:** A coluna de competência é exibida apenas para quem possui o módulo de DRE habilitado.
+
 </Update>
 
 <Update label="18 de Setembro de 2026" description="Integrações · Amazon" tags={["Integrações"]}>
@@ -251,6 +259,7 @@ Quando a conexão com a Amazon apresenta muitas falhas seguidas de autenticaçã
 - Após corrigir a autenticação, basta reativar a integração nas configurações para retomar a sincronização normalmente.
 
 **Ponto de atenção:** Essa regra vale apenas para erros críticos de estoque por falha de autenticação. Erros pontuais de produto ou problemas em outras partes da integração com a Amazon não acionam a pausa automática.
+
 </Update>
 
 <Update label="18 de Setembro de 2026" description="Integrações · WooCommerce" tags={["Integrações"]}>
@@ -265,6 +274,7 @@ Pedidos pagos com Mercado Pago no WooCommerce agora podem ser importados com as 
 - Pedidos pagos por outros meios (boleto, PIX, outros gateways) não são afetados.
 
 **Ponto de atenção:** As informações de parcelamento vêm diretamente do WooCommerce. Se o número de parcelas ou os valores estiverem incorretos, verifique o que está registrado no pedido original no WooCommerce.
+
 </Update>
 
 <Update label="18 de Setembro de 2026" description="Notas Fiscais · GNRE" tags={["Notas Fiscais"]}>
@@ -277,42 +287,47 @@ Agora é possível configurar o vencimento da GNRE para cair sempre no próximo 
 - Ao regerar uma guia com essa opção ativa, o sistema recalcula o vencimento pela nova regra, descartando qualquer data anterior já vencida.
 
 **Ponto de atenção:** O cálculo considera apenas feriados nacionais. Feriados estaduais ou municipais não são levados em conta.
+
 </Update>
 
 <Update label="18 de Setembro de 2026" description="Notas Fiscais · Numeração" tags={["Notas Fiscais"]}>
 ## Número da nota fiscal ajustado automaticamente ao salvar
 
 Ao salvar uma nota fiscal com um número que já está em uso na mesma série, o sistema passa a atribuir automaticamente o próximo número disponível e avisa você sobre a alteração. Antes, a operação era bloqueada com mensagem de erro.
+
 </Update>
 
 <Update label="17 de Setembro de 2026" description="Notas Fiscais · Exportação de Planilha" tags={["Notas Fiscais"]}>
-## Exportação de planilha de notas fiscais com mais linhas e acompanhamento de progresso
+    ## Exportação de planilha de notas fiscais com mais linhas e acompanhamento de progresso
 
-A exportação de planilha de notas fiscais agora acontece em segundo plano, com barra de progresso e histórico da última exportação. Você pode escolher receber um aviso por e-mail quando o arquivo estiver pronto.
+    A exportação de planilha de notas fiscais agora acontece em segundo plano, com barra de progresso e histórico da última exportação. Você pode escolher receber um aviso por e-mail quando o arquivo estiver pronto.
 
-- Formatos Excel e CSV suportam até 200.000 linhas. O formato Excel 97-2003 (.xls) mantém o limite de 5.000 linhas.
-- O limite conta por linha do arquivo: sem itens detalhados, cada linha é uma nota; com itens, cada linha é um item.
-- Formatos que não estiverem disponíveis aparecem desabilitados na lista, com explicação do motivo.
+    - Formatos Excel e CSV suportam até 200.000 linhas. O formato Excel 97-2003 (.xls) mantém o limite de 5.000 linhas.
+    - O limite conta por linha do arquivo: sem itens detalhados, cada linha é uma nota; com itens, cada linha é um item.
+    - Formatos que não estiverem disponíveis aparecem desabilitados na lista, com explicação do motivo.
+
 </Update>
 
 <Update label="17 de Setembro de 2026" description="Notas Fiscais · Naturezas de Operação" tags={["Notas Fiscais"]}>
-## Regras fiscais não se duplicam mais ao salvar uma natureza de operação
+    ## Regras fiscais não se duplicam mais ao salvar uma natureza de operação
 
-Naturezas de operação com muitas regras fiscais podiam ficar com regras duplicadas, o que exigia restaurar um backup para corrigir. Isso foi corrigido.
+    Naturezas de operação com muitas regras fiscais podiam ficar com regras duplicadas, o que exigia restaurar um backup para corrigir. Isso foi corrigido.
 
-- Se algo falhar durante o salvamento, a natureza de operação volta ao estado anterior, sem perda parcial de dados.
-- Dois salvamentos simultâneos da mesma natureza não são mais permitidos: se você tentar salvar enquanto outro salvamento está em andamento, verá uma mensagem avisando.
-- Ao excluir várias naturezas de uma vez, o processo continua mesmo se uma falhar, e as que não foram excluídas aparecem na mensagem final.
+    - Se algo falhar durante o salvamento, a natureza de operação volta ao estado anterior, sem perda parcial de dados.
+    - Dois salvamentos simultâneos da mesma natureza não são mais permitidos: se você tentar salvar enquanto outro salvamento está em andamento, verá uma mensagem avisando.
+    - Ao excluir várias naturezas de uma vez, o processo continua mesmo se uma falhar, e as que não foram excluídas aparecem na mensagem final.
+
 </Update>
 
 <Update label="17 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
-## NFS-e emitida pelo Ambiente Nacional segue novo formato de PIS e COFINS
+    ## NFS-e emitida pelo Ambiente Nacional segue novo formato de PIS e COFINS
 
-A emissão de NFS-e pelo Ambiente Nacional passou a seguir o novo formato definido pela Nota Técnica SE/CGNFS-e nº 007. Os valores informativos de PIS e COFINS e os valores retidos de PIS, COFINS e CSLL agora são enviados em campos separados.
+    A emissão de NFS-e pelo Ambiente Nacional passou a seguir o novo formato definido pela Nota Técnica SE/CGNFS-e nº 007. Os valores informativos de PIS e COFINS e os valores retidos de PIS, COFINS e CSLL agora são enviados em campos separados.
 
-- Os valores informativos de PIS (0,65%) e COFINS (3%) são enviados como referência, sem afetar o valor líquido da nota.
-- Se você desabilitar o cálculo automático de impostos, pode ajustar esses percentuais conforme o regime tributário.
-- A retenção de PIS, COFINS e CSLL (total de 4,65%) continua sendo calculada automaticamente quando a opção "Calcular PIS, COFINS e CSLL" está ativa, e é descontada do valor líquido quando o valor do serviço atingir o limite configurado.
+    - Os valores informativos de PIS (0,65%) e COFINS (3%) são enviados como referência, sem afetar o valor líquido da nota.
+    - Se você desabilitar o cálculo automático de impostos, pode ajustar esses percentuais conforme o regime tributário.
+    - A retenção de PIS, COFINS e CSLL (total de 4,65%) continua sendo calculada automaticamente quando a opção "Calcular PIS, COFINS e CSLL" está ativa, e é descontada do valor líquido quando o valor do serviço atingir o limite configurado.
+
 </Update>
 
 <Update label="17 de Setembro de 2026" description="Notas Fiscais · NFS-e" tags={["Notas Fiscais"]}>
@@ -321,12 +336,14 @@ A emissão de NFS-e pelo Ambiente Nacional passou a seguir o novo formato defini
 Quando a retenção de IR estava desativada nas configurações da NFS-e, o valor do IR ainda aparecia como retido na nota emitida. Isso foi corrigido: agora o IR só é informado como retido quando a opção de retenção estiver ativa.
 
 O parâmetro foi renomeado para **Reter IR na NFS-e**, com a descrição: "Define se a retenção de IR deve ser considerada na emissão da NFS-e."
+
 </Update>
 
 <Update label="11 de Setembro de 2026" description="Crédito · Antecipação de Duplicatas" tags={["Crédito", "Financeiro"]}>
 ## Antecipações de duplicata registradas como depósito no financeiro
 
 Quando você antecipava recebíveis de duplicata pelo módulo de Crédito, o valor creditado na conta do ERP aparecia identificado como "Boleto". Agora ele é registrado corretamente como "Depósito", refletindo a natureza real da operação e facilitando a conciliação financeira.
+
 </Update>
 
 <Update label="9 de Setembro de 2026" description="Financeiro · Configurações" tags={["Financeiro"]}>
